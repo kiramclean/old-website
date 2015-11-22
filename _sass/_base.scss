@@ -4,16 +4,22 @@
   box-sizing: border-box;
 }
 
-body, h1, h2, h3, h4, h5, h6, p, blockquote, ol, ul, li, img, .icon {
+body, h1, h2, h3, h4, h5, h6, p, blockquote, ol, ul, li, img, a, .icon {
   margin: 0;
   padding: 0;
 }
 
 /* BASIC STYLING */
 
+html {
+  height: 100vh;
+}
+
 body {
-  font-family: $base-font-family;
-  font-size: $base-font-size;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  font: #{$base-font-size}/#{$base-line-height} $base-font-family;
   color: $text-color;
   background-color: $background-color;
   font-feature-settings: "kern" 1;
@@ -25,18 +31,22 @@ body {
 }
 
 img {
-  max-width: 100%;
+  width: 100%;
   height: auto;
+}
+
+figure > img {
+  display: block;
 }
 
 a, a:visited {
   color: $text-color;
-  text-decoration: underline;
-  text-decoration-color: $main-color;
-    -moz-text-decoration-color: $main-color;
+  text-decoration: none;
+  border-bottom: 1px solid $main-color;
+  
 
   &:hover {
-    text-decoration-color: $text-color;
+    border-bottom: 3px solid $main-color;
   }
 }
 
@@ -52,11 +62,23 @@ blockquote {
 
 pre, code {
   font-family: monospace;
-  background-color: $light-gray;
-  border: 1px solid $gray;
-  border-radius: 5px;
-  padding: 10px;
+  background-color: #efefef;
+  border: 1px solid $light-gray;
+  border-radius: 3px;
   overflow-x: auto;
+}
+
+code {
+  padding: 2px 5px;
+}
+
+pre {
+  padding: 10px;
+
+  > code {
+    border: 0;
+    padding: 1px;
+  }
 }
 
 /* ICONS */

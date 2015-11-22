@@ -7,7 +7,7 @@
 // Formatting
 
 $base-font-family: "Pontano Sans", Helvetica, Arial, sans-serif;
-$base-font-size: 1em;
+$base-font-size: 1.1em;
 $base-line-height: 1.5;
 
 $text-color: #333333;
@@ -21,6 +21,7 @@ $dark-gray: darken($gray, 40%);
 
 // Layout
 
+$footer-height: 2em;
 $spacing-unit: 30px;
 $medium: 600px;
 $wide: 800px;
@@ -32,8 +33,6 @@ $wide: 800px;
 }
 
 @import 'base', 'layout', 'syntax';
-
-
 
 
 

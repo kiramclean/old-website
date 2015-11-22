@@ -1,18 +1,18 @@
 /* HEADER */
 
 #site-header {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(255, 255, 255, 0.2);
   width: 100%;
   min-height: 50px;
   text-align: center;
-  padding: 5px 15px 0 10px;
+  padding: 5px 25px 0 25px;
 }
 
 #site-title {
   font-size: 1.5em;
-  font-color: #fefefe;
   font-family: 'Miniver', cursive;
   text-decoration: none;
+  border: none;
 }
 
 #main-nav {
@@ -26,28 +26,40 @@
   a {
     text-decoration: none;
     text-transform: uppercase;
+    border: none;
 
     &:hover {
       font-weight: bold;
+      border: none;
     }
   }
 }
 
+/* PAGES */
+
+.page-content {
+  p {
+    padding: 10px 0;
+    text-align: justify;
+  }
+}
+
+.page-title, #post-header {
+  font-size: 1.8em;
+}
+
+
+
 /* FOOTER */
 
 footer {
-  position: absolute;
-  bottom: 0;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(255, 255, 255, 0.2);
   text-align: center;
 
   a {
     text-decoration: none;
-
-    &:hover {
-      font-weight: bold;
-    }
+    border: none;
   }
 
   li {
@@ -137,7 +149,10 @@ footer {
 }
 
 .container {
+  height: 100%;
+  max-width: 600px; 
   margin: 0 auto;
+  padding: 25px;
 }
 
 .row:after {
@@ -145,4 +160,9 @@ footer {
   clear: both;
   display: block;
 }
+
+main {
+  flex: 1;
+}
+
 
