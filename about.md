@@ -4,12 +4,8 @@ title: About
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](http://jekyllrb.com/)
+Hi! I'm Kira. I'm a Canadian web developer from Fredericton, NB. I'm based in Montreal now and love it here. I'm also passionate about justice and do what I can to spread reason, but my optimism dwindles from time to time. 
 
-You can find the source code for the Jekyll new theme at:
-{% include icon-github.html username="jglovier" %} /
-[jekyll-new](https://github.com/jglovier/jekyll-new)
+Right now I'm learning Ruby and Rails and also trying to understand some fundamentals of CS, writing some small programs in C. This website is [built with jekyll](http://jekyllrb.com/). I love the tech and especially web development scenes in Montreal which is a huge reason I'm getting more involved.
 
-You can find the source code for Jekyll at
-{% include icon-github.html username="jekyll" %} /
-[jekyll](https://github.com/jekyll/jekyll)
+When I'm not on my computer I knit, do yoga, or just get lost exploring the city. Feel free to [get in touch with me on twitter](https://twitter.com/kiraemclean).
