@@ -37,18 +37,39 @@
 
 /* PAGES */
 
-.page-content {
-  p {
-    padding: 10px 0;
-    text-align: justify;
-  }
+#page-title {
+  font-size: 2em;
+  margin-bottom: 20px;
 }
 
-.page-title, #post-header {
-  font-size: 1.8em;
+#post-title {
+  font-size: 1.3em;
 }
 
+#post-list {
+  list-style: none;
+}
 
+.rss-subscribe {
+  text-align: right;
+  font-size: 0.9em;
+}
+
+#link-list {
+  margin-left: 20px;
+}
+
+/* POSTS */
+
+.post-meta {
+  font-size: 0.8em;
+  color: $main-color;
+  margin-bottom: 20px;
+}
+
+.post-date {
+  color: $main-color;
+}
 
 /* FOOTER */
 
