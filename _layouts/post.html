@@ -2,7 +2,7 @@
 layout: default
 ---
 
-<article class='post' itemscope itemtype='http://schema.org/BlogPosting'>
+<section class='post' itemscope itemtype='http://schema.org/BlogPosting'>
 
   <header id='post-title'>
     <h1 itemprop='name headline'>{{ page.title }}</h1>
@@ -10,8 +10,8 @@ layout: default
     <time datetime='{{ page.date | date_to_xmlschema }}' itemprop='datePublished'>{{ page.date | date: '%B %d, %Y' }}</time>{% if page.author %}&nbsp;&nbsp;•&nbsp;&nbsp; <span itemprop='author' itemscope itemtype='http://schema.org/Person'><span itemprop='name'>{{ page.author }}</span></span>{% endif %}</p>
   </header>
 
-  <div class='content' itemprop='articleBody'>
+  <article class='content' itemprop='articleBody'>
     {{ content }}
-  </div>
+  </article>
 
-</article>
+</section>
