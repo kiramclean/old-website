@@ -41,6 +41,10 @@
     margin-bottom: 20px;
 }
 
+#link-list {
+    margin-left: 20px;
+}
+
 #post-title {
     font-size: 1.3em;
 }
@@ -92,6 +96,7 @@ footer {
     li {
         display: inline;
         list-style: none;
+        padding: 10px;
     }
 }
 
