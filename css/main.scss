@@ -4,10 +4,17 @@
 
 @charset 'utf-8';
 
+@import url(https://fonts.googleapis.com/css?family=Karla);
+@import url(https://fonts.googleapis.com/css?family=Oxygen);
+@import url(https://fonts.googleapis.com/css?family=Amatic+SC);
+@import url(https://fonts.googleapis.com/css?family=Miniver);
+@import url(https://fonts.googleapis.com/css?family=Satisfy);
+
 // Formatting
 
-$base-font-family: "Pontano Sans", Helvetica, Arial, sans-serif;
-$base-font-size: 1.1em;
+$base-font-family: "Oxygen", Helvetica Neue, Helvetica, Arial, sans-serif;
+$header-font: "Karla";
+$base-font-size: 1em;
 $base-line-height: 1.5;
 
 $text-color: #444444;
@@ -16,7 +23,7 @@ $main-color: #48dbdb;
 $second-color: #92db48;
 
 $gray: #666666;
-$light-gray: lighten($gray, 40%);
+$light-gray: #ededed;
 $dark-gray: darken($gray, 40%);
 
 // Layout
