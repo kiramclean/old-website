@@ -29,7 +29,7 @@ $dark-gray: darken($gray, 40%);
 // Layout
 
 $medium: 600px;
-$wide: 800px;
+$wide: 930px;
 
 @mixin media-query($size) {
   @media screen and (min-width: $size) {

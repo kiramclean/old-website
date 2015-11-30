@@ -83,7 +83,13 @@ footer {
     text-align: center;
     font-size: 0.8em;
 
-    a {
+    li {
+        display: inline;
+        list-style: none;
+        padding: 10px;
+    }
+
+    a, a:visited {
         text-decoration: none;
         border: none;
 
@@ -91,12 +97,6 @@ footer {
             border: none;
             font-weight: bold;
         }
-    }
-
-    li {
-        display: inline;
-        list-style: none;
-        padding: 10px;
     }
 }
 
