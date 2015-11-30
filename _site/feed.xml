@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kira McLean</title>
+    <description>Canadian web developer from the East Coast. Love travelling and politics. Trying to spread reason, quickly realizing how screwed we are.
+</description>
+    <link>http://kiramclean.com/</link>
+    <atom:link href="http://kiramclean.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Mon, 30 Nov 2015 08:55:47 -0500</pubDate>
+    <lastBuildDate>Mon, 30 Nov 2015 08:55:47 -0500</lastBuildDate>
+    <generator>Jekyll v2.4.0</generator>
+    
+      <item>
+        <title>Benefits of Group Learning and Meetup Etiquette</title>
+        <description>&lt;p&gt;Another week flew by and I still don’t have my own app up and running. Montreal has an awesome ruby community, though, and this week they hosted a meetup to build their new website with ruby on rails. Thanks to some wonderful, patient people I learned a lot and am much closer to being able to do it on my own. I’m not sure how much closer Montreal.rb is to having a new website that works, though. Working with other people is essential if you’re trying to learn how to code. If you’ve thought openly about learning how to code, you have  already been told to not do it alone. I’m not going to preach about why you need to do it, but I have some advice for when you do find a group of fellow programmers or learners.&lt;/p&gt;
+
+&lt;h2 id=&quot;dont-be-a-perfectionist&quot;&gt;Don’t be a perfectionist&lt;/h2&gt;
+
+&lt;p&gt;It doesn’t matter if your header is 50px or 60px high, or what color the background is, or what font you use, or whatever. At least not at first. This goes for everybody, but especially if you are focusing on back-end development. I know a lot of people don’t have issues with this kind of stuff like I do, but I’m the type of person who very easily gets caught up with literally irrelevant details that end up consuming way too much of my time. You need to take full advantage of the time you dedicate to learning, and don’t fool yourself into thinking you did a bunch of work when all you did was choose the perfect colour scheme. Just work on getting something that works first, then worry about customization or making it look different. This is especially true when you’re working with other people, which brings me to my next point. &lt;/p&gt;
+
+&lt;h2 id=&quot;be-grateful&quot;&gt;Be grateful&lt;/h2&gt;
+
+&lt;p&gt;People who are good at coding usually work full time. They have busy lives but a lot of them still take time to mentor and meet newbies. Once you find (or build) a community of developers and learners, don’t take it for granted. When you’re headed to a meetup where you’ll be programming with other programmers who you know are better than you, get started on a project before hand so when you’re with the group you can focus on just building. Try to answer your own questions first, but after you search the docs and google if you’re still stuck, turn to someone else to get unstuck as fast as possible. Remember that people are taking time out of their lives to help you learn an invaluable skill, though, they are not there to hold your hand all the way to becoming a pro.&lt;/p&gt;
+
+&lt;h2 id=&quot;dont-get-religious&quot;&gt;Don’t get religious&lt;/h2&gt;
+
+&lt;p&gt;I’m quickly discovering that programmers can be super opinionated about things that non-programmers would never have even heard of. Most of the programmers I’ve met so far are wonderful and super polite, but every once in a while I’ll come across someone who just “has to” show me the latest or greatest thing that they “can’t believe” I have never heard of. I totally understand how experienced developers can feel this way, but this type of attitude seems especially strange on beginners. If you just started learning how to code, just focus on that, and not on preaching to other learners about why your way or what you’re learning is better. There are tons of technologies out there that are all useful for different things, and meetups always go smoother when everybody comes with a cooperative and helpful attitude. Try not to get too religious about your opinions right out of the gate.&lt;/p&gt;
+
+&lt;p&gt;As an aside; almost as soon as I started learning how to code I realized I would never be able to keep up with all the trends, so I decided to focus on learning how to use a few tools well, and go from there. I use C for low-level programming, ruby for everything else, rails for web development, and Sublime for editing. It’s starting to feel like I’m going to be 100 before I even wrap my head around these things, and there are a lot of learners in the same boat. Although most people love hearing about other awesome technologies that other people are learning, if you’re preaching to someone chances are they’ve dedicated a lot of time learning whatever it is they focus on and it sucks being told negative things about what feels like progress.&lt;/p&gt;
+
+&lt;h2 id=&quot;so-go-to-meetups-and-be-wonderful&quot;&gt;So: go to meetups and be wonderful&lt;/h2&gt;
+
+&lt;p&gt;Learning with other people is an amazing experience. You pick up good habits and learn little things that you probably wouldn’t have bothered to search for on your own. When you do get out and meet in a learning group, stay focused and don’t worry about fidgeting with CSS or adding special effects or something. Just focus on learning and building something end to end, then move sideways and work on improvements and upgrades. Be wonderful so that meetups go smoothly, and have fun!&lt;/p&gt;
+</description>
+        <pubDate>Sat, 28 Nov 2015 22:11:07 -0500</pubDate>
+        <link>http://kiramclean.com/blog/learning/benefits-of-group-learning-and-meetup-etiquette/</link>
+        <guid isPermaLink="true">http://kiramclean.com/blog/learning/benefits-of-group-learning-and-meetup-etiquette/</guid>
+        
+        
+        <category>learning</category>
+        
+      </item>
+    
+      <item>
+        <title>Learning How to Code</title>
+        <description>&lt;p&gt;At beginning of last summer I started learning how to code. I had a wordpress website and wanted to customize it, then I got sucked into a rabbit hole and haven’t really surfaced since. I realized I would only be able to make it so far coding in a box on a website with tutorials, as great as they are, and about 2 months ago I decided to go all in. Now I’m learning as much as I can and working on becoming a real web developer. As I go I’m learning as much about learning how to program as I am about programming itself. Here are a few of the most useful things I’ve learned so far and some tips if you want to get started learning how to code.&lt;/p&gt;
+
+&lt;h2 id=&quot;just-start&quot;&gt;Just start&lt;/h2&gt;
+
+&lt;p&gt;If you want to learn how to code, just get started. Don’t spend a lot of time searching everywhere for the “best” resources. There are some that are better than others, but whatever is most popular whenever you’re reading this is going to be good enough to introduce you to programming and get you to a place where you can choose a path for yourself. Just pick whatever is popular and get started, then go from there. I wasted WAY too much time searching through every possible boot camp and tutorial guide on the internet instead of just going ahead and actually learning.&lt;/p&gt;
+
+&lt;h2 id=&quot;if-you-really-dont-know-where-to-start-learn-command-line-and-git&quot;&gt;If you really don’t know where to start, learn command line and git&lt;/h2&gt;
+
+&lt;p&gt;If you’ve looked through the options and still feel totally overwhelmed by the sheer number of possible languages and paths to becoming a programmer, start with learning your way around the command line and git. These are things that you will need no matter what language you end up using and they will help you develop good habits and a smooth workflow from day one. Again, don’t get overwhelmed and think you have to learn everything. Just get used to navigating directories from you command line instead of “finder” or “file explorer”, and start keeping track of your projects using git. If you don’t have a whole project on the go then make a repository for little coding exercises.&lt;/p&gt;
+
+&lt;h2 id=&quot;dont-get-distracted&quot;&gt;Don’t get distracted&lt;/h2&gt;
+
+&lt;p&gt;I get distracted really easily. If you’re one of those people who can set a task and just sit down and do it from start to finish, then lucky you. I am not. I’m one of those people with about a million “productivity” tools on the go, and whenever someone tells me about the greatest new one, I end up spending an hour exploring it instead of just using it to get to work. Having a personality like mine is dangerous if you want to learn web development or computer programming in general, because there are a virtually unlimited number of rabbit holes. And that’s what they are. If you get sucked into some new language or framework or workflow, you may never get out, or emerge at the end of a whole day wondering what just happened (if you’re at all like me). &lt;/p&gt;
+
+&lt;p&gt;It is so easy for me to spend hours learning something only tangentially related to what I’m supposed to be working on. This is great because it means you learn a little but of everything, but obviously the downside is that projects take about 10 times longer to finish. If you have similar issues then I recommend setting very strict goals for yourself. Be realistic about what you can achieve in a given amount of time, and then set out to do exactly that – no more and no less. Then, set aside a block of time just for exploring. Every time you come across a cool new thing you want to try but don’t immediately need to learn to finish what you’re working on, set it aside and promise you’ll come back to it during your “free” time. &lt;/p&gt;
+
+&lt;h2 id=&quot;keep-going&quot;&gt;Keep going!&lt;/h2&gt;
+
+&lt;p&gt;Anyway, this sort of sums up my learning experience so far. Basically my advice boils down to “get to work”. Don’t make excuses about why you can’t start or keep going. Just focus and work. And focus on moving forward, not sideways. If you really want to learn how to code, it is worth it. My short term projects for the time being are to make my own Rails app and to master my workflow in Sublime. So far so good, but I will post more updates here as I go. &lt;/p&gt;
+</description>
+        <pubDate>Sat, 21 Nov 2015 00:00:00 -0500</pubDate>
+        <link>http://kiramclean.com/blog/learning/learning-how-to-code/</link>
+        <guid isPermaLink="true">http://kiramclean.com/blog/learning/learning-how-to-code/</guid>
+        
+        
+        <category>learning</category>
+        
+      </item>
+    
+  </channel>
+</rss>
