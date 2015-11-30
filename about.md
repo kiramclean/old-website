@@ -2,6 +2,7 @@
 layout: page
 title: About Me
 permalink: /about-me/
+nocomments: true
 ---
 
 Hi! I'm Kira. I'm a Canadian web developer from Fredericton, NB. I'm based in Montreal now and love it here. I'm also passionate about justice and do what I can to spread reason, but my optimism dwindles from time to time. 
