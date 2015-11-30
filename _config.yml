@@ -18,5 +18,16 @@ permalink: /blog/:categories/:title/
 gems:
   - jekyll-assets
 
+# Jekyll-assets
+
+assets:
+  prefix: "/assets"
+  assets:
+    - "*.png"
+    - "bundle.css"
+  digest: true
+  sources:
+    - "_assets/folder"
+
 # Build settings
 markdown: kramdown
