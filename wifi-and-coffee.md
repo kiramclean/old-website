@@ -8,3 +8,5 @@ Computer programming can pretty quickly lead to isolation. I often work in cafes
 
 **Cafe Carrefour** • 3131 rue Bélanger, Saint-Michel • wifi: cafe3131<br>
 **Cafe Aunja** • 1448 rue Sherbrooke O., Downtown • wifi: gingertea
+
+Do you know any others? Let me know below.

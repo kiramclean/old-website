@@ -252,6 +252,13 @@ footer {
     }
 }
 
+/* CONTENT LAYOUT */
+
+#disqus_thread {
+    margin-top: 80px;
+    border-top: 3px double $main-color;
+    padding-top: 10px;
+}
 
 .container {
     height: 100%;
