@@ -1,3 +1,7 @@
 baseurl = "http://kiramclean.com/"
 languageCode = "en-ca"
 title = "Kira McLean"
+
+[Params]
+  Author = "Kira McLean"
+  disqusShortname = "kiramclean"
