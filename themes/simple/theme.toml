@@ -1,0 +1,14 @@
+# See https://github.com/spf13/hugoThemes#themetoml for an example
+
+name = "Simple"
+license = "MIT"
+licenselink = "https://github.com/kiramclean/simple-theme/blob/master/LICENSE.md"
+description = "A simple blog-focused theme with a couple of fixed pages."
+homepage = "http://kiramclean.com"
+tags = ["minimal", "clean", "comments"]
+features = ["blog", "responsive", "404", "icons", "disqus", "metadata"]
+min_version = 0.15
+
+[author]
+  name = "Kira McLean"
+  homepage = "http://kiramclean.com"
