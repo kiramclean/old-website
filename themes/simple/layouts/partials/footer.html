@@ -1,13 +1,6 @@
   <footer>
     {{ partial "contact.html" . }}
-
-    <div id="pages">
-      {{ range .Data.Pages }}
-        {{ if eq .Type "pages" }}
-            <p><a href="{{ .Permalink }}">{{ .Title }}</a></p>
-        {{ end }}
-      {{ end }}
-    </div>
+    {{ partial "pages.html" . }}
 
     <div id="copy">
       <p>&copy; {{ $.Site.LastChange.Year }}. {{ if isset $.Site.Params "Author" }}{{ $.Site.Params.Author }}{{ else }}{{ .Site.Title }}{{ end }}</p>

@@ -1,0 +1,9 @@
+<div id="pages">
+  {{ range .Site.Pages }}
+    {{ if eq .Type "pages" }}
+        <p><a href="{{ .Permalink }}">{{ .Title }}</a></p>
+    {{ end }}
+  {{ end }}
+</div>
+
+
