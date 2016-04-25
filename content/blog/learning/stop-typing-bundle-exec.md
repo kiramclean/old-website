@@ -1,0 +1,96 @@
++++
+date = "2016-02-07T21:23:29-04:00"
+title = "Stop Typing Bundle Exec"
++++
+
+Does this look familiar?
+
+{{< highlight bash >}}
+➜ jekyll serve
+
+/Users/kiramclean/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/safe_yaml-1.0.4/lib/safe_yaml/psych_resolver.rb:4:in `< class:PsychResolver>': uninitialized constant Psych::Nodes (NameError)
+    from /Users/kiramclean/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/safe_yaml-1.0.4/lib/safe_yaml/psych_resolver.rb:2:in `< module:SafeYAML>'
+    from /Users/kiramclean/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/safe_yaml-1.0.4/lib/safe_yaml/psych_resolver.rb:1:in `< top (required)>'
+    from /Users/kiramclean/.rbenv/versions/2.2.4/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:69:in `require'
+    from /Users/kiramclean/.rbenv/versions/2.2.4/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:69:in `require'
+    from /Users/kiramclean/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/safe_yaml-1.0.4/lib/safe_yaml/load.rb:131:in `< module:SafeYAML>'
+    from /Users/kiramclean/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/safe_yaml-1.0.4/lib/safe_yaml/load.rb:26:in `< top (required)>'
+    from /Users/kiramclean/.rbenv/versions/2.2.4/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:69:in `require'
+    from /Users/kiramclean/.rbenv/versions/2.2.4/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:69:in `require'
+    from /Users/kiramclean/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/jekyll-3.1.1/lib/jekyll.rb:28:in `< top (required)>'
+    from /Users/kiramclean/.rbenv/versions/2.2.4/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:69:in `require'
+    from /Users/kiramclean/.rbenv/versions/2.2.4/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:69:in `require'
+    from /Users/kiramclean/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/jekyll-3.1.1/bin/jekyll:6:in `< top (required)>'
+    from /Users/kiramclean/.rbenv/versions/2.2.4/bin/jekyll:23:in `load'
+    from /Users/kiramclean/.rbenv/versions/2.2.4/bin/jekyll:23:in `< main>'
+{{< /highlight >}}
+<p class='caption'>Explosion and some stuff about gems</p>
+
+Or this?
+
+{{< highlight bash >}}
+➜ rake test
+
+rake aborted!
+Gem::LoadError: You have already activated rake 10.5.0, but your Gemfile requires rake 10.4.2. Prepending `bundle exec` to your command may solve this.
+/Users/kiramclean/code/SampleApp/config/boot.rb:3:in `<top (required)>'
+/Users/kiramclean/code/SampleApp/config/application.rb:1:in `<top (required)>'
+/Users/kiramclean/code/SampleApp/Rakefile:4:in `<top (required)>'
+LoadError: cannot load such file -- bundler/setup
+/Users/kiramclean/code/SampleApp/config/boot.rb:3:in `<top (required)>'
+/Users/kiramclean/code/SampleApp/config/application.rb:1:in `<top (required)>'
+/Users/kiramclean/code/SampleApp/Rakefile:4:in `<top (required)>'
+(See full trace by running task with --trace)
+{{< /highlight >}}
+<p class='caption'>wtf??</p>
+
+This also used to happen to me a lot when trying to run RSpec specs. I used to just type `bundle exec` and re-run the spec. I aliased this to `be` in my shell configuration, so it was even less work. A problem is only a problem when it has negative effects, so like every other weird issue I have with my dev tools, I put off finding a real solution and not just a workaround until it became a problem. This happened when I switched to vim and wanted to use thoughtbot's vim-rspec plugin to run specs directly from my editor, which, by the way, is awesome. Brace yourself for my next post on the ultimate rails TDD workflow. I didn't realize until after I did all this that I could have just changed the command the plugin sends to the terminal and prepended `be`, but that's beside the point.
+
+Of course I'm not the only person annoyed or slowed down by typing `be` in front of commands that don't work, so I found the solutions these other great people came up with. If you're bored already, here it is:
+
+{{< highlight bash >}}
+# Don't copy the arrows, those represent your shell prompt
+# Step 1: (make the directory ~/.rbenv/plugins if it's not there)
+➜ git clone https://github.com/ianheggie/rbenv-binstubs.git ~/.rbenv/plugins/
+# and:
+➜ git clone https://github.com/sstephenson/rbenv-gem-rehash.git ~/.rbenv/plugins/rbenv-gem-rehash
+
+# Step 2:
+➜ cd /replace/this/with/your/project/path
+➜ bundle install --binstubs .bundle/bin
+{{< /highlight >}}
+
+That's it. That will install two plugins, `rbenv-binstubs` and `rbenv-gem-rehash`, and generate binstubs for your project and you shouldn't have to type `bundle exec` ever again! Woohoo. If you're curious about what these plugins do, read on. Otherwise, thanks for stopping by!
+
+>### !!! NOTE: First switch to rbenv if you're not using it already
+>Why? So you can use these plugins. And lots of other opinionated reasons you'll find online.
+>
+>If you're using rvm start with:
+>
+>`➜ rvm implode`
+>
+>`➜ gem uninstall rvm`
+>
+>then:
+>
+>`➜ brew install rbenv`
+>
+>`➜ rbenv init`
+>
+>And follow any other instructions homebrew or `rbenv init` give you.  
+
+## Why Explode without `bundle exec`
+
+When you use bundler to manage gem dependencies and run a command, like `rspec something` or `jekyll something` more often than not the command is calling on a bunch of gems to get the job done. If the versions of those gems it finds conflict with the ones in your bundler bundle of gems (the ones your app is using), you get errors like the ones above. This can happen if you have a new version of a gem installed but your app depends on an older version, for example. To solve this you prepend everything with `bundle exec`. This forces the executable to use the gems and versions listed in the Gemfile, i.e., it runs your executable in the right ruby "environment". This isn't exactly a hardship, but it can be a minor inconvenience. Plus I think it's theres something about a programmers's mindset that makes this bothersome.. anything you have to do exactly the same way twice should be able to be handled by a computer.
+
+## Binstubs
+
+Binstubs are wrappers for executables that force your command to run in the right environment. They save you from having to write `bundle exec` every time, for example, by loading the right version of each gem the command depends on. This is also what rbenv does behind the scenes to manage your ruby versions. Every ruby executable you run gets routed through `rbenv exec`, which loads the right version of ruby so your command can run as expected. This binstub works system wide after you configure it during rbenv installation, but you can also generate binstubs for an individual project that will manage gem version depencies, not just ruby version depencies. For a project using bundler, you do this by running `bundle install --binstubs` in the project directory. This is where the first plugin comes in. It makes sure rbenv can always find the binstubs created by bundler.
+
+## What About the Other Plugin?
+
+The other plugin is necessary so you don't have to remember to run `rbenv rehash` everytime you install or uninstall a gem. Running `rbenv rehash` regenerates the shims in your `PATH` so that there's one for every ruby command in every installed version of ruby. A "shim" is like a router for ruby commands. When you use rbenv, anytime you run a ruby executable, it gets intercepted by the shim executable injected into your `PATH` by rbenv. rbenv does this so that it can check which version of ruby is required by the app sending the command and then reroute the command to the right installation of ruby. Many gems come with executables like `rails`, `rspec`, `jekyll`, and so on, which is why you have to re-run `rbenv rehash` anytime you add one. The `rbenv-gem-rehash` plugin hooks into the `gem install` and `gem uninstall` commands to automatically run `rbenv rehash` after either of those commands are run.
+
+## No More `bundle exec`
+
+So, now you never have to type `bundle exec` again. This is great anyway, but like I mentioned the main reason I did this was so I could use [thoughtbot's vim-rspec plugin](https://github.com/thoughtbot/vim-rspec). If you use rspec, you need this plugin. Check out my next post on streamlining your TDD workflow. Happy coding!
