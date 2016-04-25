@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <html lang="{{ .Site.LanguageCode }}">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="{{ .RSSlink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
+    <link href="{{ .RSSlink }}" rel="feed" type="application/rss+xml" title="{{ .Site.Title }}" /></head>
+    {{ if eq .URL "/" }}
+      <title>{{ .Title }}</title>
+      <meta property="og:title" content="{{ .Title }}">
+      <meta property="og:type" content="website">
+    {{ else }}
+      <title>{{ .Title }} | {{ .Site.Title }}</title>
+      <meta property="og:title" content="{{ .Title }} | {{ .Site.Title }}">
+      <meta property="og:type" content="article">
+    {{ end }}
+
+    <meta property="og:url" content="{{ .Permalink }}">
+    {{ with .Description }}<meta name="description" content="{{ . }}">{{ end }}
+    {{ with .Params.image }}<meta property="og:image" content="{{ $.Site.BaseURL }}images/{{ . }}">{{ end }}
+  </head>

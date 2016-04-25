@@ -8,12 +8,6 @@
       {{ end }}
     {{ end }}
 
-    <h1>Pages</h1>
-    {{ range .Data.Pages }}
-      {{ if eq .Type "pages" }}
-          <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
-      {{ end }}
-    {{ end }}
   </main>
 
-  {{ partial "footer.html" . }}
+{{ partial "footer.html" . }}
