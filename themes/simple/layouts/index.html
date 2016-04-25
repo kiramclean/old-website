@@ -1,13 +1,12 @@
 {{ partial "header.html" . }}
 
   <main>
-    <h1>Blog</h1>
-    {{ range first 10 .Data.Pages }}
-      {{ if eq .Type "blog" }}
-        <h1><a href="{{ .Permalink }}">{{ .Title }}</a></h1>
-      {{ end }}
-    {{ end }}
-
+    <div id='quote'>
+      <div id='quote-text'>
+        "A journey of a thousand miles begins with a single step."
+      </div>
+      <div id='quote-author'>- Laozi</div>
+    </div>
   </main>
-
+  
 {{ partial "footer.html" . }}
