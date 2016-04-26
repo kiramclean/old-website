@@ -1,9 +1,9 @@
 {{ partial "header.html" . }}
 
-  <main>
-    {{ range first 10 .Data.Pages }}
+  <section>
+    {{ range .Data.Pages }}
       <h1><a href="{{ .Permalink }}">{{ .Title }}</a></h1>
     {{ end }}
-  </main>
+  </section>
 
 {{ partial "footer.html" . }}

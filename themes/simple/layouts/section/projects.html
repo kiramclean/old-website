@@ -1,15 +1,13 @@
 {{ partial "header.html" . }}
 
-  <main>
+  <section>
     <h1>Projects</h1>
     {{ range .Data.Pages }}
-      <details><a href="{{ .Permalink }}">{{ .Title }}</a>
-      <summary>{{ .Description }}</summary>
-      </details>
-      {{ .Content }}
+      <h2><a href="{{ .Params.link }}" target="_blank">{{ .Title }}</a></h2>
+      <h3>{{ .Description }}</h3>
+      <p>{{ .Content }}</p>
     {{ end }}
-
-  </main>
+  </section>
 
 {{ partial "footer.html" . }}
 

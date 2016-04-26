@@ -1,6 +1,6 @@
 +++
-title = "twitter clone"
-url = "link-to-project-live.com"
+title = "Twitter Clone"
+link = "https://ruby-on-rails-tutorial-app.herokuapp.com/"
 description = "My first Rails app! A twitter clone thanks to Michael Hartl's Ruby on Rails tutorial."
 +++
 

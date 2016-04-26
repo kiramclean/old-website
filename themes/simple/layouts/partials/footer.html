@@ -1,9 +1,11 @@
+  </main>
+
   <footer>
     {{ partial "contact.html" . }}
     {{ partial "pages.html" . }}
 
     <div id="copy">
-      <p>&copy; {{ $.Site.LastChange.Year }}. {{ if isset $.Site.Params "Author" }}{{ $.Site.Params.Author }}{{ else }}{{ .Site.Title }}{{ end }}</p>
+      <p>&copy; {{ $.Site.LastChange.Year }} {{ if isset $.Site.Params "Author" }}{{ $.Site.Params.Author }}{{ else }}{{ .Site.Title }}{{ end }}</p>
     </div>
 
   </footer>
