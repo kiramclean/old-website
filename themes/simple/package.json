@@ -1,0 +1,18 @@
+{
+  "name": "simple",
+  "version": "1.0.0",
+  "description": "A simple theme for a Hugo static site with blog posts, projects, and pages",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "hugo",
+    "simple",
+    "blog",
+    "theme",
+    "responsive"
+  ],
+  "author": "Kira McLean",
+  "license": "MIT"
+}
