@@ -17,21 +17,21 @@ I overthought this for a few hours and came across a dozen or so different workf
 npm install --global gulp-cli
 ```
 
-Then, install gulp in your project directory. If you're starting a new project from scratch, first run npm init in your project folder. This will just add a `package.json` file for you with some info about the project.
+Then, install gulp in your project directory. If you're starting a new project from scratch, first run npm init in your project folder. This will just add a `package.json` file for you and step you through adding some info about the project.
 
 {{< highlight bash >}}
 // in your project root directory
-npm install gulp --save-dev
+npm install --save-dev gulp
 {{< /highlight >}}
 
-We'll also need gulp-sass to handle our sass.
+We'll also need gulp-sass to handle our sass. The `--save-dev` flag tells npm to add gulp and gulp-sass to the `devDependency` list in your `package.json` file.
 
 {{< highlight bash >}}
 // still in your project root directory
-npm install gulp-sass --save-dev
+npm install --save-dev gulp-sass
 {{< /highlight >}}
 
->If you don't have node (if you get somthing like `command not found: npm`, get that too with `brew install node`, if you're on OSX.
+>If you don't have node (if you get somthing like `command not found: npm`), get that too with `brew install node`, if you're on OSX.
 
 Next you have to configure gulp. This is the part that sounds like a nightmare for people who aren't used to front-end work, but it's actually really simple.
 
@@ -42,9 +42,22 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 {{< /highlight >}}
 
-Next, we need to tell gulp where to find the sass files and where to put them.
+Next, we need to tell gulp where to find the sass files and where to put the compiled css. Gulp works by building 'tasks' that are basically lists of instructions of what to do. I guess that's what all code is. Whatever. Here is a simple gulp task that grabs the sass source files from one place and dumps them in another.
 
+{{< highlight javascript >}}
+gulp.task('sass', function() {               // define a new gulp task named sass
+  return gulp.src('sass/*.sass')           // tell gulp where to find your sass files, relative to the gulpfile.js
+    .pipe(sass().on('error', sass.logError)) // show error messages if sass fails to compile -- failing silently will just kill gulp
+    .pipe(gulp.dest('./static/css'));        // tell gulp where to dump your compiled css
+});
 
+gulp.task('default', function() {         // we also want to watch the files, so we don't have to manually recompile every time we make some changes
+  gulp.watch('sass/*.sass', ['sass']);    // tell gulp which files to watch and an array with commands to run when those files are changed
+});
+
+{{ < /highlight >}}
+
+And that's that. Setting up gulp is actually super simple.
 
 
 
