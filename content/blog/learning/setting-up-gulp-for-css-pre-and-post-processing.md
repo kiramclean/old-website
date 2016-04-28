@@ -46,7 +46,8 @@ Next, we need to tell gulp where to find the sass files and where to put the com
 
 {{< highlight javascript >}}
 gulp.task('sass', function() {               // define a new gulp task named sass
-  return gulp.src('sass/*.sass')           // tell gulp where to find your sass files, relative to the gulpfile.js
+  return gulp.src('sass/*')           // tell gulp where to find your sass files, relative to the gulpfile.js
+    // I have a mix of sass and scss files in my sass directory, but nothing else, so I just tell gulp to grap everything in there
     .pipe(sass().on('error', sass.logError)) // show error messages if sass fails to compile -- failing silently will just kill gulp
     .pipe(gulp.dest('./static/css'));        // tell gulp where to dump your compiled css
 });
@@ -56,6 +57,8 @@ gulp.task('default', function() {         // we also want to watch the files, so
 });
 
 {{ < /highlight >}}
+
+Sass will build a css file for every sass file you have unless you prefix it with an underscore. If you have a bunch of css files don't forget to include them all in your `<head>` tag, or just prefix all your sass files with an underscore so sass only builds one long css file.
 
 And that's that. Setting up gulp is actually super simple.
 
