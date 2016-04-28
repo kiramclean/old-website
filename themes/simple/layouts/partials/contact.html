@@ -2,37 +2,29 @@
   <ul>
     {{ if .Site.Params.GitHub }}
       <li><a href="{{ .Site.Params.GitHub }}" target="_blank">
-        <i class=""></i>
+        <i class="fa fa-github-square"></i>
+        GitHub
       </a></li>
     {{ end }}
 
     {{ if .Site.Params.Twitter }}
       <li><a href="{{ .Site.Params.Twitter }}" target="_blank">
-        <i class=""></i>
+        <i class="fa fa-twitter-square"></i>
+        Twitter
       </a></li>
     {{ end }}
 
     {{ if .Site.Params.LinkedIn }}
       <li><a href="{{ .Site.Params.LinkedIn }}" target="_blank">
-        <i class=""></i>
-      </a></li>
-    {{ end }}
-
-    {{ if .Site.Params.Facebook }}
-      <li><a href="{{ .Site.Params.Facebook }}" target="_blank">
-        <i class=""></i>
-      </a></li>
-    {{ end }}
-
-    {{ if .Site.Params.SoundCloud }}
-      <li><a href="{{ .Site.Params.SoundCloud }}" target="_blank">
-        <i class=""></i>
+        <i class="fa fa-linkedin-square"></i>
+        LinkedIn
       </a></li>
     {{ end }}
 
     {{ if .Site.Params.Email }}
       <li><a href="mailto:{{ .Site.Params.Email }}">
-        <i class=""></i>
+        <i class="fa fa-envelope-square"></i>
+        Email
       </a></li>
     {{ end }}
   </ul>

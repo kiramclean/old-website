@@ -6,6 +6,7 @@ canonifyurls = true
 [Params]
   Author = "Kira McLean"
   disqusShortname = "kiramclean"
+
   DateForm = "Jan 2, 2006"
   Description = "A blog about my journey learning to code and some other things."
   Email = "email@kiramclean.com"
