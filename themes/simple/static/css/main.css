@@ -22,7 +22,7 @@ blockquote, q {
   quotes: none; }
 
 main {
-  display: flex;
+  flex: 1;
   margin: 0 auto;
   width: 85%; }
   @media screen and (min-width: 42em) {
@@ -73,7 +73,7 @@ a, a:visited {
   border-bottom: 2px solid rgba(72, 219, 219, 0.35); }
   a:hover, a:visited:hover {
     border-bottom: 2px solid #48dbdb;
-    transition: border 500ms ease; }
+    transition: border 300ms ease; }
 
 ul {
   margin-left: 1.5em; }
@@ -144,21 +144,59 @@ pre {
 #quote-text {
   background-color: rgba(255, 255, 255, 0.3);
   border-radius: 3px;
-  color: #4d4d4d;
+  color: rgba(51, 51, 51, 0.8);
   font-family: "Amatic SC", Helvetica Neue, sans-serif;
   font-size: 8vw;
-  padding: 0.5em;
-  position: relative;
-  top: 10vh; }
+  padding: 0.5em; }
 
 #quote-author {
   color: rgba(255, 255, 255, 0.7);
   float: right;
   font-family: "Satisfy", Garamond, cursive;
   font-size: 3vw;
-  padding: 0.75em;
-  position: relative;
-  top: 8vh; }
+  padding: 0.75em; }
 
-footer {
+#homepage {
+  background-size: cover;
+  background: url(/images/homepage.jpg); }
+
+#quote {
+  margin: auto;
+  max-height: 80vh;
+  text-align: center;
+  width: 80vw; }
+
+#quote-text {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+  color: rgba(51, 51, 51, 0.8);
+  font-family: "Amatic SC", Helvetica Neue, sans-serif;
+  font-size: 8vw;
+  padding: 0.5em; }
+
+#quote-author {
+  color: rgba(255, 255, 255, 0.7);
+  float: right;
+  font-family: "Satisfy", Garamond, cursive;
+  font-size: 3vw;
+  padding: 0.75em; }
+
+footer, header {
+  background-color: rgba(255, 255, 255, 0.3);
+  color: rgba(51, 51, 51, 0.8);
+  font-size: 90%;
   text-align: center; }
+  footer a, footer a:visited, header a, header a:visited {
+    border: 0;
+    color: rgba(51, 51, 51, 0.8); }
+    footer a:hover, footer a:visited:hover, header a:hover, header a:visited:hover {
+      border: 0;
+      color: #333333;
+      transition: all 300ms ease;
+      text-shadow: 1px 0 0 #545454; }
+  footer li, header li {
+    display: inline-block;
+    list-style: none;
+    padding: 0.375em 0.75em; }
+  footer nav, header nav {
+    text-transform: uppercase; }

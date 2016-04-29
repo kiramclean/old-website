@@ -2,7 +2,8 @@ $see-through-background: rgba(255, 255, 255, 0.3)
 $less-transparent-background: rgba(255, 255, 255, 0.7)
 $quote-font: 'Amatic SC', Helvetica Neue, sans-serif
 $quote-author-font: 'Satisfy', Garamond, cursive
-$lightish-gray: lighten($gray, 10%)
+$lightish-gray: lighten($gray, 13%)
+$homepage-text: rgba($gray, 0.8)
 
 #homepage
   background-size: cover
@@ -17,12 +18,12 @@ $lightish-gray: lighten($gray, 10%)
 #quote-text
   background-color: $see-through-background
   border-radius: $base-border-radius
-  color: $lightish-gray
+  color: $homepage-text
   font-family: $quote-font
   font-size: 8vw
   padding: $padding/3
-  position: relative
-  top: 10vh
+  // position: relative
+  // top: 10vh
 
 #quote-author
   color: $less-transparent-background
@@ -30,6 +31,6 @@ $lightish-gray: lighten($gray, 10%)
   font-family: $quote-author-font
   font-size: 3vw
   padding: $padding/2
-  position: relative
-  top: 8vh
+  // position: relative
+  // top: 8vh
 

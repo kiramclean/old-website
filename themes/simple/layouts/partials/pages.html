@@ -1,9 +1,11 @@
 <nav>
+  <ul>
   {{ range .Site.Pages }}
     {{ if eq .Type "pages" }}
-        <p><a href="{{ .Permalink }}">{{ .Title }}</a></p>
+      <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
     {{ end }}
   {{ end }}
+  </ul>
 </nav>
 
 

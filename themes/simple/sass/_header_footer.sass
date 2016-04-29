@@ -1,0 +1,29 @@
+@import 'homepage'
+
+footer, header
+  background-color: $see-through-background
+  color: $homepage-text
+  font-size: 90%
+  text-align: center
+  a, a:visited
+    border: 0
+    color: $homepage-text
+    &:hover
+      border: 0
+      color: rgba($gray, 1)
+      transition: all $base-timing ease
+      text-shadow: 1px 0 0 $lightish-gray
+  li
+    display: inline-block
+    list-style: none
+    padding: $padding/4 $padding/2
+  nav
+    text-transform: uppercase
+
+header
+  #logo
+    font-family: $logo-font
+    font-size: $base-font-size * 1.5
+
+
+
