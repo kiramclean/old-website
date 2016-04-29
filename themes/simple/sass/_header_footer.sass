@@ -21,9 +21,14 @@ footer, header
     text-transform: uppercase
 
 header
+  @include above($small-screen)
+    display: flex
+    justify-content: space-between
   #logo
     font-family: $logo-font
     font-size: $base-font-size * 1.5
+
+
 
 
 

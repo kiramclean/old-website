@@ -200,3 +200,7 @@ footer, header {
     padding: 0.375em 0.75em; }
   footer nav, header nav {
     text-transform: uppercase; }
+
+header #logo {
+  font-family: "Miniver", cursive;
+  font-size: 24px; }
