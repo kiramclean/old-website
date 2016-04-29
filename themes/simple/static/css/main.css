@@ -162,7 +162,52 @@ blockquote, q {
 .lineno {
   color: #333333; }
 
+main {
+  margin: 0 auto;
+  width: 85%; }
+  @media screen and (min-width: 48em) {
+    main {
+      width: 48em; } }
+
+html {
+  height: 100vh; }
+
 body {
+  background-color: #fefefe;
+  color: #333333;
+  display: flex;
+  flex-direction: column;
+  font-family: "Oxygen", Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-feature-settings: "kern" 1;
+  font-kerning: normal;
+  font-size: 1em;
+  font-weight: 400;
+  line-height: 1.5;
+  min-height: 100vh; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Montserrat", Helvetica Neue, Helvetica, Arial, sans-serif; }
+
+h1 {
+  font-size: 3em; }
+
+h2 {
+  font-size: 1.5em; }
+
+h3 {
+  font-size: 1.3em; }
+
+h4 {
+  font-size: 1.1em; }
+
+h5, h6 {
+  font-weight: bold; }
+
+a, a:visited {
+  color: #333333;
+  text-decoration: none; }
+
+#homepage {
   background-size: cover;
   background: url(/images/homepage.jpg); }
 
@@ -190,22 +235,6 @@ body {
   padding: 0.5em;
   position: relative;
   top: 8vh; }
-
-body {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-  font-weight: 400;
-  font-size: 1em;
-  line-height: 1.5;
-  font-family: "Oxygen", Helvetica Neue, Helvetica, Arial, sans-serif;
-  color: #333333;
-  background-color: #fefefe;
-  font-feature-settings: "kern" 1;
-  font-kerning: normal; }
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: "Montserrat", Helvetica Neue, Helvetica, Arial, sans-serif; }
 
 footer {
   text-align: center; }

@@ -1,15 +1,37 @@
+html
+  height: 100vh
+
 body
-  display: flex
-  min-height: 100vh
-  flex-direction: column
-  font-weight: $base-font-weight
-  font-size: $base-font-size
-  line-height: $base-line-height
-  font-family: $base-font
-  color: $text-color
   background-color: $background-color
+  color: $text-color
+  display: flex
+  flex-direction: column
+  font-family: $base-font
   font-feature-settings: "kern" 1
   font-kerning: normal
+  font-size: $base-font-size
+  font-weight: $base-font-weight
+  line-height: $base-line-height
+  min-height: 100vh
 
 h1, h2, h3, h4, h5, h6
   font-family: $header-font
+
+h1
+  font-size: $base-font-size * 3
+
+h2
+  font-size: $base-font-size * 1.5
+
+h3
+  font-size: $base-font-size * 1.3
+
+h4
+  font-size: $base-font-size * 1.1
+
+h5, h6
+  font-weight: bold
+
+a, a:visited
+  color: $text-color
+  text-decoration: none
