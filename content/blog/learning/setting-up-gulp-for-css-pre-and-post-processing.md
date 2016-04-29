@@ -56,7 +56,7 @@ gulp.task('default', function() {         // we also want to watch the files, so
   gulp.watch('sass/*.sass', ['sass']);    // tell gulp which files to watch and an array with commands to run when those files are changed
 });
 
-{{ < /highlight >}}
+{{< /highlight >}}
 
 Sass will build a css file for every sass file you have unless you prefix it with an underscore. If you have a bunch of css files don't forget to include them all in your `<head>` tag, or just prefix all your sass files with an underscore so sass only builds one long css file.
 
