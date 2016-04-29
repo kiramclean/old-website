@@ -1,9 +1,6 @@
-@import 'homepage'
-
 footer, header
   background-color: $see-through-background
   color: $homepage-text
-  font-size: 90%
   text-align: center
   a, a:visited
     border: 0
@@ -13,25 +10,46 @@ footer, header
       color: rgba($gray, 1)
       transition: all $base-timing ease
       text-shadow: 1px 0 0 $lightish-gray
+  ul
+    padding: 0
+    margin: 0
   li
     display: inline-block
     list-style: none
     padding: $padding/4 $padding/2
   nav
     text-transform: uppercase
+    letter-spacing: 1px
 
 header
-  padding: $padding/3
-  margin: $padding
-  letter-spacing: 1px
+  padding: $padding/2
   @include above($small-screen)
     display: flex
     justify-content: space-between
   #logo
     font-family: $logo-font
     font-size: $base-font-size * 1.5
+  nav
+    font-size: 90%
 
+footer
+  #copy
+    font-size: 70%
+  nav
+    font-size: 80%
+  section
+    width: 100%
+    ul
+      display: flex
+      justify-content: center
+      p
+        display: none
 
-
+      @include above($small-screen)
+        font-size: 100%
+        p
+          display: inline
+          font-size: 70%
+          text-transform: uppercase
 
 

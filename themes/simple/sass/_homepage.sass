@@ -1,34 +1,33 @@
-$less-transparent-background: rgba(255, 255, 255, 0.7)
-$quote-font: 'Amatic SC', Helvetica Neue, sans-serif
-$quote-author-font: 'Satisfy', Garamond, cursive
-$lightish-gray: lighten($gray, 13%)
-$homepage-text: rgba($gray, 0.8)
-
-#homepage
-  background-size: cover
-  background: url(/images/homepage.jpg)
-
-#quote
-  margin: auto
-  max-height: 80vh
-  text-align: center
-
 #quote-text
   background-color: $see-through-background
   border-radius: $base-border-radius
   color: $homepage-text
   font-family: $quote-font
   font-size: 8vw
-  padding: $padding/3
-  // position: relative
-  // top: 10vh
+  padding: $padding/2
+  @include above($small-screen)
+    font-size: 6vw
+
 
 #quote-author
   color: $less-transparent-background
   float: right
   font-family: $quote-author-font
   font-size: 3vw
-  padding: $padding/2
-  // position: relative
-  // top: 8vh
+  padding: 0 $padding/4
+  @include above($small-screen)
+    font-size: 2vw
+
+#homepage
+  background: url(/images/homepage.jpg)
+  background-size: cover
+  footer, header
+    width: 80%
+    max-width: $small-screen
+    margin: $padding * 2 auto
+    border-radius: $base-border-radius
+  section
+    max-height: 40vh
+    text-align: center
+
 
