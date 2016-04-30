@@ -2,6 +2,3 @@
 # https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
 node_modules
 
-themes/cocoa
-themes/hugo_theme_robust
-
