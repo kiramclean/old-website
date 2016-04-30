@@ -10,4 +10,4 @@ Computer programming can pretty quickly lead to isolation. I often work in cafes
 - **Cafe Aunja** • 1448 rue Sherbrooke O, Downtown • wifi: gingertea
 - **Espace Cafe** • 210 Notre Dame O, Old Montreal • wifi: espace101010
 
-Do you know any others? Let me know below.
+I'm always on the lookout for great cafes. If you know about any good ones {{% target_blank "let me know on twitter" "https://twitter.com/kiraemclean" %}} or {{% target_blank "github" "https://github.com/kiramclean" %}}.
