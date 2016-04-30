@@ -1,31 +1,38 @@
 footer, header
+  align-items: center
   background-color: $see-through-background
   color: $homepage-text
-  text-align: center
+  display: flex
+  flex-direction: column
+  padding: $padding/3 $padding
+  @include above($small-screen)
+    flex-direction: row
+    justify-content: space-between
+
   a, a:visited
     border: 0
     color: $homepage-text
+    display: flex
+    align-items: center
     &:hover
       border: 0
       color: rgba($gray, 1)
       transition: all $base-timing ease
       text-shadow: 1px 0 0 $lightish-gray
   ul
-    padding: 0
     margin: 0
+    padding: 0
   li
     display: inline-block
     list-style: none
-    padding: $padding/4 $padding/2
+    &:not(:first-child)
+      padding-left: $padding
   nav
     text-transform: uppercase
     letter-spacing: 1px
+    text-align: center
 
 header
-  padding: $padding/2
-  @include above($small-screen)
-    display: flex
-    justify-content: space-between
   #logo
     font-family: $logo-font
     font-size: $base-font-size * 1.5
@@ -33,23 +40,11 @@ header
     font-size: 90%
 
 footer
-  #copy
-    font-size: 70%
+  margin-top: $padding*2
   nav
     font-size: 80%
-  section
-    width: 100%
-    ul
-      display: flex
-      justify-content: center
-      p
-        display: none
-
-      @include above($small-screen)
-        font-size: 100%
-        p
-          display: inline
-          font-size: 70%
-          text-transform: uppercase
-
-
+    padding: $padding/4 0
+  #copy
+    font-size: 70%
+  #contact p
+    display: none
