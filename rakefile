@@ -3,6 +3,9 @@ require 'tmpdir'
 
 desc 'Generate website'
 task :generate do
+  # Clean public directory to clear out stale code
+  system 'rm -rf public/*'
+
   # Specify the name of the theme you want to use here
   theme_to_use = 'simple'
   system "hugo -t #{theme_to_use}"
@@ -10,9 +13,6 @@ end
 
 desc 'Publish the generated website to github pages'
 task publish: :generate do
-  # Clean public directory to clear out stale code
-  FileUtils.rm_rf(Dir.glob('public/*'))
-
   Dir.mktmpdir do |tmp|
     # Change to your git username
     github_username = 'kiramclean'
