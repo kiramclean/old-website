@@ -20,6 +20,11 @@ footer, header
       color: rgba($gray, 1)
       transition: all $base-timing ease
       text-shadow: 1px 0 0 $lightish-gray
+    &:focus, &:active
+      color: lighten($text-color, 30%)
+      text-shadow: 1px 0 0 $light-gray
+      transition: all $base-timing ease
+
   ul
     margin: 0
     padding: 0

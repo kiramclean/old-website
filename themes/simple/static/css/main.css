@@ -148,6 +148,11 @@ a, a:visited {
     -webkit-transition: border 350ms ease;
     transition: border 350ms ease; }
 
+a:focus, a:active {
+  color: gray;
+  -webkit-transition: all 350ms ease;
+  transition: all 350ms ease; }
+
 strong {
   font-weight: bold; }
 
@@ -311,6 +316,11 @@ footer, header {
       -webkit-transition: all 350ms ease;
       transition: all 350ms ease;
       text-shadow: 1px 0 0 #545454; }
+    footer a:focus, footer a:active, footer a:visited:focus, footer a:visited:active, header a:focus, header a:active, header a:visited:focus, header a:visited:active {
+      color: gray;
+      text-shadow: 1px 0 0 #cccccc;
+      -webkit-transition: all 350ms ease;
+      transition: all 350ms ease; }
   footer ul, header ul {
     margin: 0;
     padding: 0; }
