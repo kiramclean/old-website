@@ -340,20 +340,36 @@ footer {
   footer #contact p {
     display: none; }
 
-button {
-  background: transparent;
-  border: 0; }
-
 .slide, .slide:visited {
   border: 3px solid #48dbdb;
   color: #48dbdb;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
   font-family: "Montserrat", Lucida Grande, Helvetica, sans-serif;
-  font-size: 90%;
+  font-size: 80%;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   padding: 0.75em;
   position: relative;
-  text-transform: uppercase;
   -webkit-transition: all 700ms ease;
   transition: all 700ms ease; }
+  .slide span, .slide:visited span {
+    text-transform: uppercase;
+    display: block;
+    font-size: 120%; }
 
 .slide:before {
   position: absolute;
@@ -362,16 +378,21 @@ button {
   height: 100%;
   z-index: -1;
   content: '';
-  background: #48dbdb;
+  background: rgba(72, 219, 219, 0.9);
   -webkit-transition: all 700ms cubic-bezier(0.4, 0, 0.6, 1);
   transition: all 700ms cubic-bezier(0.4, 0, 0.6, 1); }
 
 .slide:hover {
-  color: white !important;
+  color: #f2fdfd !important;
   -webkit-transition: all 700ms ease;
-  transition: all 700ms ease; }
+  transition: all 700ms ease;
+  border: 3px solid #48dbdb; }
   .slide:hover:before {
     width: 100%; }
+
+.rtl {
+  margin-left: 0.5em;
+  text-align: right; }
 
 .rtl:before {
   right: 0px; }
@@ -379,6 +400,9 @@ button {
 .rtl:hover:before {
   left: 0%;
   right: auto; }
+
+.ltr {
+  margin-right: 0.5em; }
 
 .ltr:before {
   left: 0px; }
