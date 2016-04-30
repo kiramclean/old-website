@@ -399,7 +399,7 @@ footer {
   .slide:hover:before {
     width: 100%; }
 
-.slide:focus {
+.slide:focus, .slide:active {
   background: #27c9c9;
   border-color: #27c9c9; }
 
