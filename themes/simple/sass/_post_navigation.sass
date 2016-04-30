@@ -3,13 +3,15 @@
   color: $main-color
   display: flex
   flex-direction: column
-  flex: 1
   font-family: $header-font
   font-size: 80%
   justify-content: center
   padding: $padding/2
   position: relative
   transition: all $base-timing*2 ease
+  width: 48%
+  @include above($small-screen)
+    width: 45%
   span
     text-transform: uppercase
     display: block
@@ -32,8 +34,11 @@
   &:before
     width: 100%
 
+.slide:focus
+  background: darken($main-color, 10%)
+  border-color: darken($main-color, 10%)
+
 .rtl
-  margin-left: $padding/3
   text-align: right
 .rtl:before
   right: 0px
@@ -41,8 +46,6 @@
   left: 0%
   right: auto
 
-.ltr
-  margin-right: $padding/3
 .ltr:before
   left: 0px
 .ltr:hover:before

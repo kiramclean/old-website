@@ -5,8 +5,11 @@
   font-family: $quote-font
   font-size: 8vw
   padding: $padding/2
+  text-align: center
   @include above($small-screen)
     font-size: 6vw
+  @include above($medium-screen)
+    font-size: 5vw
 
 #quote-author
   color: $less-transparent-background
@@ -25,8 +28,4 @@
     max-width: $small-screen
     margin: $padding * 2 auto
     border-radius: $base-border-radius
-  section
-    max-height: 40vh
-    text-align: center
-
 

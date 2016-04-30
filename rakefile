@@ -10,6 +10,9 @@ end
 
 desc 'Publish the generated website to github pages'
 task publish: :generate do
+  # Clear old site to get rid of stale code
+  system 'rm -rf public/.'
+
   Dir.mktmpdir do |tmp|
     # Change to your git username
     github_username = 'kiramclean'
