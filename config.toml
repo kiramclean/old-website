@@ -1,9 +1,9 @@
 baseurl = "http://kiramclean.com/"
-languageCode = "en-CA"
-title = "Kira McLean"
 canonifyurls = true
-PygmentsCodeFences = true
+languageCode = "en-CA"
+pygmentsCodeFences = true
 pygmentsstyle = "friendly"
+title = "Kira McLean"
 
 [Params]
   Author = "Kira McLean"
