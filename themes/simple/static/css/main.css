@@ -170,6 +170,7 @@ img {
   border-radius: 3px;
   height: 35vw;
   margin: 1.5em 0;
+  max-height: 45vh;
   -o-object-fit: cover;
      object-fit: cover;
   -o-object-position: 0 17%;
