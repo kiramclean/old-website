@@ -6,3 +6,9 @@
   @media screen and (min-width: $size1) and (max-width: $size2)
     @content
 
+@mixin fade-from-to($from, $to)
+  color: $from
+  &:hover
+    color: $to
+    transition: all $base-timing ease
+

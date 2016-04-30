@@ -1,10 +1,12 @@
 {{ partial "header.html" . }}
 
   <section>
-    <h1>Blog</h1>
     {{ range .Data.Pages }}
-      <time>{{ .Date.Format "January 2, 2006" }}</time>
-      <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+      <div class='blog-post'>
+        <time>{{ .Date.Format "January 2, 2006" }}</time>
+        <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+        <p>{{ .Summary }}{{ if .Truncated }}<a href="{{ .RelPermalink }}">Read more ...</a>{{ end }}</p>
+      </div>
     {{ end }}
   </section>
 

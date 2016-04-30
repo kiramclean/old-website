@@ -4,5 +4,21 @@ main
   justify-content: center
 
 section
-  width: 80%
   max-width: $layout-width
+  margin-top: $padding
+  width: 80%
+
+.blog-post
+  margin-top: $padding
+  h2
+    padding: 0
+  p a
+    text-transform: uppercase
+    letter-spacing: 1px
+    margin-left: $padding / 2
+    font-family: $header-font
+    font-size: 83%
+    @include fade-from-to(rgba($text-color, 0.6), $text-color)
+
+
+
