@@ -11,10 +11,10 @@
     
     <item>
       <title>Switching From Sublime to Vim</title>
-      <link>http://kiramclean.com/blog/learning/2016.03.15-switching-from-sublime-to-vim/</link>
+      <link>http://kiramclean.com/blog/switching-from-sublime-to-vim/</link>
       <pubDate>Tue, 15 Mar 2016 21:39:18 -0400</pubDate>
       
-      <guid>http://kiramclean.com/blog/learning/2016.03.15-switching-from-sublime-to-vim/</guid>
+      <guid>http://kiramclean.com/blog/switching-from-sublime-to-vim/</guid>
       <description>
 
 &lt;p&gt;I learned how to code using Sublime as my editor but recently joined a team that uses mostly vim. There are a few reasons I prefer Vim now, but there are still a few things I miss about Sublime. Here I&amp;rsquo;ll tell you what I did to try to bridge the transition and bring the features I missed from Sublime to Vim.&lt;/p&gt;
@@ -75,10 +75,10 @@
     
     <item>
       <title>Stop Typing Bundle Exec</title>
-      <link>http://kiramclean.com/blog/learning/2016.02.07-stop-typing-bundle-exec/</link>
+      <link>http://kiramclean.com/blog/stop-typing-bundle-exec/</link>
       <pubDate>Sun, 07 Feb 2016 21:23:29 -0400</pubDate>
       
-      <guid>http://kiramclean.com/blog/learning/2016.02.07-stop-typing-bundle-exec/</guid>
+      <guid>http://kiramclean.com/blog/stop-typing-bundle-exec/</guid>
       <description>
 
 &lt;p&gt;Does this look familiar?&lt;/p&gt;
@@ -192,10 +192,10 @@ Gem::LoadError: You have already activated rake 10.5.0, but your Gemfile require
     
     <item>
       <title>What Your Rails App Does Behind the Scenes</title>
-      <link>http://kiramclean.com/blog/learning/2016.01.24-what-your-rails-app-does-behind-the-scenes/</link>
+      <link>http://kiramclean.com/blog/what-your-rails-app-does-behind-the-scenes/</link>
       <pubDate>Sun, 24 Jan 2016 21:07:23 -0400</pubDate>
       
-      <guid>http://kiramclean.com/blog/learning/2016.01.24-what-your-rails-app-does-behind-the-scenes/</guid>
+      <guid>http://kiramclean.com/blog/what-your-rails-app-does-behind-the-scenes/</guid>
       <description>
 
 &lt;p&gt;Ever wondered what your rails app is really doing? When I first started learning rails it seemed like magic. I finally got started building some rails apps and couldn&amp;rsquo;t believe I could get one up and running in 5 minutes. What is this magic? Needless to say there&amp;rsquo;s a lot going on behind the scenes. I was living in blissful ignorance, building away and not worrying about how it all worked until it didn&amp;rsquo;t anymore. When the error messages stopped making sense, I realized I should probably dig a little deeper and see what Rails&amp;rsquo; magic is made of. You don&amp;rsquo;t have to be able to rebuild Rails or even add to it, but understanding it is at least a start and, IMO, important if you&amp;rsquo;re going to try to build with it, if only because it makes debugging so much simpler. I&amp;rsquo;ve still got a long way to go, but these are some notes from my first encounter with Rails&amp;rsquo; machinery.&lt;/p&gt;
@@ -270,10 +270,10 @@ Gem::LoadError: You have already activated rake 10.5.0, but your Gemfile require
     
     <item>
       <title>Maybe the Worlds Most Meaningful City</title>
-      <link>http://kiramclean.com/blog/travel/maybe-the-worlds-most-meaningful-city/</link>
+      <link>http://kiramclean.com/blog/maybe-the-worlds-most-meaningful-city/</link>
       <pubDate>Tue, 19 Jan 2016 21:05:59 -0400</pubDate>
       
-      <guid>http://kiramclean.com/blog/travel/maybe-the-worlds-most-meaningful-city/</guid>
+      <guid>http://kiramclean.com/blog/maybe-the-worlds-most-meaningful-city/</guid>
       <description>&lt;p&gt;I&amp;rsquo;m talking about Jerusalem. My last couple of posts reflected on the first few days of my Birthright trip to Israel which were spent in the north of the country. After that we spent a day in Tel Aviv and Jaffa on our way to Jerusalem, where we stayed for three nights. It&amp;rsquo;s a truly magical place. Walking the streets of Jerusalem is when I first realized that I have to go back to Israel. Tzfat was amazing, too, and inspired me to start learning about Kaballah and mindfulness, but I didn&amp;rsquo;t feel torn apart from that town when we had to leave it. Jerusalem was a totally different experience.&lt;/p&gt;
 
 &lt;p&gt;It&amp;rsquo;s impossible to describe how it felt to be there and to be physically connected, even though it was just for a few short days, to millennia of history. The city means so much to so many people and being there helped me begin to understand why it&amp;rsquo;s such a contested place. When you&amp;rsquo;re sitting safely on a couch in North America it&amp;rsquo;s easy to have opinions about things that are happening half way around the world. Being there and seeing and hearing how much it means to the local people is a totally different story.&lt;/p&gt;
@@ -292,10 +292,10 @@ Gem::LoadError: You have already activated rake 10.5.0, but your Gemfile require
     
     <item>
       <title>Beginning to Process Birthright</title>
-      <link>http://kiramclean.com/blog/travel/beginning-to-process-birthright/</link>
+      <link>http://kiramclean.com/blog/beginning-to-process-birthright/</link>
       <pubDate>Fri, 15 Jan 2016 21:04:30 -0400</pubDate>
       
-      <guid>http://kiramclean.com/blog/travel/beginning-to-process-birthright/</guid>
+      <guid>http://kiramclean.com/blog/beginning-to-process-birthright/</guid>
       <description>&lt;p&gt;I just woke up from a 15 hour nap. I got home yesterday after leaving Israel 20 hours earlier and completely crashed. Birthright was a life changing experience in many ways but I feel like it will take a long time to process. The trip itself was jam packed with events, activities, and discussions, and I haven&amp;rsquo;t really had any time to think or reflect since the first day. Now that I&amp;rsquo;m back home and have some down time, it&amp;rsquo;s all starting to sink in.&lt;/p&gt;
 
 &lt;p&gt;We spent the first few days in the north of the country. The day after hiking around the Galil and visiting Tzfat we wrapped up our tour of the north with a visit to the Golan Heights. We were meant to hike in Banias National Park but couldn&amp;rsquo;t because an IED exploded on the Lebanese border two days before. Instead we visited Mount Bental for an overview of a deserted town in what used to be Syria and is now a medieval wasteland. The only human activity nearby is the occasional transfer of wounded Syrians across the border via the town of Qunaitra for treatment by Israeli medics in Israeli hospitals. This is how Israel treats its enemies.&lt;/p&gt;
@@ -316,10 +316,10 @@ Gem::LoadError: You have already activated rake 10.5.0, but your Gemfile require
     
     <item>
       <title>First Day in Israel</title>
-      <link>http://kiramclean.com/blog/travel/first-day-in-israel/</link>
+      <link>http://kiramclean.com/blog/first-day-in-israel/</link>
       <pubDate>Tue, 05 Jan 2016 21:02:50 -0400</pubDate>
       
-      <guid>http://kiramclean.com/blog/travel/first-day-in-israel/</guid>
+      <guid>http://kiramclean.com/blog/first-day-in-israel/</guid>
       <description>&lt;p&gt;My first full day in Israel is wrapping up. I&amp;rsquo;m here on a Birthright trip, a program sponsored by Israeli taxpayers, Jewish philanthropists, and local Jewish communities around the world. It&amp;rsquo;s meant to give Jewish youth the opportunity to experience Israel with a group of their peers. It&amp;rsquo;s an amazing gift to have been given, and I&amp;rsquo;m looking forward to every moment of it.&lt;/p&gt;
 
 &lt;p&gt;After landing yesterday we got on a bus to drive north, stopping in Zihron Ya&amp;rsquo;akov for lunch and a quick tour. We checked in at Kibbutz Gadot, our home for the next couple of days while we explore northern Israel, and got to know each other a bit. Today was our first full day here. We started off with a hike in the Galil then went to Tzfat to eat lunch and to explore Kaballah. On the way back to our kibbutz we stopped at a micro-winery and got to sample some award winning Israeli liqueurs. All of this has been amazing so far, but the best part of the trip is definitely the people I&amp;rsquo;m here with.&lt;/p&gt;
@@ -334,10 +334,10 @@ Gem::LoadError: You have already activated rake 10.5.0, but your Gemfile require
     
     <item>
       <title>Getting Started with Git</title>
-      <link>http://kiramclean.com/blog/learning/2015.12.05-getting-started-with-git/</link>
+      <link>http://kiramclean.com/blog/getting-started-with-git/</link>
       <pubDate>Sat, 05 Dec 2015 20:54:08 -0400</pubDate>
       
-      <guid>http://kiramclean.com/blog/learning/2015.12.05-getting-started-with-git/</guid>
+      <guid>http://kiramclean.com/blog/getting-started-with-git/</guid>
       <description>
 
 &lt;p&gt;Git makes keeping track of your progress and fixing mistakes &amp;ldquo;simple&amp;rdquo;, as they say. I was beyond confused at first but things slowly started to click. If you can wrap your head around what it does and how it works, git can idiot-proof your workflow and set you free to experiment on new features without worrying about ruining your project. Adding and committing files to a git repository is the first thing most people teach, and it was the first thing I learned. This was great until I actually needed to undo some changes and had no idea how. It&amp;rsquo;s really worth taking the time to explore what git can do beyond just keeping a Dropbox-style history of your progress. It&amp;rsquo;s especially useful when you need to go back in time. These are some notes from my attempt to learn how to fix mistakes with git.&lt;/p&gt;
@@ -462,10 +462,10 @@ Gem::LoadError: You have already activated rake 10.5.0, but your Gemfile require
     
     <item>
       <title>Benefits of Group Learning</title>
-      <link>http://kiramclean.com/blog/learning/2015.11.28-benefits-of-group-learning/</link>
+      <link>http://kiramclean.com/blog/benefits-of-group-learning/</link>
       <pubDate>Sat, 28 Nov 2015 20:51:15 -0400</pubDate>
       
-      <guid>http://kiramclean.com/blog/learning/2015.11.28-benefits-of-group-learning/</guid>
+      <guid>http://kiramclean.com/blog/benefits-of-group-learning/</guid>
       <description>
 
 &lt;p&gt;Another week flew by and I still don&amp;rsquo;t have my own app up and running. Montreal has an awesome ruby community, though, and this week they hosted a meetup to build their new website with ruby on rails. Thanks to some wonderful, patient people I learned a lot and am much closer to being able to do it on my own. I&amp;rsquo;m not sure how much closer Montreal.rb is to having a new website that works, though. Working with other people is essential if you&amp;rsquo;re trying to learn how to code. If you&amp;rsquo;ve thought openly about learning how to code, you have  already been told to not do it alone. I&amp;rsquo;m not going to preach about why you need to do it, but I have some advice for when you do find a group of fellow programmers or learners.&lt;/p&gt;
@@ -492,10 +492,10 @@ Gem::LoadError: You have already activated rake 10.5.0, but your Gemfile require
     
     <item>
       <title>Learning How to Code</title>
-      <link>http://kiramclean.com/blog/learning/2015.11.21-learning-how-to-code/</link>
+      <link>http://kiramclean.com/blog/learning-how-to-code/</link>
       <pubDate>Sat, 21 Nov 2015 20:49:12 -0400</pubDate>
       
-      <guid>http://kiramclean.com/blog/learning/2015.11.21-learning-how-to-code/</guid>
+      <guid>http://kiramclean.com/blog/learning-how-to-code/</guid>
       <description>
 
 &lt;p&gt;At beginning of last summer I started learning how to code. I had a wordpress website and wanted to customize it, then I got sucked into a rabbit hole and haven&amp;rsquo;t really surfaced since. I realized I would only be able to make it so far coding in a box on a website with tutorials, as great as they are, and about 2 months ago I decided to go all in. Now I&amp;rsquo;m learning as much as I can and working on becoming a real web developer. As I go I&amp;rsquo;m learning as much about learning how to program as I am about programming itself. Here are a few of the most useful things I&amp;rsquo;ve learned so far and some tips if you want to get started learning how to code.&lt;/p&gt;
@@ -575,7 +575,11 @@ Gem::LoadError: You have already activated rake 10.5.0, but your Gemfile require
 &lt;li&gt;&lt;strong&gt;Espace Cafe&lt;/strong&gt; • 210 Notre Dame O, Old Montreal • wifi: espace101010&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Do you know any others? Let me know below.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;m always on the lookout for great cafes. If you know about any good ones 
+&lt;a target=&#34;_blank&#34; href=&#34;https://twitter.com/kiraemclean&#34;&gt;let me know on twitter&lt;/a&gt;
+ or 
+&lt;a target=&#34;_blank&#34; href=&#34;https://github.com/kiramclean&#34;&gt;github&lt;/a&gt;
+.&lt;/p&gt;
 </description>
     </item>
     

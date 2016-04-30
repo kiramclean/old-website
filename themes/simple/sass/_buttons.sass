@@ -1,16 +1,19 @@
-button
-  background: transparent
-  border: 0
-
 .slide, .slide:visited
   border: $medium-border
   color: $main-color
+  display: flex
+  flex-direction: column
+  flex: 1
   font-family: $header-font
-  font-size: 90%
+  font-size: 80%
+  justify-content: center
   padding: $padding/2
   position: relative
-  text-transform: uppercase
   transition: all $base-timing*2 ease
+  span
+    text-transform: uppercase
+    display: block
+    font-size: 120%
 
 .slide:before
   position: absolute
@@ -19,21 +22,27 @@ button
   height: 100%
   z-index: -1
   content: ''
-  background: $main-color
+  background: rgba($main-color, 0.9)
   transition: all $base-timing*2 cubic-bezier(0.4, 0, 0.6, 1)
 
 .slide:hover
-  color: lighten($main-color, 50%) !important
+  color: lighten($main-color, 40%) !important
   transition: all $base-timing*2 ease
+  border: $medium-border
   &:before
     width: 100%
 
+.rtl
+  margin-left: $padding/3
+  text-align: right
 .rtl:before
   right: 0px
 .rtl:hover:before
   left: 0%
   right: auto
 
+.ltr
+  margin-right: $padding/3
 .ltr:before
   left: 0px
 .ltr:hover:before

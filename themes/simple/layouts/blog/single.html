@@ -8,10 +8,10 @@
 
       <nav>
       {{ if .PrevInSection }}
-        <button><a class='slide ltr' href="{{ .PrevInSection.Permalink }}">Previous Post</a></button>
+        <a class='slide ltr' href="{{ .PrevInSection.Permalink }}"><span>Previous</span>{{ title .PrevInSection.Title }}</a>
       {{ end }}
       {{ if .NextInSection }}
-        <button><a class='slide rtl' href="{{ .NextInSection.Permalink }}">Next Post</a></button>
+        <a class='slide rtl' href="{{ .NextInSection.Permalink }}"><span>Next</span>{{ title .NextInSection.Title }}</a>
       {{ end }}
       </nav>
 
