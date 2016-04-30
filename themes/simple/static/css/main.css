@@ -59,9 +59,9 @@ article nav {
     margin-left: 0.75em;
     font-family: "Montserrat", Lucida Grande, Helvetica, sans-serif;
     font-size: 83%;
-    color: rgba(51, 51, 51, 0.6); }
+    color: rgba(68, 68, 68, 0.6); }
     .blog-post p a:hover, .blog-post p + a:hover {
-      color: #333333;
+      color: #444444;
       -webkit-transition: all 350ms ease;
       transition: all 350ms ease; }
 
@@ -77,7 +77,7 @@ html {
 
 body {
   background-color: rgba(255, 255, 255, 0.3);
-  color: #333333;
+  color: #444444;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -140,16 +140,16 @@ p {
 
 a, a:visited {
   border-bottom: 2px solid rgba(72, 219, 219, 0.3);
-  color: #333333;
+  color: #444444;
   text-decoration: none; }
   a:hover, a:visited:hover {
     border-bottom: 2px solid #48dbdb;
     color: black;
-    -webkit-transition: border 350ms ease;
-    transition: border 350ms ease; }
+    -webkit-transition: all 350ms ease;
+    transition: all 350ms ease; }
 
 a:focus, a:active {
-  color: gray;
+  color: #9d9d9d;
   -webkit-transition: all 350ms ease;
   transition: all 350ms ease; }
 
@@ -178,7 +178,7 @@ img {
   width: 100%; }
 
 figcaption, img + em {
-  color: #999999;
+  color: #aaaaaa;
   display: block;
   font-size: small;
   text-align: center; }
@@ -208,19 +208,19 @@ table {
       border-right: 1px solid #48dbdb; }
 
 blockquote {
-  background-color: #e6e6e6;
+  background-color: #f7f7f7;
   border-left: 8px solid #48dbdb;
   padding: 0 1.5em;
   margin: 1.5em 0; }
   blockquote code {
-    background-color: #cccccc; }
+    background-color: #dddddd; }
   @media screen and (min-width: 42em) {
     blockquote {
       margin: 1.5em 0 1.5em 3em; } }
 
 code, pre {
   font-family: monospace;
-  background-color: #e6e6e6;
+  background-color: #f7f7f7;
   border-radius: 3px;
   overflow-x: auto;
   padding: 0.75em;
@@ -240,7 +240,7 @@ pre {
 #quote-text {
   background-color: rgba(255, 255, 255, 0.3);
   border-radius: 3px;
-  color: rgba(51, 51, 51, 0.8);
+  color: rgba(68, 68, 68, 0.8);
   font-family: "Amatic SC", Helvetica Neue, sans-serif;
   font-size: 8vw;
   padding: 0.75em;
@@ -277,7 +277,7 @@ footer, header {
       -ms-flex-align: center;
           align-items: center;
   background-color: rgba(255, 255, 255, 0.3);
-  color: rgba(51, 51, 51, 0.8);
+  color: rgba(68, 68, 68, 0.8);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -302,7 +302,7 @@ footer, header {
               justify-content: space-between; } }
   footer a, footer a:visited, header a, header a:visited {
     border: 0;
-    color: rgba(51, 51, 51, 0.8);
+    color: rgba(68, 68, 68, 0.8);
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -313,13 +313,13 @@ footer, header {
             align-items: center; }
     footer a:hover, footer a:visited:hover, header a:hover, header a:visited:hover {
       border: 0;
-      color: #333333;
+      color: #444444;
       -webkit-transition: all 350ms ease;
       transition: all 350ms ease;
-      text-shadow: 1px 0 0 #545454; }
+      text-shadow: 1px 0 0 #656565; }
     footer a:focus, footer a:active, footer a:visited:focus, footer a:visited:active, header a:focus, header a:active, header a:visited:focus, header a:visited:active {
-      color: gray;
-      text-shadow: 1px 0 0 #cccccc;
+      color: #919191;
+      text-shadow: 1px 0 0 #dddddd;
       -webkit-transition: all 350ms ease;
       transition: all 350ms ease; }
   footer ul, header ul {
