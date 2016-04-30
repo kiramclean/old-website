@@ -17,54 +17,81 @@ body
 h1, h2, h3, h4, h5, h6
   font-family: $header-font
   letter-spacing: 1px
-  padding-top: $padding
+  padding-top: $padding / 2
+  @include above($medium-screen)
+    display: flex
+    align-items: center
+    code
+      margin: 0 $padding/4
 
 h1
-  font-size: $base-font-size * 3
+  font-size: $base-font-size * 1.6
+  @include above($small-screen)
+    font-size: $base-font-size * 3
 
 h2
   font-size: $base-font-size * 1.3
+  @include above($small-screen)
+    font-size: $base-font-size * 1.7
 
 h3
-  font-size: $base-font-size * 1.2
+  font-size: $base-font-size
+  @include above($small-screen)
+    font-size: $base-font-size * 1.1
 
-h4
-  font-size: $base-font-size * 1.1
+section
+  h1
+    padding: 0
 
 p
   padding: $padding/3 0
 
 a, a:visited
+  border-bottom: 2px solid rgba($main-color, 0.30)
   color: $text-color
   text-decoration: none
-  border-bottom: 2px solid rgba($main-color, 0.30)
   &:hover
     border-bottom: 2px solid rgba($main-color, 1)
+    color: darken($text-color, 30%)
     transition: border $base-timing ease
+
+strong
+  font-weight: bold
 
 ul
   margin-left: $padding
 
 // IMAGES
+figure img,
 img
   width: 90%
   height: auto
   margin: 0 auto
   display: block
 
-img + em
-  font-size: small
-  display: block
-  text-align: center
+.profile img
+  border-radius: 3px
+  height: 35vw
+  margin: $padding 0
+  object-fit: cover
+  object-position: 0 17%
+  width: 100%
+
+figcaption, img + em
   color: $secondary-text
+  display: block
+  font-size: small
+  text-align: center
 
 // DATES
 time
   color: $main-color
   font-family: $header-font
-  font-size: 90%
+  font-size: 75%
   letter-spacing: 1px
   text-transform: uppercase
+  @include above($small-screen)
+    font-size: 85%
 
 // TABLES
 table

@@ -3,9 +3,11 @@
   <section>
     <h1>Projects</h1>
     {{ range .Data.Pages }}
-      <h2><a href="{{ .Params.link }}" target="_blank">{{ .Title }}</a></h2>
-      <h3>{{ .Description }}</h3>
-      <p>{{ .Content }}</p>
+      <div class='project'>
+        <h2><a href="{{ .Params.link }}" target="_blank">{{ .Title }}</a></h2>
+        <h3>{{ .Description }}</h3>
+        {{ .Content }}
+      </div>
     {{ end }}
   </section>
 

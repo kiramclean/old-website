@@ -1,0 +1,9 @@
+<!--{{/*
+  Usage: {{< highlight_with_caption "LANGUAGE" "CAPTION" >}}Code to highlight goes here{{< /highlight_with_caption >}}
+*/}}-->
+<figure>
+  {{ highlight .Inner (.Get 0) "" }}
+  <figcaption>
+    {{ .Get 1 }}
+  </figcaption>
+</figure>

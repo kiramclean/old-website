@@ -5,20 +5,39 @@ main
 
 section
   max-width: $layout-width
-  margin-top: $padding
+  margin: $padding 0
   width: 80%
+
+article
+  time
+    display: inline-block
+    padding-bottom: $padding
+    & + span
+      @extend time
+      padding: 0 $padding/2
+      & + p
+        @extend time
 
 .blog-post
   margin-top: $padding
+  @include above($small-screen)
+    margin-top: $padding*2
   h2
     padding: 0
-  p a
+  p a, p + a
     text-transform: uppercase
     letter-spacing: 1px
-    margin-left: $padding / 2
+    margin-left: $padding/2
     font-family: $header-font
     font-size: 83%
     @include fade-from-to(rgba($text-color, 0.6), $text-color)
 
+.project
+  h3
+    font-family: $base-font
+    letter-spacing: 0
+    font-weight: bold
+    font-size: $base-font-size
+    padding: $padding/2 0
 
 

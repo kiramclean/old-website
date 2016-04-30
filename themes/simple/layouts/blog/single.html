@@ -3,7 +3,7 @@
   <section>
     <article>
       <h1>{{ .Title }}</h1>
-      <time>{{ .Date.Format "Saturday, January 2, 2006" }}</time>
+      <time>{{ .Date.Format "January 2, 2006" }}</time><span>•</span><p>{{ .ReadingTime }} min read</p>
       {{ .Content }}
     </article>
   </section>
