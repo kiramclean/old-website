@@ -1,0 +1,41 @@
+button
+  background: transparent
+  border: 0
+
+.slide, .slide:visited
+  border: $medium-border
+  color: $main-color
+  font-family: $header-font
+  font-size: 90%
+  padding: $padding/2
+  position: relative
+  text-transform: uppercase
+  transition: all $base-timing*2 ease
+
+.slide:before
+  position: absolute
+  top: 0px
+  width: 0px
+  height: 100%
+  z-index: -1
+  content: ''
+  background: $main-color
+  transition: all $base-timing*2 cubic-bezier(0.4, 0, 0.6, 1)
+
+.slide:hover
+  color: lighten($main-color, 50%) !important
+  transition: all $base-timing*2 ease
+  &:before
+    width: 100%
+
+.rtl:before
+  right: 0px
+.rtl:hover:before
+  left: 0%
+  right: auto
+
+.ltr:before
+  left: 0px
+.ltr:hover:before
+  right: 0%
+  left: auto

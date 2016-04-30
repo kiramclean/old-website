@@ -7,14 +7,15 @@ pygmentsCodeFences = true
 pygmentsstyle = "friendly"
 title = "Kira McLean"
 
-[Params]
-  Author = "Kira McLean"
+[permalinks]
+  fixed = ":title/"
+  blog = "blog/:slug/"
 
+[params]
+  Author = "Kira McLean"
   DateForm = "Jan 2, 2006"
   Description = "A blog about my journey learning to code and some other things."
   Email = "email@kiramclean.com"
-  FaviconFile = "" # TODO:
-  GATracker = "XYZ" # TODO:
   GitHub = "//github.com/kiramclean"
   LinkedIn = "//linkedin.com/in/kiramclean"
   Twitter = "//twitter.com/kiraemclean"

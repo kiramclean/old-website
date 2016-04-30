@@ -2,9 +2,19 @@
 
   <section>
     <article>
-      <h1>{{ .Title }}</h1>
+      <h1>{{ title .Title }}</h1>
       <time>{{ .Date.Format "January 2, 2006" }}</time><span>•</span><p>{{ .ReadingTime }} min read</p>
       {{ .Content }}
+
+      <nav>
+      {{ if .PrevInSection }}
+        <button><a class='slide ltr' href="{{ .PrevInSection.Permalink }}">Previous Post</a></button>
+      {{ end }}
+      {{ if .NextInSection }}
+        <button><a class='slide rtl' href="{{ .NextInSection.Permalink }}">Next Post</a></button>
+      {{ end }}
+      </nav>
+
     </article>
 
     <aside>

@@ -87,7 +87,7 @@ figcaption, img + em
 time
   color: $main-color
   font-family: $header-font
-  font-size: 75%
+  font-size: 70%
   letter-spacing: 1px
   text-transform: uppercase
   @include above($small-screen)
@@ -113,10 +113,11 @@ blockquote
   background-color: $lighter-gray
   border-left: $thick-border
   padding: 0 $padding
-  margin: $padding 0 $padding $padding * 2
+  margin: $padding 0
   code
     background-color: $light-gray
-
+  @include above($small-screen)
+    margin: $padding 0 $padding $padding * 2
 
 // CODE FORMATTING
 code, pre
