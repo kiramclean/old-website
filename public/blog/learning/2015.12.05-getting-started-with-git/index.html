@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="generator" content="Hugo 0.15" />
+    <html lang="en-CA">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="" rel="alternate" type="application/rss+xml" title="Kira McLean" />
+    <link href="" rel="feed" type="application/rss+xml" title="Kira McLean" />
+
+    <link href='https://fonts.googleapis.com/css?family=Amatic+SC' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Oxygen:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Miniver' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="http://kiramclean.com//css/main.css">
+
+    
+      <title>Getting Started with Git | Kira McLean</title>
+      <meta property="og:title" content="Getting Started with Git | Kira McLean">
+      <meta property="og:type" content="article">
+    
+
+    <meta property="og:url" content="http://kiramclean.com/blog/learning/2015.12.05-getting-started-with-git/">
+    
+    
+  </head>
+
+
+<body>
+
+  <header>
+    <a id="logo" href="http://kiramclean.com/">Kira McLean</a>
+
+    <nav>
+      <ul>
+        <li><a href="http://kiramclean.com/blog/">Blog</a></li>
+        <li><a href="http://kiramclean.com/projects/">Web Development</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+
+  <section>
+    <article>
+      <h1>Getting Started with Git</h1>
+      <time>December 5, 2015</time><span>•</span><p>8 min read</p>
+      
+
+<p>Git makes keeping track of your progress and fixing mistakes &ldquo;simple&rdquo;, as they say. I was beyond confused at first but things slowly started to click. If you can wrap your head around what it does and how it works, git can idiot-proof your workflow and set you free to experiment on new features without worrying about ruining your project. Adding and committing files to a git repository is the first thing most people teach, and it was the first thing I learned. This was great until I actually needed to undo some changes and had no idea how. It&rsquo;s really worth taking the time to explore what git can do beyond just keeping a Dropbox-style history of your progress. It&rsquo;s especially useful when you need to go back in time. These are some notes from my attempt to learn how to fix mistakes with git.</p>
+
+<h2 id="first-understand-the-difference-between-git-and-github:a528cf4c8580d30a38fbff171d5ada2a">First, understand the difference between git and github</h2>
+
+<p>Git is the version control software itself. It&rsquo;s like a video camera rolling behind the scenes as you work that captures every insertion and deletion in every file in your repository and you choose when to save a snapshot for later reference &ndash; these are your commits. Github, on the other hand, is one of many online git repository hosting services. It extends the functionality of git, the software, especially when it comes to collaboration, adding features like pull requests, issue tracking, and discussion forums. This seems like a totally obvious distinction now, but I mention it because I was confused for about a week about why I couldn&rsquo;t make a pull request from the command line. It&rsquo;s because pull requests are not a feature of git, they are something extra that you can do if you use github to host your repositories.</p>
+
+<h2 id="basic-git-workflow:a528cf4c8580d30a38fbff171d5ada2a">Basic git workflow</h2>
+
+<p>The main thing to understand about git is that there are three &ldquo;states&rdquo; files can have in your git workflow. I think of it as there being three different containers they can be in &ndash; the working directory, staging area, or the repository.</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">Container</th>
+<th align="center">Files Here Are:</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">Working directory</td>
+<td align="center">New and/or modified</td>
+</tr>
+
+<tr>
+<td align="center">Staging area</td>
+<td align="center">Marked for committing</td>
+</tr>
+
+<tr>
+<td align="center">Repository</td>
+<td align="center">Recorded in history</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li><p>Files in the working directory are new or modified and <strong>not</strong> &ldquo;staged for commit&rdquo; &ndash; this means they will not be included in your next snapshot and any changes you made in them will not be recorded in history until you move them up a level to the staging area.</p></li>
+
+<li><p>Files in the staging are ready to commit. When you commit, only changes to files that are in the staging area at that time will be added to your &ldquo;official&rdquo; history. Often you will just be committing everything you&rsquo;ve worked on, but if your workflow is scattered a bit, or if you are in the middle of working on something and your team needs an update but you don&rsquo;t want to push all of your changes, you can stage individual files by name.</p></li>
+
+<li><p>The last container is the actual repository. This is where your final changes and snapshots are stored. Files in here are safe and sound in the state in which you last committed them.</p></li>
+</ul>
+
+<p>Once you understand these concepts and get how git works, learning the commands below is simple because you will understand what each one is actually doing. I was confused when I first started learning git because I was just typing things and watching the magic happen. It&rsquo;s important to drill the commands so you can remember them, but it&rsquo;s also important to understand what&rsquo;s going on when you press enter.</p>
+
+<h2 id="fixing-mistakes-with-git:a528cf4c8580d30a38fbff171d5ada2a">Fixing mistakes with git</h2>
+
+<p>To move files between the different states use the commands below. Using <code>git reset</code> is a pretty straightforward way to fix your mistakes and it comes with options you can choose depending how messed up your files are. Note that each command requires extra arguments but I left these out of the diagram. Some common ones are listed underneath it.</p>
+
+<p><img src="http://kiramclean.com/images/gits_containers.png" alt="Git's containers and how to move files between them" />
+<em>Git&rsquo;s containers and how to move files between them.</em></p>
+
+<table>
+<thead>
+<tr>
+<th align="right">Command</th>
+<th align="left">Argument</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="right"><code>git add</code></td>
+<td align="left"><code>.</code></td>
+</tr>
+
+<tr>
+<td align="right"></td>
+<td align="left"><code>file_name.ext</code></td>
+</tr>
+
+<tr>
+<td align="right"><code>git commit</code></td>
+<td align="left"><code>-m &lt;commit message&gt;</code></td>
+</tr>
+
+<tr>
+<td align="right"><code>git reset</code></td>
+<td align="left"><code>--soft HEAD~3</code></td>
+</tr>
+
+<tr>
+<td align="right"><code>git reset</code></td>
+<td align="left"><code>HEAD~2</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>Think of your commits as snapshots in time. If you pass <code>HEAD~2</code> as an argument you are selecting the last 2 commits. What happens to those commits depends on what option you specified.</p>
+
+<p><img src="http://kiramclean.com/images/git_reset.png" alt="Your git commits" />
+<em>Your git commits. Read on to see what happens in each case.</em></p>
+
+<ul>
+<li><p><code>git reset --soft</code> undoes the commits you pass it and puts all of the changes recorded in those commits back in the staging area ready to commit again. This is useful for renaming some changes if you made unnecessary commits and want to combine multiple snapshots into one. I find this simpler than interactively rebasing and trying to &ldquo;squash&rdquo; commits. The difference is it&rsquo;s all or nothing &ndash; if you pass <code>git reset --soft</code> the past 3 commits (<code>HEAD~3</code>), <strong>all</strong> of the changes contained in those commits get sent back to the staging area, unlike rebasing where you can interactively choose which commits get saved, thrown away, or edited.</p></li>
+
+<li><p><code>git reset --mixed</code>, or just <code>git reset</code> since <code>--mixed</code> is the default option, can be used in a similar way but is used when you need to make changes to the files you committed, not just rename the commits. It undoes the commits and places the changed files back in the working directory to be edited some more if you want to.</p></li>
+
+<li><p>There is also a third option: <code>git reset --hard</code>. This is a destructive command, meaning it completely deletes those highlighted commits &ndash; that means all of the changes to the files included in the commits will be <strong>erased</strong>. Be careful with this because it&rsquo;s irreversible and you WILL lose work. The reason it exists is because sometimes that&rsquo;s what you want. If you royally effed up and want to permanently reset your files to an earlier state, this is what <code>reset --hard</code> is for. Before you use it make sure you actually want to erase all of your changes because there&rsquo;s no going back. It&rsquo;s like rewinding the clock on your work.</p></li>
+</ul>
+
+<h2 id="be-careful-about-re-writing-history:a528cf4c8580d30a38fbff171d5ada2a">Be careful about re-writing history</h2>
+
+<p>There are a couple of important things to note about resetting. Keep in mind that if you are moving things <strong>out</strong> of the repository (i.e., things that have already been committed), you are undoing past commits and re-writing history. This will create conflicts with remote repos if you&rsquo;ve already pushed the changes you are editing, and it can be confusing for collaborators. As a best practice, only reset or rebase commits you haven&rsquo;t pushed remotely yet. If you have to edit history that is already on github, only do it on your own repos and ones where nobody else is counting on your work.</p>
+
+<p>If you are on a team and need to fix some changes in the past but don&rsquo;t want to confuse your collaborators you can use <code>git revert HEAD~2</code> (or however many commits you want to revert). Unlike resetting, which erases your commits and lets you completely redo them, reverting creates a new commit that exactly undoes the changes in the commits you pass it. It still undoes your changes, but it leaves a record behind so others can make sense of the commit history.</p>
+
+<h3 id="merge-conflicts-and-overwriting-a-remote-history:a528cf4c8580d30a38fbff171d5ada2a">Merge conflicts and overwriting a remote history</h3>
+
+<p>There&rsquo;s one last important note about re-writing history like this. If you rearrange commits that have already been pushed to github in your local repo, as I mentioned above, you will create conflicts between your local repo and your remote one. Your remote repo will have a different history than your local one, and if you try <code>git push</code> you will get an error something like:</p>
+
+<p><code>Updates were rejected because the tip of your current branch is behind its remote counterpart. Integrate the remote changes (e.g. 'git pull ...') before pushing again.</code></p>
+
+<p>If you do what it says, you will be merging your remote history (which is the OLD history you just overwrote) into your NEW history &ndash; the one you re-wrote with resetting, rebasing, or whatever else, and make a real git mess. If you want to overwrite your remote history with your local history (the one you just re-built), you can use <code>git push -f &lt;remote&gt; &lt;branch&gt;</code>. The <code>-f</code> is for <code>--force</code>. Again, BE CAREFUL doing this, because you will be erasing the history of the remote repo and replacing it with the history you rewrote for your local repo. If this is what you want then go ahead, but make sure nobody else is working on the same repo, or that if they are they know what you&rsquo;re up to, because this will make a mess for anyone else who depends on the history of that repo.</p>
+
+<p>In general, it&rsquo;s better to get into the habit of writing meaningful commit messages that capture a series of related changes to your project, but there are lots of cases where you might make too many or too few commits and want to re-write your history. Git comes with tons of tools beyond just committing and pushing to a remote repository and it&rsquo;s well worth taking some time to explore them.</p>
+
+    </article>
+  </section>
+
+  </main>
+
+  <footer>
+    <div id='contact'>
+  <ul>
+    
+      <li><a href="//github.com/kiramclean" target="_blank">
+        <i class="fa fa-github-square"></i>
+        <p>GitHub</p>
+      </a></li>
+    
+
+    
+      <li><a href="//twitter.com/kiraemclean" target="_blank">
+        <i class="fa fa-twitter-square"></i>
+        <p>Twitter</p>
+      </a></li>
+    
+
+    
+      <li><a href="//linkedin.com/in/kiramclean" target="_blank">
+        <i class="fa fa-linkedin-square"></i>
+        <p>LinkedIn</p>
+      </a></li>
+    
+
+    
+      <li><a href="mailto:email@kiramclean.com">
+        <i class="fa fa-envelope-square"></i>
+        <p>Email</p>
+      </a></li>
+    
+  </ul>
+</div>
+
+    <nav>
+  <ul>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <li><a href="http://kiramclean.com/pages/about/">About Me</a></li>
+    
+  
+    
+  
+    
+      <li><a href="http://kiramclean.com/pages/wifi-and-coffee/">Wifi and Coffee</a></li>
+    
+  
+  </ul>
+</nav>
+
+
+
+
+    <div id="copy">
+      <p>&copy; 2016 Kira McLean</p>
+    </div>
+
+  </footer>
+</body>
+</html>
+

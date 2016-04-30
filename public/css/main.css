@@ -1,0 +1,329 @@
+* {
+  border: 0;
+  box-sizing: border-box;
+  font-size: 100%;
+  font: inherit;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline; }
+
+blockquote, q {
+  quotes: none; }
+
+main {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
+
+section {
+  max-width: 42em;
+  margin: 1.5em 0;
+  width: 80%; }
+
+article time, article time + span, article time + span + p {
+  display: inline-block;
+  padding-bottom: 1.5em; }
+  article time + span, article time + span + span, article time + span + p + span {
+    padding: 0 0.75em; }
+
+.blog-post {
+  margin-top: 1.5em; }
+  @media screen and (min-width: 42em) {
+    .blog-post {
+      margin-top: 3em; } }
+  .blog-post h2 {
+    padding: 0; }
+  .blog-post p a, .blog-post p + a {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-left: 0.75em;
+    font-family: "Montserrat", Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 83%;
+    color: rgba(51, 51, 51, 0.6); }
+    .blog-post p a:hover, .blog-post p + a:hover {
+      color: #333333;
+      -webkit-transition: all 350ms ease;
+      transition: all 350ms ease; }
+
+.project h3 {
+  font-family: Garamond, Helvetica Neue, Helvetica, Arial, sans-serif;
+  letter-spacing: 0;
+  font-weight: bold;
+  font-size: 1.1em;
+  padding: 0.75em 0; }
+
+html {
+  height: 100vh; }
+
+body {
+  background-color: rgba(255, 255, 255, 0.3);
+  color: #333333;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  font-family: Garamond, Helvetica Neue, Helvetica, Arial, sans-serif;
+  -webkit-font-feature-settings: "kern" 1;
+          font-feature-settings: "kern" 1;
+  -webkit-font-kerning: normal;
+          font-kerning: normal;
+  font-size: 1.1em;
+  font-weight: 400;
+  line-height: 1.5;
+  min-height: 100vh; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Montserrat", Helvetica Neue, Helvetica, Arial, sans-serif;
+  letter-spacing: 1px;
+  padding-top: 0.75em; }
+  @media screen and (min-width: 64em) {
+    h1, h2, h3, h4, h5, h6 {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+          -ms-flex-align: center;
+              align-items: center; }
+      h1 code, h2 code, h3 code, h4 code, h5 code, h6 code {
+        margin: 0 0.375em; } }
+
+h1 {
+  font-size: 1.76em; }
+  @media screen and (min-width: 42em) {
+    h1 {
+      font-size: 3.3em; } }
+
+h2 {
+  font-size: 1.43em; }
+  @media screen and (min-width: 42em) {
+    h2 {
+      font-size: 1.87em; } }
+
+h3 {
+  font-size: 1.1em; }
+  @media screen and (min-width: 42em) {
+    h3 {
+      font-size: 1.21em; } }
+
+section h1 {
+  padding: 0; }
+
+p {
+  padding: 0.5em 0; }
+
+a, a:visited {
+  border-bottom: 2px solid rgba(72, 219, 219, 0.3);
+  color: #333333;
+  text-decoration: none; }
+  a:hover, a:visited:hover {
+    border-bottom: 2px solid #48dbdb;
+    color: black;
+    -webkit-transition: border 350ms ease;
+    transition: border 350ms ease; }
+
+strong {
+  font-weight: bold; }
+
+ul {
+  margin-left: 1.5em; }
+
+figure img,
+img {
+  width: 90%;
+  height: auto;
+  margin: 0 auto;
+  display: block; }
+
+.profile img {
+  border-radius: 3px;
+  height: 35vw;
+  margin: 1.5em 0;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: 0 17%;
+     object-position: 0 17%;
+  width: 100%; }
+
+figcaption, img + em {
+  color: #999999;
+  display: block;
+  font-size: small;
+  text-align: center; }
+
+time, article time + span, article time + span + p {
+  color: #48dbdb;
+  font-family: "Montserrat", Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 75%;
+  letter-spacing: 1px;
+  text-transform: uppercase; }
+  @media screen and (min-width: 42em) {
+    time, article time + span, article time + span + p {
+      font-size: 85%; } }
+
+table {
+  border-collapse: collapse;
+  margin: 1.5em auto; }
+  table th {
+    border-bottom: 3px double #48dbdb;
+    font-weight: bold;
+    text-align: center; }
+    table th:not(:last-child) {
+      border-right: 1px solid #48dbdb; }
+  table td {
+    padding: 0.25em 0.75em; }
+    table td:not(:last-child) {
+      border-right: 1px solid #48dbdb; }
+
+blockquote {
+  background-color: #e6e6e6;
+  border-left: 8px solid #48dbdb;
+  padding: 0 1.5em;
+  margin: 1.5em 0 1.5em 3em; }
+  blockquote code {
+    background-color: #cccccc; }
+
+code, pre {
+  font-family: monospace;
+  background-color: #e6e6e6;
+  border-radius: 3px;
+  overflow-x: auto;
+  padding: 0.75em;
+  margin: 0.75em 0; }
+
+code {
+  font-size: 0.99em;
+  padding: 2px 6px; }
+
+pre {
+  font-size: 0.99em;
+  padding: 1.5em; }
+
+.highlight {
+  background: transparent !important; }
+
+#quote-text {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+  color: rgba(51, 51, 51, 0.8);
+  font-family: "Amatic SC", Helvetica Neue, sans-serif;
+  font-size: 8vw;
+  padding: 0.75em; }
+  @media screen and (min-width: 42em) {
+    #quote-text {
+      font-size: 6vw; } }
+
+#quote-author {
+  color: rgba(255, 255, 255, 0.7);
+  float: right;
+  font-family: "Satisfy", Garamond, cursive;
+  font-size: 3vw;
+  padding: 0 0.375em; }
+  @media screen and (min-width: 42em) {
+    #quote-author {
+      font-size: 2vw; } }
+
+#homepage {
+  background: url(/images/homepage.jpg);
+  background-size: cover; }
+  #homepage footer, #homepage header {
+    width: 80%;
+    max-width: 42em;
+    margin: 3em auto;
+    border-radius: 3px; }
+  #homepage section {
+    max-height: 40vh;
+    text-align: center; }
+
+footer, header {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: rgba(255, 255, 255, 0.3);
+  color: rgba(51, 51, 51, 0.8);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  font-family: "Montserrat", Helvetica Neue, Helvetica, Arial, sans-serif;
+  padding: 0.5em 1.5em; }
+  @media screen and (min-width: 42em) {
+    footer, header {
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+      -webkit-flex-direction: row;
+          -ms-flex-direction: row;
+              flex-direction: row;
+      -webkit-box-pack: justify;
+      -webkit-justify-content: space-between;
+          -ms-flex-pack: justify;
+              justify-content: space-between; } }
+  footer a, footer a:visited, header a, header a:visited {
+    border: 0;
+    color: rgba(51, 51, 51, 0.8);
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center; }
+    footer a:hover, footer a:visited:hover, header a:hover, header a:visited:hover {
+      border: 0;
+      color: #333333;
+      -webkit-transition: all 350ms ease;
+      transition: all 350ms ease;
+      text-shadow: 1px 0 0 #545454; }
+  footer ul, header ul {
+    margin: 0;
+    padding: 0; }
+  footer li, header li {
+    display: inline-block;
+    list-style: none; }
+    footer li:not(:first-child), header li:not(:first-child) {
+      padding-left: 1.5em; }
+  footer nav, header nav {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center; }
+
+header #logo {
+  font-family: "Miniver", cursive;
+  font-size: 1.65em; }
+
+header nav {
+  font-size: 90%; }
+
+footer {
+  margin-top: 3em; }
+  footer nav {
+    font-size: 80%;
+    padding: 0.375em 0; }
+  footer #copy {
+    font-size: 70%; }
+  footer #contact p {
+    display: none; }
+
+/*# sourceMappingURL=main.css.map */

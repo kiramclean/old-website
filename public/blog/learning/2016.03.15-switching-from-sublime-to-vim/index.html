@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="generator" content="Hugo 0.15" />
+    <html lang="en-CA">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="" rel="alternate" type="application/rss+xml" title="Kira McLean" />
+    <link href="" rel="feed" type="application/rss+xml" title="Kira McLean" />
+
+    <link href='https://fonts.googleapis.com/css?family=Amatic+SC' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Oxygen:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Miniver' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="http://kiramclean.com//css/main.css">
+
+    
+      <title>Switching From Sublime to Vim | Kira McLean</title>
+      <meta property="og:title" content="Switching From Sublime to Vim | Kira McLean">
+      <meta property="og:type" content="article">
+    
+
+    <meta property="og:url" content="http://kiramclean.com/blog/learning/2016.03.15-switching-from-sublime-to-vim/">
+    
+    
+  </head>
+
+
+<body>
+
+  <header>
+    <a id="logo" href="http://kiramclean.com/">Kira McLean</a>
+
+    <nav>
+      <ul>
+        <li><a href="http://kiramclean.com/blog/">Blog</a></li>
+        <li><a href="http://kiramclean.com/projects/">Web Development</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+
+  <section>
+    <article>
+      <h1>Switching From Sublime to Vim</h1>
+      <time>March 15, 2016</time><span>•</span><p>9 min read</p>
+      
+
+<p>I learned how to code using Sublime as my editor but recently joined a team that uses mostly vim. There are a few reasons I prefer Vim now, but there are still a few things I miss about Sublime. Here I&rsquo;ll tell you what I did to try to bridge the transition and bring the features I missed from Sublime to Vim.</p>
+
+<h2 id="why-switch:e01afad571f37f739bdd6e73fe2f2f1b">Why Switch?</h2>
+
+<p>First of all, why would you switch editors? A lot of people don&rsquo;t see the point and wouldn&rsquo;t consider it anyway. If you already know something, why throw it out and start over from nothing? A couple reasons. The main one is speed. You can only move around a document so fast with arrow keys. Eventually you reach a point where your fingers can&rsquo;t keep up with your mind because they&rsquo;re always reaching for the arrow keys and/or some combination of <code>ctrl</code>, <code>cmd</code>,<code>shift</code>, and <code>alt</code>. Vim solves this problem wonderfully. Another reason I switched is that we do a lot of pair programming on our team, and it&rsquo;s hard to switch between two different types of editors. If the person you&rsquo;re paring with is used to vim, their muscle memory is going to cause a lot of hiccups if you&rsquo;re working together in a different editor. I want to make it as painless as possible for people to pair with me because I want to pair program as much as possible so I can learn faster, so I adopted their editor in the interest of allowing for a less painful pairing experience on their end. Pair programming also made me realize some things I was missing out on in my old editor. During my first few pair programming sessions my partner would ask how to do this or that in Sublime, and I would be like &ldquo;wut? editors can do that??&rdquo;. &ldquo;Yes, mine does&rdquo; was always their answer, and I was intrigued.</p>
+
+<p>Modern editors like Sublime, which I was using, are awesome and powerful but they have limitations and can be painful to extend. With an editor like Vim the possibilities are seemingly endless. To be fair it has about a 20 year head start, so maybe that accounts for some of the differences, but either way so much functionality comes built in without the need for sometimes buggy plugins it&rsquo;s worth a look. The learning curve seems to have no plateau and everything you think your editor should able to do, Vim does. I&rsquo;ll talk about my favourite parts below and also about how to bring back a few of the main features you&rsquo;re going to miss if you&rsquo;re switching from a modern editor like Sublime or Atom.</p>
+
+<h2 id="bring-back-my-features:e01afad571f37f739bdd6e73fe2f2f1b">Bring Back My Features</h2>
+
+<p>The first thing I did when I started using Vim was make it just like Sublime. Some people might say I&rsquo;m missing the point, but Sublime and Atom are so popular because their features are awesome, and that doesn&rsquo;t mean Vim can&rsquo;t steal their ideas and implement them on top of all the super-user functionality that comes baked in. When you first switch to Vim it&rsquo;s hard to adjust, but you can get your functionality back with some configuration. The things I missed the most when switching from Sublime to Vim were autocompletion, snippets, fuzzy-finding files, multiple cursors, git status tracking, automatic linting, and project indexing. I realize that&rsquo;s a lot of stuff, but Vim is worth it. Luckily an army of developers has dedicated a lot of time and effort to bringing all of this functionality to Vim, you just have to install it. These are the plugins I wouldn&rsquo;t go without that bring Vim up to par with a modern editor:</p>
+
+<ul>
+<li><strong>Vallroic/YouCompleteMe</strong> - This is a basic autocompletion plugin. It does what you expect, bringing smart auto-completion to Vim. It suggests completions as you type, which you can insert with tab, or whatever auto-complete trigger you configure.</li>
+<li><strong>SirVer/ultisnips</strong> - This is a plugin for snippets. I will admit it was a royal pain in the ass to get this to work as expected, mostly because of conflicts with YouCompleteMe, but once you have it set up it works great. I had some trouble setting it up but eventually got ultisnips and YouCompleteMe to play nice together.</li>
+<li><strong>ctrlpvim/ctrlp.vim</strong> - This is a fuzzy-finder for vim, same as Sublime and Atom. The default trigger is, well, <code>ctrl+p</code>, and it allows you to search your project directory for a file.</li>
+<li><strong>terryma/vim-multiple-cursors</strong> - This brings a reasonably well-functioning implementation of multiple cursors to Vim. It&rsquo;s a little laggy compared to Sublime&rsquo;s multiple cursors, but the <a href="https://github.com/vim/vim/blob/master/runtime/doc/version8.txt">upcoming release of Vim 8</a> allows for asynchronous communication with background jobs which should be a big upgrade for plugins like this and others that need to do things while Vim waits for the next keystroke. Once you have your cursor positions selected you&rsquo;ll be in vidual mode, so use <code>ctrl+v</code> to switch to normal mode, then you can use all the normal commands to insert or change the text around your cursors.</li>
+<li><strong>airblade/gitgutter</strong> - This is a plugin that shows git diffs, additions, and removals in the gutter of your editor (the column beside the numbers), like Atom&rsquo;s default. This one is easy and behaves perfectly out of the box.</li>
+</ul>
+
+<blockquote>
+<h4 id="installing-packages-in-vim:e01afad571f37f739bdd6e73fe2f2f1b">Installing Packages in Vim</h4>
+
+<p>Note that Vim doesn&rsquo;t come with a built in package manager (yet.. this is also planned for Vim 8). For now you have to set up with one of the many package managers. I use <a href="https://github.com/junegunn/vim-plug">vim plug</a>, but there&rsquo;s also vundler, pathogen, and many others.</p>
+</blockquote>
+
+<h3 id="project-indexing:e01afad571f37f739bdd6e73fe2f2f1b">Project Indexing</h3>
+
+<p>This is something taken care of natively by Sublime (you just have to map a key binding to &ldquo;command&rdquo;: &ldquo;goto_definition&rdquo;). If your cursor is over a method name, your shortcut will bring you to the definition of that method wherever it is in the project. I like this, especially when joining a mature project where method definitions can be spread out. Vim can do this do but requires the help of ctags. It&rsquo;s not complicated, but is enough of a process I think it&rsquo;s worth its own post. That&rsquo;s upcoming.</p>
+
+<h3 id="linting:e01afad571f37f739bdd6e73fe2f2f1b">Linting</h3>
+
+<p>If you&rsquo;re used to live linting, this is something you will miss in Vim. There are some plugins that do a good job, but I find they slow my Vim way down. This could also be solved with the release of Vim 8 and the capability for Vim to communicate with background processes so I think it&rsquo;s probably just a matter of time before Vim gets Sublime or Atom-style live linting. In the meantime, you can run linter commands on your project from the command line.</p>
+
+<h2 id="what-vim-does-better:e01afad571f37f739bdd6e73fe2f2f1b">What Vim Does Better</h2>
+
+<p>The downside of Vim is that is can be really annoying to set up, but once you have it up and running there are a lot of things it does much better than my old editor. These are a few of the major highlights that sold me.</p>
+
+<h3 id="managing-panes:e01afad571f37f739bdd6e73fe2f2f1b">Managing panes</h3>
+
+<p>To split a screen in vim you just type <code>:sp</code> and hit enter. For a vertical split you type <code>:vs</code>. You can have as many panes open as you want and jump between them using <code>ctrl+w</code> and <code>h/j/k/l</code>, depending on the direction you want to move in. You can resize them using <code>ctrl+w</code> and <code>+</code> or <code>-</code>. To move a pane&rsquo;s position you just hit <code>ctrl+w</code> and <code>shift+H/J/K/L</code> depending on where you want the pane to end up. This is super useful for someone like me who always has a bunch of tabs and files open. Being able to adjust the size and layout of each pane and see them all on one screen makes it easy to take in a snapshot of a given problem or task you&rsquo;re working on. Also, each tab has it&rsquo;s own pane configuration, so you can switch between contexts and keep related files together. Think of it as panes within tabs instead of tabs within panes. This makes it super easy to have a bunch of files and their specs open side by side and make sure you&rsquo;re always seeing them together. To make pane navigation and adjustment even easier, most people map these commands to even simpler ones, like mapping <code>ctrl+w j</code> to just <code>ctrl+j</code> to focus on the screen below. This brings me to another awesome thing about vim, key bindings.</p>
+
+<h3 id="custom-shortcuts:e01afad571f37f739bdd6e73fe2f2f1b">Custom shortcuts</h3>
+
+<p>Vim is a modal editor, which just means you work in different &ldquo;modes&rdquo;. For example to type text you need to be in insert mode. To highlight text you switch to visual mode. To replace text you switch to select mode. And to navigate a file you work in &ldquo;normal&rdquo; mode. There are also command and &ldquo;ex&rdquo; modes, which allow you to send more complicated commands to the editor or directly to your command line to make it do all kinds of cool things, like search or sorting. The main advantage of having the concept of normal mode in vim is that it opens up virtually infinite possibilities for key bindings. Unlike most editors, if you open vim and type <code>j</code>, it won&rsquo;t print a j on the screen unless you&rsquo;re in insert mode; it will move your cursor down a line. This is really wacky at first, but you get used to it pretty quickly and come to appreciate the possibilities it opens up. In Sublime or Atom all my shortcuts had to be <code>cmd+</code> or <code>ctrl+</code> or <code>alt+</code> something. This very quickly leads to overloading key mappings and leaves you coming up with ridiculous key combinations like <code>cmd+ctrl+shift+w</code> if you want to define a custom behaviour in your editor (I used to have this mapped a little custom plugin to close all other tabs besides the one I was working on in Sublime. In vim I just type <code>:tabonly</code> as in, keep only this tab open. Nicer? You decide).</p>
+
+<h2 id="a-couple-caveats:e01afad571f37f739bdd6e73fe2f2f1b">A Couple Caveats</h2>
+
+<p>Obviously I think Vim is great, but there are some people it&rsquo;s not for. It&rsquo;s an amazing <em>editor</em>. If you do mostly writing, though, as opposed to editing, you might be better off with a more modern editor like Sublime or Atom. Like I talked about above, you can get back basic snippet and auto-completion functionality, but if you rely on these things heavily you&rsquo;ll miss them. I&rsquo;m thinking mostly of emmet, and people who write a lot of markup and stylesheets. I&rsquo;ve worked around the problem and switched to Slim as a templating language to avoid having to write HTML or Erb altogether, but I get that that&rsquo;s not always an option for people.</p>
+
+<p>One other thing Vim doesn&rsquo;t have is a simple way to implement basic word processing. If you write a lot of words, as opposed to code, you might miss things like markdown preview and spell check. There are ways to get these features but they&rsquo;re simple or nicely integrated. People argue, and I tend to agree with them, that this just isn&rsquo;t what Vim is for. Where it really excels is really quickly navigating large files and projects full of lots of files. If you do mostly content creation, I think the modern editors bring a lot more the table in terms of being able to streamline a word processing or technical writing workflow.</p>
+
+<p>Anyway, there it is. If you&rsquo;re switching to Vim from a modern editor hopefully you can use a few of these tips to make it easier on yourself. If you know of any other plugins or settings that make your workflow in Vim great let me know! Happy coding.</p>
+
+    </article>
+  </section>
+
+  </main>
+
+  <footer>
+    <div id='contact'>
+  <ul>
+    
+      <li><a href="//github.com/kiramclean" target="_blank">
+        <i class="fa fa-github-square"></i>
+        <p>GitHub</p>
+      </a></li>
+    
+
+    
+      <li><a href="//twitter.com/kiraemclean" target="_blank">
+        <i class="fa fa-twitter-square"></i>
+        <p>Twitter</p>
+      </a></li>
+    
+
+    
+      <li><a href="//linkedin.com/in/kiramclean" target="_blank">
+        <i class="fa fa-linkedin-square"></i>
+        <p>LinkedIn</p>
+      </a></li>
+    
+
+    
+      <li><a href="mailto:email@kiramclean.com">
+        <i class="fa fa-envelope-square"></i>
+        <p>Email</p>
+      </a></li>
+    
+  </ul>
+</div>
+
+    <nav>
+  <ul>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <li><a href="http://kiramclean.com/pages/about/">About Me</a></li>
+    
+  
+    
+  
+    
+      <li><a href="http://kiramclean.com/pages/wifi-and-coffee/">Wifi and Coffee</a></li>
+    
+  
+  </ul>
+</nav>
+
+
+
+
+    <div id="copy">
+      <p>&copy; 2016 Kira McLean</p>
+    </div>
+
+  </footer>
+</body>
+</html>
+

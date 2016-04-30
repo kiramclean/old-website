@@ -1,0 +1,707 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kira McLean</title>
+    <link>http://kiramclean.com/</link>
+    <description>Recent content on Kira McLean</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-CA</language>
+    <lastBuildDate>Thu, 28 Apr 2016 23:55:06 -0400</lastBuildDate>
+    <atom:link href="http://kiramclean.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Setting Up Sass Source Maps With Gulp</title>
+      <link>http://kiramclean.com/blog/learning/setting-up-sass-source-maps-with-gulp/</link>
+      <pubDate>Thu, 28 Apr 2016 23:55:06 -0400</pubDate>
+      
+      <guid>http://kiramclean.com/blog/learning/setting-up-sass-source-maps-with-gulp/</guid>
+      <description>
+
+&lt;p&gt;Sass is awesome, hugo is awesome, and gulp is awesome.&lt;/p&gt;
+
+&lt;h2 id=&#34;add-source-maps:16a7451ffd494ce778fd596d244fec84&#34;&gt;Add source maps&lt;/h2&gt;
+
+&lt;p&gt;Get sourcemaps for gulp&lt;/p&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;npm install --save-dev gulp-sourcemaps
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Then set up the gulp task&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;include sourcemaps at the top of your source maps&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;add this to your &lt;code&gt;gulp.task(&#39;sass&#39;)&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;.pipe(sourcemaps.init())
+// error logging
+.pipe(sourcemaps.write())&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;enable source maps in your browser (for chrome, this is in settings)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;add a file to your workspace (restart developer tools if it seems like you&amp;rsquo;re having issues with files or folders showing up)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;chrome is really smart and once you map one file it will most likely find the rest of them automatically&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;While we&amp;rsquo;re at it, add autoprefixing to your css. There is no reason not to do this, especially once you already have a custom processing pipeling set up with gulp. This is just one more filter for your code to pass through. Add it with&lt;/p&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;npm install --save-dev gulp-autoprefixer
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Add it to your gulpfile:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;// at the top of your gulpfile.js with all the other requires
+var &lt;span style=&#34;color: #bb60d5&#34;&gt;autoprefixer&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; require&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;gulp-autoprefixer&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;;
+
+// after sourcemaps, but before output
+.pipe&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;autoprefixer&lt;span style=&#34;color: #666666&#34;&gt;())&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;By default autoprefixer supports:
+- browsers with over 1% marketshare
+- last 2 versions of all browsers
+- Firefox ESR
+- Opera 12.1&lt;/p&gt;
+
+&lt;p&gt;You can set it up to use a custom configuration by passing it an array of options&lt;/p&gt;
+
+&lt;p&gt;** NOTE: this might cause problems depending on where in your gulpfile you add the autoprefixing &amp;ndash; I added it AFTER the sourec maps which caused &lt;code&gt;CssSyntaxError .... Missed Semicolon&lt;/code&gt;. If this happens to you try rearranging the order of your pipes and recompiling.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Setting Up Gulp for CSS Pre- and Post- Processing</title>
+      <link>http://kiramclean.com/blog/learning/2016.04.27-setting-up-gulp-for-css-pre-and-post-processing/</link>
+      <pubDate>Wed, 27 Apr 2016 20:56:34 -0400</pubDate>
+      
+      <guid>http://kiramclean.com/blog/learning/2016.04.27-setting-up-gulp-for-css-pre-and-post-processing/</guid>
+      <description>&lt;p&gt;I recently rebuilt this blog with Hugo, an awesome super fast static site builder made with Go. It&amp;rsquo;s a super lean static page generator that does a great job of organizing your content into easy to manage sections.&lt;/p&gt;
+
+&lt;p&gt;The downside is that it&amp;rsquo;s BYO-front end. Coming from the world of Rails and other frameworks built with Ruby, this was new for me. With Rails you just put your code in the folders that come with the app and it magically turns into one long CSS or JS file ready to deploy. If you want to use Sass or Scss instead, there&amp;rsquo;s a gem for that and using it is as simple as adding one line to your Gemfile. Then your app is ready to use Sass.&lt;/p&gt;
+
+&lt;p&gt;Hugo builds static sites, so you can only include vanilla CSS or JS. There are no preprocessors in the Hugo build process, so if you want to use Sass or Coffeescript, or even if you just want to spread out your front-end code over a bunch of files, you need to deal with turning into a single static file yourself.&lt;/p&gt;
+
+&lt;p&gt;I want to set up Gulp to deal with my assets. I want to write Sass spread out across many files and then run it through an auto-prefixing post-processor so I won&amp;rsquo;t have to worry about vendor prefixes. I also want to write Coffeescript in a bunch of little files and end up with a long JS file. I would also be great if I could get these files automatiaclly dumped into the &lt;code&gt;static&lt;/code&gt; folder in my hugo project.&lt;/p&gt;
+
+&lt;p&gt;I overthought this for a few hours and came across a dozen or so different workflows for dealing with this kind of thing. An awesome front end developer I know convinced me to settle with Gulp, and it seems to be a common favourite, so that&amp;rsquo;s what I&amp;rsquo;m going with. To learn how I set up Gulp to deal with my Sass and Coffeescript, read on. First of all, &lt;a href=&#34;https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md&#34;&gt;get gulp&lt;/a&gt;. They have great instructions in the readme, but basically just run&lt;/p&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;npm install --global gulp-cli
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Then, install gulp in your project directory. If you&amp;rsquo;re starting a new project from scratch, first run npm init in your project folder. This will just add a &lt;code&gt;package.json&lt;/code&gt; file for you and step you through adding some info about the project.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;// in your project root directory
+npm install --save-dev gulp
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;We&amp;rsquo;ll also need gulp-sass to handle our sass. The &lt;code&gt;--save-dev&lt;/code&gt; flag tells npm to add gulp and gulp-sass to the &lt;code&gt;devDependency&lt;/code&gt; list in your &lt;code&gt;package.json&lt;/code&gt; file.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;// still in your project root directory
+npm install --save-dev gulp-sass
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;blockquote&gt;
+&lt;p&gt;If you don&amp;rsquo;t have node (if you get somthing like &lt;code&gt;command not found: npm&lt;/code&gt;), get that too with &lt;code&gt;brew install node&lt;/code&gt;, if you&amp;rsquo;re on OSX.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Next you have to configure gulp. This is the part that sounds like a nightmare for people who aren&amp;rsquo;t used to front-end work, but it&amp;rsquo;s actually really simple.&lt;/p&gt;
+
+&lt;p&gt;First, create a &lt;code&gt;gulpfile.js&lt;/code&gt; in your project root directory. Add these two lines to initialize gulp and gulp-sass:
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;// in ./gulpfile.js&lt;/span&gt;
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;var&lt;/span&gt; gulp &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; require(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;gulp&amp;#39;&lt;/span&gt;);
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;var&lt;/span&gt; sass &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; require(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;gulp-sass&amp;#39;&lt;/span&gt;);
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Next, we need to tell gulp where to find the sass files and where to put the compiled css. Gulp works by building &amp;lsquo;tasks&amp;rsquo; that are basically lists of instructions of what to do. I guess that&amp;rsquo;s what all code is. Whatever. Here is a simple gulp task that grabs the sass source files from one place and dumps them in another.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;gulp.task(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;sass&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt;() {               &lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;// define a new gulp task named sass&lt;/span&gt;
+  &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; gulp.src(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;sass/*&amp;#39;&lt;/span&gt;)           &lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;// tell gulp where to find your sass files, relative to the gulpfile.js&lt;/span&gt;
+    &lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;// I have a mix of sass and scss files in my sass directory, but nothing else, so I just tell gulp to grap everything in there&lt;/span&gt;
+    .pipe(sass().on(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;error&amp;#39;&lt;/span&gt;, sass.logError)) &lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;// show error messages if sass fails to compile -- failing silently will just kill gulp&lt;/span&gt;
+    .pipe(gulp.dest(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;./static/css&amp;#39;&lt;/span&gt;));        &lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;// tell gulp where to dump your compiled css&lt;/span&gt;
+});
+
+gulp.task(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;default&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt;() {         &lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;// we also want to watch the files, so we don&amp;#39;t have to manually recompile every time we make some changes&lt;/span&gt;
+  gulp.watch(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;sass/*.sass&amp;#39;&lt;/span&gt;, [&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;sass&amp;#39;&lt;/span&gt;]);    &lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;// tell gulp which files to watch and an array with commands to run when those files are changed&lt;/span&gt;
+});
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Sass will build a css file for every sass file you have unless you prefix it with an underscore. If you have a bunch of css files don&amp;rsquo;t forget to include them all in your &lt;code&gt;&amp;lt;head&amp;gt;&lt;/code&gt; tag, or just prefix all your sass files with an underscore so sass only builds one long css file.&lt;/p&gt;
+
+&lt;p&gt;And that&amp;rsquo;s that. Setting up gulp is actually super simple.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Switching From Sublime to Vim</title>
+      <link>http://kiramclean.com/blog/learning/2016.03.15-switching-from-sublime-to-vim/</link>
+      <pubDate>Tue, 15 Mar 2016 21:39:18 -0400</pubDate>
+      
+      <guid>http://kiramclean.com/blog/learning/2016.03.15-switching-from-sublime-to-vim/</guid>
+      <description>
+
+&lt;p&gt;I learned how to code using Sublime as my editor but recently joined a team that uses mostly vim. There are a few reasons I prefer Vim now, but there are still a few things I miss about Sublime. Here I&amp;rsquo;ll tell you what I did to try to bridge the transition and bring the features I missed from Sublime to Vim.&lt;/p&gt;
+
+&lt;h2 id=&#34;why-switch:e01afad571f37f739bdd6e73fe2f2f1b&#34;&gt;Why Switch?&lt;/h2&gt;
+
+&lt;p&gt;First of all, why would you switch editors? A lot of people don&amp;rsquo;t see the point and wouldn&amp;rsquo;t consider it anyway. If you already know something, why throw it out and start over from nothing? A couple reasons. The main one is speed. You can only move around a document so fast with arrow keys. Eventually you reach a point where your fingers can&amp;rsquo;t keep up with your mind because they&amp;rsquo;re always reaching for the arrow keys and/or some combination of &lt;code&gt;ctrl&lt;/code&gt;, &lt;code&gt;cmd&lt;/code&gt;,&lt;code&gt;shift&lt;/code&gt;, and &lt;code&gt;alt&lt;/code&gt;. Vim solves this problem wonderfully. Another reason I switched is that we do a lot of pair programming on our team, and it&amp;rsquo;s hard to switch between two different types of editors. If the person you&amp;rsquo;re paring with is used to vim, their muscle memory is going to cause a lot of hiccups if you&amp;rsquo;re working together in a different editor. I want to make it as painless as possible for people to pair with me because I want to pair program as much as possible so I can learn faster, so I adopted their editor in the interest of allowing for a less painful pairing experience on their end. Pair programming also made me realize some things I was missing out on in my old editor. During my first few pair programming sessions my partner would ask how to do this or that in Sublime, and I would be like &amp;ldquo;wut? editors can do that??&amp;rdquo;. &amp;ldquo;Yes, mine does&amp;rdquo; was always their answer, and I was intrigued.&lt;/p&gt;
+
+&lt;p&gt;Modern editors like Sublime, which I was using, are awesome and powerful but they have limitations and can be painful to extend. With an editor like Vim the possibilities are seemingly endless. To be fair it has about a 20 year head start, so maybe that accounts for some of the differences, but either way so much functionality comes built in without the need for sometimes buggy plugins it&amp;rsquo;s worth a look. The learning curve seems to have no plateau and everything you think your editor should able to do, Vim does. I&amp;rsquo;ll talk about my favourite parts below and also about how to bring back a few of the main features you&amp;rsquo;re going to miss if you&amp;rsquo;re switching from a modern editor like Sublime or Atom.&lt;/p&gt;
+
+&lt;h2 id=&#34;bring-back-my-features:e01afad571f37f739bdd6e73fe2f2f1b&#34;&gt;Bring Back My Features&lt;/h2&gt;
+
+&lt;p&gt;The first thing I did when I started using Vim was make it just like Sublime. Some people might say I&amp;rsquo;m missing the point, but Sublime and Atom are so popular because their features are awesome, and that doesn&amp;rsquo;t mean Vim can&amp;rsquo;t steal their ideas and implement them on top of all the super-user functionality that comes baked in. When you first switch to Vim it&amp;rsquo;s hard to adjust, but you can get your functionality back with some configuration. The things I missed the most when switching from Sublime to Vim were autocompletion, snippets, fuzzy-finding files, multiple cursors, git status tracking, automatic linting, and project indexing. I realize that&amp;rsquo;s a lot of stuff, but Vim is worth it. Luckily an army of developers has dedicated a lot of time and effort to bringing all of this functionality to Vim, you just have to install it. These are the plugins I wouldn&amp;rsquo;t go without that bring Vim up to par with a modern editor:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Vallroic/YouCompleteMe&lt;/strong&gt; - This is a basic autocompletion plugin. It does what you expect, bringing smart auto-completion to Vim. It suggests completions as you type, which you can insert with tab, or whatever auto-complete trigger you configure.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SirVer/ultisnips&lt;/strong&gt; - This is a plugin for snippets. I will admit it was a royal pain in the ass to get this to work as expected, mostly because of conflicts with YouCompleteMe, but once you have it set up it works great. I had some trouble setting it up but eventually got ultisnips and YouCompleteMe to play nice together.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;ctrlpvim/ctrlp.vim&lt;/strong&gt; - This is a fuzzy-finder for vim, same as Sublime and Atom. The default trigger is, well, &lt;code&gt;ctrl+p&lt;/code&gt;, and it allows you to search your project directory for a file.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;terryma/vim-multiple-cursors&lt;/strong&gt; - This brings a reasonably well-functioning implementation of multiple cursors to Vim. It&amp;rsquo;s a little laggy compared to Sublime&amp;rsquo;s multiple cursors, but the &lt;a href=&#34;https://github.com/vim/vim/blob/master/runtime/doc/version8.txt&#34;&gt;upcoming release of Vim 8&lt;/a&gt; allows for asynchronous communication with background jobs which should be a big upgrade for plugins like this and others that need to do things while Vim waits for the next keystroke. Once you have your cursor positions selected you&amp;rsquo;ll be in vidual mode, so use &lt;code&gt;ctrl+v&lt;/code&gt; to switch to normal mode, then you can use all the normal commands to insert or change the text around your cursors.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;airblade/gitgutter&lt;/strong&gt; - This is a plugin that shows git diffs, additions, and removals in the gutter of your editor (the column beside the numbers), like Atom&amp;rsquo;s default. This one is easy and behaves perfectly out of the box.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+&lt;h4 id=&#34;installing-packages-in-vim:e01afad571f37f739bdd6e73fe2f2f1b&#34;&gt;Installing Packages in Vim&lt;/h4&gt;
+
+&lt;p&gt;Note that Vim doesn&amp;rsquo;t come with a built in package manager (yet.. this is also planned for Vim 8). For now you have to set up with one of the many package managers. I use &lt;a href=&#34;https://github.com/junegunn/vim-plug&#34;&gt;vim plug&lt;/a&gt;, but there&amp;rsquo;s also vundler, pathogen, and many others.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;project-indexing:e01afad571f37f739bdd6e73fe2f2f1b&#34;&gt;Project Indexing&lt;/h3&gt;
+
+&lt;p&gt;This is something taken care of natively by Sublime (you just have to map a key binding to &amp;ldquo;command&amp;rdquo;: &amp;ldquo;goto_definition&amp;rdquo;). If your cursor is over a method name, your shortcut will bring you to the definition of that method wherever it is in the project. I like this, especially when joining a mature project where method definitions can be spread out. Vim can do this do but requires the help of ctags. It&amp;rsquo;s not complicated, but is enough of a process I think it&amp;rsquo;s worth its own post. That&amp;rsquo;s upcoming.&lt;/p&gt;
+
+&lt;h3 id=&#34;linting:e01afad571f37f739bdd6e73fe2f2f1b&#34;&gt;Linting&lt;/h3&gt;
+
+&lt;p&gt;If you&amp;rsquo;re used to live linting, this is something you will miss in Vim. There are some plugins that do a good job, but I find they slow my Vim way down. This could also be solved with the release of Vim 8 and the capability for Vim to communicate with background processes so I think it&amp;rsquo;s probably just a matter of time before Vim gets Sublime or Atom-style live linting. In the meantime, you can run linter commands on your project from the command line.&lt;/p&gt;
+
+&lt;h2 id=&#34;what-vim-does-better:e01afad571f37f739bdd6e73fe2f2f1b&#34;&gt;What Vim Does Better&lt;/h2&gt;
+
+&lt;p&gt;The downside of Vim is that is can be really annoying to set up, but once you have it up and running there are a lot of things it does much better than my old editor. These are a few of the major highlights that sold me.&lt;/p&gt;
+
+&lt;h3 id=&#34;managing-panes:e01afad571f37f739bdd6e73fe2f2f1b&#34;&gt;Managing panes&lt;/h3&gt;
+
+&lt;p&gt;To split a screen in vim you just type &lt;code&gt;:sp&lt;/code&gt; and hit enter. For a vertical split you type &lt;code&gt;:vs&lt;/code&gt;. You can have as many panes open as you want and jump between them using &lt;code&gt;ctrl+w&lt;/code&gt; and &lt;code&gt;h/j/k/l&lt;/code&gt;, depending on the direction you want to move in. You can resize them using &lt;code&gt;ctrl+w&lt;/code&gt; and &lt;code&gt;+&lt;/code&gt; or &lt;code&gt;-&lt;/code&gt;. To move a pane&amp;rsquo;s position you just hit &lt;code&gt;ctrl+w&lt;/code&gt; and &lt;code&gt;shift+H/J/K/L&lt;/code&gt; depending on where you want the pane to end up. This is super useful for someone like me who always has a bunch of tabs and files open. Being able to adjust the size and layout of each pane and see them all on one screen makes it easy to take in a snapshot of a given problem or task you&amp;rsquo;re working on. Also, each tab has it&amp;rsquo;s own pane configuration, so you can switch between contexts and keep related files together. Think of it as panes within tabs instead of tabs within panes. This makes it super easy to have a bunch of files and their specs open side by side and make sure you&amp;rsquo;re always seeing them together. To make pane navigation and adjustment even easier, most people map these commands to even simpler ones, like mapping &lt;code&gt;ctrl+w j&lt;/code&gt; to just &lt;code&gt;ctrl+j&lt;/code&gt; to focus on the screen below. This brings me to another awesome thing about vim, key bindings.&lt;/p&gt;
+
+&lt;h3 id=&#34;custom-shortcuts:e01afad571f37f739bdd6e73fe2f2f1b&#34;&gt;Custom shortcuts&lt;/h3&gt;
+
+&lt;p&gt;Vim is a modal editor, which just means you work in different &amp;ldquo;modes&amp;rdquo;. For example to type text you need to be in insert mode. To highlight text you switch to visual mode. To replace text you switch to select mode. And to navigate a file you work in &amp;ldquo;normal&amp;rdquo; mode. There are also command and &amp;ldquo;ex&amp;rdquo; modes, which allow you to send more complicated commands to the editor or directly to your command line to make it do all kinds of cool things, like search or sorting. The main advantage of having the concept of normal mode in vim is that it opens up virtually infinite possibilities for key bindings. Unlike most editors, if you open vim and type &lt;code&gt;j&lt;/code&gt;, it won&amp;rsquo;t print a j on the screen unless you&amp;rsquo;re in insert mode; it will move your cursor down a line. This is really wacky at first, but you get used to it pretty quickly and come to appreciate the possibilities it opens up. In Sublime or Atom all my shortcuts had to be &lt;code&gt;cmd+&lt;/code&gt; or &lt;code&gt;ctrl+&lt;/code&gt; or &lt;code&gt;alt+&lt;/code&gt; something. This very quickly leads to overloading key mappings and leaves you coming up with ridiculous key combinations like &lt;code&gt;cmd+ctrl+shift+w&lt;/code&gt; if you want to define a custom behaviour in your editor (I used to have this mapped a little custom plugin to close all other tabs besides the one I was working on in Sublime. In vim I just type &lt;code&gt;:tabonly&lt;/code&gt; as in, keep only this tab open. Nicer? You decide).&lt;/p&gt;
+
+&lt;h2 id=&#34;a-couple-caveats:e01afad571f37f739bdd6e73fe2f2f1b&#34;&gt;A Couple Caveats&lt;/h2&gt;
+
+&lt;p&gt;Obviously I think Vim is great, but there are some people it&amp;rsquo;s not for. It&amp;rsquo;s an amazing &lt;em&gt;editor&lt;/em&gt;. If you do mostly writing, though, as opposed to editing, you might be better off with a more modern editor like Sublime or Atom. Like I talked about above, you can get back basic snippet and auto-completion functionality, but if you rely on these things heavily you&amp;rsquo;ll miss them. I&amp;rsquo;m thinking mostly of emmet, and people who write a lot of markup and stylesheets. I&amp;rsquo;ve worked around the problem and switched to Slim as a templating language to avoid having to write HTML or Erb altogether, but I get that that&amp;rsquo;s not always an option for people.&lt;/p&gt;
+
+&lt;p&gt;One other thing Vim doesn&amp;rsquo;t have is a simple way to implement basic word processing. If you write a lot of words, as opposed to code, you might miss things like markdown preview and spell check. There are ways to get these features but they&amp;rsquo;re simple or nicely integrated. People argue, and I tend to agree with them, that this just isn&amp;rsquo;t what Vim is for. Where it really excels is really quickly navigating large files and projects full of lots of files. If you do mostly content creation, I think the modern editors bring a lot more the table in terms of being able to streamline a word processing or technical writing workflow.&lt;/p&gt;
+
+&lt;p&gt;Anyway, there it is. If you&amp;rsquo;re switching to Vim from a modern editor hopefully you can use a few of these tips to make it easier on yourself. If you know of any other plugins or settings that make your workflow in Vim great let me know! Happy coding.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Stop Typing Bundle Exec</title>
+      <link>http://kiramclean.com/blog/learning/2016.02.07-stop-typing-bundle-exec/</link>
+      <pubDate>Sun, 07 Feb 2016 21:23:29 -0400</pubDate>
+      
+      <guid>http://kiramclean.com/blog/learning/2016.02.07-stop-typing-bundle-exec/</guid>
+      <description>
+
+&lt;p&gt;Does this look familiar?&lt;/p&gt;
+
+
+&lt;figure&gt;
+  &lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;➜ jekyll serve
+
+/Users/kiramclean/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/safe_yaml-1.0.4/lib/safe_yaml/psych_resolver.rb:4:in &lt;span style=&#34;color: #4070a0&#34;&gt;`&lt;/span&gt;&amp;lt; class:PsychResolver&amp;gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;: uninitialized constant Psych::Nodes (NameError)&lt;/span&gt;
+&lt;span style=&#34;color: #4070a0&#34;&gt;    from /Users/kiramclean/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/safe_yaml-1.0.4/lib/safe_yaml/psych_resolver.rb:2:in `&amp;lt; module:SafeYAML&amp;gt;&amp;#39;&lt;/span&gt;
+    from /Users/kiramclean/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/safe_yaml-1.0.4/lib/safe_yaml/psych_resolver.rb:1:in &lt;span style=&#34;color: #4070a0&#34;&gt;`&lt;/span&gt;&amp;lt; top &lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;required&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;&amp;gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color: #4070a0&#34;&gt;    from /Users/kiramclean/.rbenv/versions/2.2.4/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:69:in `require&amp;#39;&lt;/span&gt;
+    from /Users/kiramclean/.rbenv/versions/2.2.4/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:69:in &lt;span style=&#34;color: #4070a0&#34;&gt;`&lt;/span&gt;require&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color: #4070a0&#34;&gt;    from /Users/kiramclean/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/safe_yaml-1.0.4/lib/safe_yaml/load.rb:131:in `&amp;lt; module:SafeYAML&amp;gt;&amp;#39;&lt;/span&gt;
+    from /Users/kiramclean/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/safe_yaml-1.0.4/lib/safe_yaml/load.rb:26:in &lt;span style=&#34;color: #4070a0&#34;&gt;`&lt;/span&gt;&amp;lt; top &lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;required&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;&amp;gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color: #4070a0&#34;&gt;    from /Users/kiramclean/.rbenv/versions/2.2.4/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:69:in `require&amp;#39;&lt;/span&gt;
+    from /Users/kiramclean/.rbenv/versions/2.2.4/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:69:in &lt;span style=&#34;color: #4070a0&#34;&gt;`&lt;/span&gt;require&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color: #4070a0&#34;&gt;    from /Users/kiramclean/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/jekyll-3.1.1/lib/jekyll.rb:28:in `&amp;lt; top (required)&amp;gt;&amp;#39;&lt;/span&gt;
+    from /Users/kiramclean/.rbenv/versions/2.2.4/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:69:in &lt;span style=&#34;color: #4070a0&#34;&gt;`&lt;/span&gt;require&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color: #4070a0&#34;&gt;    from /Users/kiramclean/.rbenv/versions/2.2.4/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:69:in `require&amp;#39;&lt;/span&gt;
+    from /Users/kiramclean/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/jekyll-3.1.1/bin/jekyll:6:in &lt;span style=&#34;color: #4070a0&#34;&gt;`&lt;/span&gt;&amp;lt; top &lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;required&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;&amp;gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color: #4070a0&#34;&gt;    from /Users/kiramclean/.rbenv/versions/2.2.4/bin/jekyll:23:in `load&amp;#39;&lt;/span&gt;
+    from /Users/kiramclean/.rbenv/versions/2.2.4/bin/jekyll:23:in &lt;span style=&#34;color: #4070a0&#34;&gt;`&lt;/span&gt;&amp;lt; main&amp;gt;&lt;span style=&#34;border: 1px solid #FF0000&#34;&gt;&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+  &lt;figcaption&gt;
+    Explosion and some stuff about gems
+  &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+
+&lt;p&gt;Or this?&lt;/p&gt;
+
+
+&lt;figure&gt;
+  &lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;➜ rake &lt;span style=&#34;color: #007020&#34;&gt;test&lt;/span&gt;
+
+rake aborted!
+Gem::LoadError: You have already activated rake 10.5.0, but your Gemfile requires rake 10.4.2. Prepending &lt;span style=&#34;color: #4070a0&#34;&gt;`&lt;/span&gt;bundle &lt;span style=&#34;color: #007020&#34;&gt;exec&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;`&lt;/span&gt; to your &lt;span style=&#34;color: #007020&#34;&gt;command&lt;/span&gt; may solve this.
+/Users/kiramclean/code/SampleApp/config/boot.rb:3:in &lt;span style=&#34;color: #4070a0&#34;&gt;`&lt;/span&gt;&amp;lt;top &lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;required&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;&amp;gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color: #4070a0&#34;&gt;/Users/kiramclean/code/SampleApp/config/application.rb:1:in `&amp;lt;top (required)&amp;gt;&amp;#39;&lt;/span&gt;
+/Users/kiramclean/code/SampleApp/Rakefile:4:in &lt;span style=&#34;color: #4070a0&#34;&gt;`&lt;/span&gt;&amp;lt;top &lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;required&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;&amp;gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color: #4070a0&#34;&gt;LoadError: cannot load such file -- bundler/setup&lt;/span&gt;
+&lt;span style=&#34;color: #4070a0&#34;&gt;/Users/kiramclean/code/SampleApp/config/boot.rb:3:in `&amp;lt;top (required)&amp;gt;&amp;#39;&lt;/span&gt;
+/Users/kiramclean/code/SampleApp/config/application.rb:1:in &lt;span style=&#34;color: #4070a0&#34;&gt;`&lt;/span&gt;&amp;lt;top &lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;required&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;&amp;gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color: #4070a0&#34;&gt;/Users/kiramclean/code/SampleApp/Rakefile:4:in `&amp;lt;top (required)&amp;gt;&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;See full trace by running task with --trace&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+  &lt;figcaption&gt;
+    wtf??
+  &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+
+&lt;p&gt;This also used to happen to me a lot when trying to run RSpec specs. I used to just type &lt;code&gt;bundle exec&lt;/code&gt; and re-run the spec. I aliased this to &lt;code&gt;be&lt;/code&gt; in my shell configuration, so it was even less work. A problem is only a problem when it has negative effects, so like every other weird issue I have with my dev tools, I put off finding a real solution and not just a workaround until it became a problem. This happened when I switched to vim and wanted to use thoughtbot&amp;rsquo;s vim-rspec plugin to run specs directly from my editor, which, by the way, is awesome. Brace yourself for my next post on the ultimate rails TDD workflow. I didn&amp;rsquo;t realize until after I did all this that I could have just changed the command the plugin sends to the terminal and prepended &lt;code&gt;be&lt;/code&gt;, but that&amp;rsquo;s beside the point.&lt;/p&gt;
+
+&lt;p&gt;Of course I&amp;rsquo;m not the only person annoyed or slowed down by typing &lt;code&gt;be&lt;/code&gt; in front of commands that don&amp;rsquo;t work, so I found the solutions these other great people came up with. If you&amp;rsquo;re bored already, here it is:&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;# Don&amp;#39;t copy the arrows, those represent your shell prompt&lt;/span&gt;
+&lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;# Step 1: (make the directory ~/.rbenv/plugins if it&amp;#39;s not there)&lt;/span&gt;
+➜ git clone https://github.com/ianheggie/rbenv-binstubs.git ~/.rbenv/plugins/
+&lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;# and:&lt;/span&gt;
+➜ git clone https://github.com/sstephenson/rbenv-gem-rehash.git ~/.rbenv/plugins/rbenv-gem-rehash
+
+&lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;# Step 2:&lt;/span&gt;
+➜ &lt;span style=&#34;color: #007020&#34;&gt;cd&lt;/span&gt; /replace/this/with/your/project/path
+➜ bundle install --binstubs .bundle/bin
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;That&amp;rsquo;s it. That will install two plugins, &lt;code&gt;rbenv-binstubs&lt;/code&gt; and &lt;code&gt;rbenv-gem-rehash&lt;/code&gt;, and generate binstubs for your project and you shouldn&amp;rsquo;t have to type &lt;code&gt;bundle exec&lt;/code&gt; ever again! Woohoo. If you&amp;rsquo;re curious about what these plugins do, read on. Otherwise, thanks for stopping by!&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;h3 id=&#34;note-first-switch-to-rbenv-if-you-re-not-using-it-already:13a088de3276215ad7a6eb9a8752872e&#34;&gt;!!! NOTE: First switch to rbenv if you&amp;rsquo;re not using it already&lt;/h3&gt;
+
+&lt;p&gt;Why? So you can use these plugins. And lots of other opinionated reasons you&amp;rsquo;ll find online.&lt;/p&gt;
+
+&lt;p&gt;If you&amp;rsquo;re using rvm start with:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;➜ rvm implode&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;➜ gem uninstall rvm&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;then:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;➜ brew install rbenv&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;➜ rbenv init&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;And follow any other instructions homebrew or &lt;code&gt;rbenv init&lt;/code&gt; give you.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;why-explode-without-bundle-exec:13a088de3276215ad7a6eb9a8752872e&#34;&gt;Why Explode without &lt;code&gt;bundle exec&lt;/code&gt;&lt;/h2&gt;
+
+&lt;p&gt;When you use bundler to manage gem dependencies and run a command, like &lt;code&gt;rspec something&lt;/code&gt; or &lt;code&gt;jekyll something&lt;/code&gt; more often than not the command is calling on a bunch of gems to get the job done. If the versions of those gems it finds conflict with the ones in your bundler bundle of gems (the ones your app is using), you get errors like the ones above. This can happen if you have a new version of a gem installed but your app depends on an older version, for example. To solve this you prepend everything with &lt;code&gt;bundle exec&lt;/code&gt;. This forces the executable to use the gems and versions listed in the Gemfile, i.e., it runs your executable in the right ruby &amp;ldquo;environment&amp;rdquo;. This isn&amp;rsquo;t exactly a hardship, but it can be a minor inconvenience. Plus I think it&amp;rsquo;s theres something about a programmers&amp;rsquo;s mindset that makes this bothersome.. anything you have to do exactly the same way twice should be able to be handled by a computer.&lt;/p&gt;
+
+&lt;h2 id=&#34;binstubs:13a088de3276215ad7a6eb9a8752872e&#34;&gt;Binstubs&lt;/h2&gt;
+
+&lt;p&gt;Binstubs are wrappers for executables that force your command to run in the right environment. They save you from having to write &lt;code&gt;bundle exec&lt;/code&gt; every time, for example, by loading the right version of each gem the command depends on. This is also what rbenv does behind the scenes to manage your ruby versions. Every ruby executable you run gets routed through &lt;code&gt;rbenv exec&lt;/code&gt;, which loads the right version of ruby so your command can run as expected. This binstub works system wide after you configure it during rbenv installation, but you can also generate binstubs for an individual project that will manage gem version depencies, not just ruby version depencies. For a project using bundler, you do this by running &lt;code&gt;bundle install --binstubs&lt;/code&gt; in the project directory. This is where the first plugin comes in. It makes sure rbenv can always find the binstubs created by bundler.&lt;/p&gt;
+
+&lt;h2 id=&#34;what-about-the-other-plugin:13a088de3276215ad7a6eb9a8752872e&#34;&gt;What About the Other Plugin?&lt;/h2&gt;
+
+&lt;p&gt;The other plugin is necessary so you don&amp;rsquo;t have to remember to run &lt;code&gt;rbenv rehash&lt;/code&gt; everytime you install or uninstall a gem. Running &lt;code&gt;rbenv rehash&lt;/code&gt; regenerates the shims in your &lt;code&gt;PATH&lt;/code&gt; so that there&amp;rsquo;s one for every ruby command in every installed version of ruby. A &amp;ldquo;shim&amp;rdquo; is like a router for ruby commands. When you use rbenv, anytime you run a ruby executable, it gets intercepted by the shim executable injected into your &lt;code&gt;PATH&lt;/code&gt; by rbenv. rbenv does this so that it can check which version of ruby is required by the app sending the command and then reroute the command to the right installation of ruby. Many gems come with executables like &lt;code&gt;rails&lt;/code&gt;, &lt;code&gt;rspec&lt;/code&gt;, &lt;code&gt;jekyll&lt;/code&gt;, and so on, which is why you have to re-run &lt;code&gt;rbenv rehash&lt;/code&gt; anytime you add one. The &lt;code&gt;rbenv-gem-rehash&lt;/code&gt; plugin hooks into the &lt;code&gt;gem install&lt;/code&gt; and &lt;code&gt;gem uninstall&lt;/code&gt; commands to automatically run &lt;code&gt;rbenv rehash&lt;/code&gt; after either of those commands are run.&lt;/p&gt;
+
+&lt;h2 id=&#34;no-more-bundle-exec:13a088de3276215ad7a6eb9a8752872e&#34;&gt;No More &lt;code&gt;bundle exec&lt;/code&gt;&lt;/h2&gt;
+
+&lt;p&gt;So, now you never have to type &lt;code&gt;bundle exec&lt;/code&gt; again. This is great anyway, but like I mentioned the main reason I did this was so I could use &lt;a href=&#34;https://github.com/thoughtbot/vim-rspec&#34;&gt;thoughtbot&amp;rsquo;s vim-rspec plugin&lt;/a&gt;. If you use rspec, you need this plugin. Check out my next post on streamlining your TDD workflow. Happy coding!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>What Your Rails App Does Behind the Scenes</title>
+      <link>http://kiramclean.com/blog/learning/2016.01.24-what-your-rails-app-does-behind-the-scenes/</link>
+      <pubDate>Sun, 24 Jan 2016 21:07:23 -0400</pubDate>
+      
+      <guid>http://kiramclean.com/blog/learning/2016.01.24-what-your-rails-app-does-behind-the-scenes/</guid>
+      <description>
+
+&lt;p&gt;Ever wondered what your rails app is really doing? When I first started learning rails it seemed like magic. I finally got started building some rails apps and couldn&amp;rsquo;t believe I could get one up and running in 5 minutes. What is this magic? Needless to say there&amp;rsquo;s a lot going on behind the scenes. I was living in blissful ignorance, building away and not worrying about how it all worked until it didn&amp;rsquo;t anymore. When the error messages stopped making sense, I realized I should probably dig a little deeper and see what Rails&amp;rsquo; magic is made of. You don&amp;rsquo;t have to be able to rebuild Rails or even add to it, but understanding it is at least a start and, IMO, important if you&amp;rsquo;re going to try to build with it, if only because it makes debugging so much simpler. I&amp;rsquo;ve still got a long way to go, but these are some notes from my first encounter with Rails&amp;rsquo; machinery.&lt;/p&gt;
+
+&lt;h2 id=&#34;mvc:422d669397faa202e189a45610121484&#34;&gt;MVC&lt;/h2&gt;
+
+&lt;p&gt;Rails structures your web app using model, view, controller (MVC) architecture. This just means it separates the different components of your app and the app works by sending information between them. To understand this, it helped me to think about what happens between a user clicking a button on a web page and seeing the result. It seems like such a simple thing from the user&amp;rsquo;s point of view, but &amp;ndash; depending on what the button does &amp;ndash; there could be a lot going on in between. Keep this picture in mind as you read on:&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://kiramclean.com/images/rails_mvc.png&#34; alt=&#34;Rails MVC architecture&#34; /&gt;
+    
+    
+    &lt;figcaption&gt;
+        &lt;p&gt;
+        Rails MVC architecture. Yes, I still take notes by hand.
+        
+            
+        
+        &lt;/p&gt; 
+    &lt;/figcaption&gt;
+    
+&lt;/figure&gt;
+
+
+&lt;blockquote&gt;
+&lt;h2 id=&#34;http:422d669397faa202e189a45610121484&#34;&gt;HTTP&lt;/h2&gt;
+
+&lt;p&gt;This is a quick aside because it&amp;rsquo;s hard to understand how your web app works without understanding HTTP. If you don&amp;rsquo;t know anything about it there are tons of free resources to give you a quick intro. This &lt;a href=&#34;https://launchschool.com/books/http/read/introduction&#34;&gt;free book on the basics of HTTP&lt;/a&gt; by Launch School is a great place to start. The gist of it is that HTTP is the protocol your browser uses to send a &lt;strong&gt;request&lt;/strong&gt; to a server and receive a &lt;strong&gt;response&lt;/strong&gt;. If that makes sense then you&amp;rsquo;re half way to understanding the internet, and your Rails app. At a basic level all web apps do is issue requests to servers and then handle the responses the servers, well, serve.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Back to the picture above, now. Maybe it looks like a lot at first, but breaking down each step makes it easier to understand what&amp;rsquo;s going on.&lt;/p&gt;
+
+&lt;h3 id=&#34;1-sending-a-request:422d669397faa202e189a45610121484&#34;&gt;1. Sending a Request&lt;/h3&gt;
+
+&lt;p&gt;This isn&amp;rsquo;t really something Rails does, but it&amp;rsquo;s the first step in a user&amp;rsquo;s interaction with your web app. This could be the user clicking a link or button, submitting a form, refreshing the page, or a few other things. When your app gets this request Rails magic kicks in to handle it.&lt;/p&gt;
+
+&lt;h3 id=&#34;2-routing-the-request:422d669397faa202e189a45610121484&#34;&gt;2. Routing the Request&lt;/h3&gt;
+
+&lt;p&gt;The first stop for any request is the Rails router. This is where Rails decides what to do with the request. It can either redirect your user to another page (issuing a new request and starting the loop over), or forward the request to a controller. What it does depends on how your routes are configured. You can configure your routes in &lt;code&gt;config/routes.rb&lt;/code&gt;, or see which routes you have already defined by typing &lt;code&gt;rake routes&lt;/code&gt; in your terminal.&lt;/p&gt;
+
+&lt;h3 id=&#34;3-calling-a-controller-action:422d669397faa202e189a45610121484&#34;&gt;3. Calling a Controller Action&lt;/h3&gt;
+
+&lt;p&gt;If the request was sent on to a controller, the next step is for that controller to call the appropriate &amp;ldquo;action&amp;rdquo;. These are just methods in the controller file. I still don&amp;rsquo;t know why they are called actions in Rails &amp;ndash; I was so confused until I realized that controller actions are just methods, and you write these methods to determine the behaviour of your app. The controller in the MVC architecture connects the user to the rest of the app. Controllers can accept user input and pass it on to the model, which is the next step.&lt;/p&gt;
+
+&lt;h3 id=&#34;4-interacting-with-the-database:422d669397faa202e189a45610121484&#34;&gt;4. Interacting with the Database&lt;/h3&gt;
+
+&lt;p&gt;The controller passes information to the model in your rails app, which is the underlying engine that can store or manipulate the database powering your app. It&amp;rsquo;s hard to understand why we need models without understanding the stateless nature of the HTTP protocol:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;h2 id=&#34;understanding-statelessness:422d669397faa202e189a45610121484&#34;&gt;Understanding Statelessness&lt;/h2&gt;
+
+&lt;p&gt;Another key thing to understand about HTTP is that it is a &amp;ldquo;stateless&amp;rdquo; protocol, so requests sent and responses received via HTTP have no state. This means that each request/response cycle is completely independent of any other cycle, implying that servers do not remember any information about the state of our web apps between requests. You could think of a &amp;ldquo;state&amp;rdquo; as being sort of like a user&amp;rsquo;s custom version of a web app. For example, if you add something to an online shopping cart (one request), then continue shopping (a new request), you expect the item to still be in your shopping cart. Or if you log in to a website (one request) then visit a friend&amp;rsquo;s profile page (a new request), you expect to stay logged in. How does the server know to give you a version of the web app showing the item in your cart or with you as the logged in user if it has no memory of your previous requests? Simulating this &amp;ldquo;stateful&amp;rdquo;, or continuous experience is part of what web developers do.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Models are the persistence layer in your app and contain the logic for interacting with the database. This is one trick developers use to create the illusion of an app that remembers its users.&lt;/p&gt;
+
+&lt;h3 id=&#34;5-and-6-sending-information-to-the-views:422d669397faa202e189a45610121484&#34;&gt;5. and 6. Sending Information to the Views&lt;/h3&gt;
+
+&lt;p&gt;After the model finishes what the controller asked it to, it stores that information in a variable to be passed back to the controller and on to to the views. The idea is that there should be no logic at all in the views, they should only act as a skin for your app, so the user has something nice to see and interact with.&lt;/p&gt;
+
+&lt;h3 id=&#34;7-and-8-rendering-a-view-for-the-user:422d669397faa202e189a45610121484&#34;&gt;7. and 8. Rendering a View for the User&lt;/h3&gt;
+
+&lt;p&gt;Views are like skins for your web pages and contain code that tells Rails how to render a given web page, so what to show to the user. They can include information accepted from the controller, which is how web pages can be rendered &amp;ldquo;dynamically&amp;rdquo;, meaning they can be different depending on when they&amp;rsquo;re rendered and who renders them. At this point, the controller action might render particular view or might redirect the user to another web page, issuing a new request and starting the loop over again.&lt;/p&gt;
+
+&lt;h2 id=&#34;happy-coding:422d669397faa202e189a45610121484&#34;&gt;Happy Coding!&lt;/h2&gt;
+
+&lt;p&gt;This is how I think about MVC, and Rails apps in particular. Of course there&amp;rsquo;s a lot more depth and lots of &amp;ldquo;actually, sometimes&amp;hellip;&amp;rdquo; cases, but this is a brief overview to hopefully give you enough of an understanding to be able to get started making your own Rails apps or at least make debugging tutorial apps a little simpler. If there&amp;rsquo;s anything you think I&amp;rsquo;ve missed or misunderstood, let me know! Otherwise, happy coding.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Maybe the Worlds Most Meaningful City</title>
+      <link>http://kiramclean.com/blog/travel/maybe-the-worlds-most-meaningful-city/</link>
+      <pubDate>Tue, 19 Jan 2016 21:05:59 -0400</pubDate>
+      
+      <guid>http://kiramclean.com/blog/travel/maybe-the-worlds-most-meaningful-city/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;m talking about Jerusalem. My last couple of posts reflected on the first few days of my Birthright trip to Israel which were spent in the north of the country. After that we spent a day in Tel Aviv and Jaffa on our way to Jerusalem, where we stayed for three nights. It&amp;rsquo;s a truly magical place. Walking the streets of Jerusalem is when I first realized that I have to go back to Israel. Tzfat was amazing, too, and inspired me to start learning about Kaballah and mindfulness, but I didn&amp;rsquo;t feel torn apart from that town when we had to leave it. Jerusalem was a totally different experience.&lt;/p&gt;
+
+&lt;p&gt;It&amp;rsquo;s impossible to describe how it felt to be there and to be physically connected, even though it was just for a few short days, to millennia of history. The city means so much to so many people and being there helped me begin to understand why it&amp;rsquo;s such a contested place. When you&amp;rsquo;re sitting safely on a couch in North America it&amp;rsquo;s easy to have opinions about things that are happening half way around the world. Being there and seeing and hearing how much it means to the local people is a totally different story.&lt;/p&gt;
+
+&lt;p&gt;We toured the city and of course visited the western wall. I&amp;rsquo;m not a sentimental person so objects don&amp;rsquo;t usually have a lot of meaning for me. What matters to me are things like memories and conversations. I&amp;rsquo;m also not a religious person so it wasn&amp;rsquo;t the prayers or religious significance of the wall that hit me. It was seeing how much it meant to other people there. Being in this place was obviously very moving for the other Jewish people there and I almost envy them having something or some place so powerful in their life. So far I have never been to a place or seen a thing that would make me react the way some of the people there were doing. It must be worth something to have an object in your life so meaningful it can bring out such raw emotion. What also resonated with me was thinking about the millions of people who stood before me where I was standing, sharing their most intimate and personal thoughts with the universe, or god, or whatever it is they think is bigger than us. It&amp;rsquo;s a place that brings this out in people, and lets them feel open and present in a way no other place can. Seeing and hearing the reactions of people visiting this place helped me understand just how significant it is in their lives, and how intolerable it would be if they were to be kept away from it, as Jews were for 19 years while the West Bank was under Jordanian occupation.&lt;/p&gt;
+
+&lt;p&gt;Only a secular regime can be in control of a place as religiously significant as Jerusalem because no religion has the respect for other religions that these monuments and buildings warrant. Certain monuments and sites tell the story of what it has meant to be human in a way no words can. People of any religion should be allowed to visit sites that are sacred to them, whatever you think of the beliefs they have that make those places sacred. And although it&amp;rsquo;s not politically correct to point out, reality is that religious governments, as in ones with no separation between religion and state, are discriminatory and often outright hateful to whatever religions are not their own. Some objects and places have real significance, not just for the religious, but for any human being interested in learning about our collective past. We owe it to our future selves to preserve these places and to prevent places like Old Jerusalem from falling into the hands of people who destroy cultural heritage to score political points.&lt;/p&gt;
+
+&lt;p&gt;I was told the notes from the Western Wall get swept up from time to time and buried in the valley right outside Old Jerusalem in a genizah, where sacred texts are buried. Because a lot of the notes are prayers written to god and might have its name on them, destroying them is forbidden. So, if you leave a note in the Western Wall, it becomes a part of Israel forever. I thought that was really cool. Feeling connected to such a long history and being able to become a tiny part of it by leaving behind a note was a really special gift and one of the most meaningful things I got out of Birthright. The experience has definitely changed the course of my life.&lt;/p&gt;
+
+&lt;p&gt;After our visit to Old Jerusalem we went back to our hotel to celebrate Shabbat along with the entire nation of Israel. The following day we walked to see a few of the political buildings in Israel and had a discussion about politics in the country. After this we went to a talk by a very charismatic and informative guy, Neil Lazarus, whose lectures on the Middle East I highly recommend. It didn&amp;rsquo;t give me much hope for the region, but it was interesting to realize that we are living through a really interesting time in history right now and we may be the last generation capable of understanding it. I belong to the last generation that remembers &lt;sup&gt;9&lt;/sup&gt;&amp;frasl;&lt;sub&gt;11&lt;/sub&gt;. It was already 15 years ago. Today&amp;rsquo;s university undergrads were babies when it happened. The entire Middle East is in flames and the map I grew up with is not reality anymore. Some states have completely failed and others are on the brink, while some are still standing within their colonial borders but at the expense of their citizens&amp;rsquo; basic human rights. All of this is to say that the British plan for the region failed miserably and nobody knows what&amp;rsquo;s coming next. Hopefully it&amp;rsquo;s not an Islamic caliphate, but all we can do is wait and see what happens.&lt;/p&gt;
+
+&lt;p&gt;Trying to understand this part of the world is enough to make you cry. It&amp;rsquo;s important that we don&amp;rsquo;t just let the conversation break down and run away, though. We have to have hard conversations about the state of the world, and that means forgetting about political correctness and people&amp;rsquo;s feelings. It&amp;rsquo;s nobody&amp;rsquo;s right not to be offended, and if there are people who find talking about reality offensive then they&amp;rsquo;re not meant to be leaders or decision makers. It is possible &amp;ndash; and crucial &amp;ndash; to understand someone even when you disagree and western ideas about cultural relativism and paranoia of offending are making this impossible for me and many others. This conversation, along with many others, started in a very meaningful way on the trip and we were lucky to have heard many Israeli perspectives on the issues. It&amp;rsquo;s a conversation that needs to continue, no matter how much people don&amp;rsquo;t want it to.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Beginning to Process Birthright</title>
+      <link>http://kiramclean.com/blog/travel/beginning-to-process-birthright/</link>
+      <pubDate>Fri, 15 Jan 2016 21:04:30 -0400</pubDate>
+      
+      <guid>http://kiramclean.com/blog/travel/beginning-to-process-birthright/</guid>
+      <description>&lt;p&gt;I just woke up from a 15 hour nap. I got home yesterday after leaving Israel 20 hours earlier and completely crashed. Birthright was a life changing experience in many ways but I feel like it will take a long time to process. The trip itself was jam packed with events, activities, and discussions, and I haven&amp;rsquo;t really had any time to think or reflect since the first day. Now that I&amp;rsquo;m back home and have some down time, it&amp;rsquo;s all starting to sink in.&lt;/p&gt;
+
+&lt;p&gt;We spent the first few days in the north of the country. The day after hiking around the Galil and visiting Tzfat we wrapped up our tour of the north with a visit to the Golan Heights. We were meant to hike in Banias National Park but couldn&amp;rsquo;t because an IED exploded on the Lebanese border two days before. Instead we visited Mount Bental for an overview of a deserted town in what used to be Syria and is now a medieval wasteland. The only human activity nearby is the occasional transfer of wounded Syrians across the border via the town of Qunaitra for treatment by Israeli medics in Israeli hospitals. This is how Israel treats its enemies.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;As a side note, the area you can see from Mount Bental is supposed to be a buffer zone between Syria and Israel protected by UN forces. In the autumn of 2014 the UN abandoned the area (and sent the troops to seek shelter in Israel, ironically) because of intolerable attacks by Syrian terrorists. This is just one of countless proofs that the UN is incapable of defending borders and that the concept of sending in peace keepers where there is no peace to keep is a foolish waste of life.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;What I noticed for the first time on that mountain, but kept noticing throughout the trip, was how normal Israelis are in the face of terror and hell everywhere around them. We were close enough to hear the war raging in Syria, but just a few kilometres down the road everything was business as usual in Israel. You can sample local wines and craft beers, and buy artisan olive oil products. They appear to live their lives with total confidence in their defense forces and in their government&amp;rsquo;s dedication to its people&amp;rsquo;s security, even though literally every neighbouring country is imploding. We continued our tour of the north with a visit to a couple of the region&amp;rsquo;s main industries, an olive oil mill and a winery.&lt;/p&gt;
+
+&lt;p&gt;That same day we visited a 1500 year old synagogue in the town of Katzrin and continued our discussion about Judaism. The conversation continued on the many bus rides, walks, and meals over the following days. To be sitting in an ancient Jewish settlement, in a synagogue where rabbis and their congregations had discussed Jewish laws and values for centuries, was completely surreal. It was when I realized this trip was about a lot more than seeing the landscapes and sites in Israel. It was about a very deep discovery of what being Jewish means to each of us.&lt;/p&gt;
+
+&lt;p&gt;What gets me the most, and I don&amp;rsquo;t know whether to find it ridiculous or funny, is the hypocrisy of religion. All religions are inherently contradictory but Judaism is particularly foolish in the way it sets up imaginary laws and then comes up with workarounds for every one of them. Judaism is a religion of laws, and for every religious law there is a loophole. These loopholes don&amp;rsquo;t just exist for people who aren&amp;rsquo;t that religious &amp;ndash; those people just don&amp;rsquo;t follow the laws to begin with. Ironically, the loop holes are mostly &amp;ldquo;discovered&amp;rdquo; and used by the orthodox. Things like having a &amp;ldquo;Shabbat elevator&amp;rdquo; that stops on every floor so you don&amp;rsquo;t have to press the buttons, because that would be doing work on the sabbath. Using timers to turn the lights on and off so you don&amp;rsquo;t have to flip any switches. Setting up &amp;ldquo;symbolic door frames&amp;rdquo;, eruv, around the perimeter of your neighbourhood or even town so you can carry things outside on shabbat without ever leaving the &amp;ldquo;private domain&amp;rdquo;, which of course would be blasphemous. Wearing a sheitle, a (usually glamorous and sexy) wig to &amp;ldquo;cover&amp;rdquo; your hair after you&amp;rsquo;re married. Turning on a shabbos hotplate, a blech, before sundown for the entire sabbath to keep food warm. Raising pigs on balconies so they&amp;rsquo;re not growing on &amp;ldquo;Israeli soil&amp;rdquo;. For every law there is a loophole to avoid having it actually affect your life in any way. What I can&amp;rsquo;t wrap my head around is why anyone would bother to follow the laws in the first place when they obviously don&amp;rsquo;t see the necessity or utility of doing so. Either these people think that the god who wrote the laws is a total imbecile or they don&amp;rsquo;t actually care about following them. Either way, I don&amp;rsquo;t understand why people impose these imaginary laws on themselves in the first place, only to go through all the trouble of avoiding having to actually obey them.&lt;/p&gt;
+
+&lt;p&gt;This is something that&amp;rsquo;s always confused me, and judging from the conversations along the way, it&amp;rsquo;s confusing to many other people as well. After a really interesting discussion of Talmudic law in an ancient synagogue, we moved on to relax in a hot spring in Hamat Gader, on the Jordanian border. That was our last day in the north. It&amp;rsquo;s amazing how much they manage to squeeze into each short day. The whole trip was very much a blur. It felt like a year but at the same time flew by before I could grasp what I was experiencing. I&amp;rsquo;ll end this for now, but as I go through my pictures and reflections more and more of the trip and my thoughts are beginning to make sense.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>First Day in Israel</title>
+      <link>http://kiramclean.com/blog/travel/first-day-in-israel/</link>
+      <pubDate>Tue, 05 Jan 2016 21:02:50 -0400</pubDate>
+      
+      <guid>http://kiramclean.com/blog/travel/first-day-in-israel/</guid>
+      <description>&lt;p&gt;My first full day in Israel is wrapping up. I&amp;rsquo;m here on a Birthright trip, a program sponsored by Israeli taxpayers, Jewish philanthropists, and local Jewish communities around the world. It&amp;rsquo;s meant to give Jewish youth the opportunity to experience Israel with a group of their peers. It&amp;rsquo;s an amazing gift to have been given, and I&amp;rsquo;m looking forward to every moment of it.&lt;/p&gt;
+
+&lt;p&gt;After landing yesterday we got on a bus to drive north, stopping in Zihron Ya&amp;rsquo;akov for lunch and a quick tour. We checked in at Kibbutz Gadot, our home for the next couple of days while we explore northern Israel, and got to know each other a bit. Today was our first full day here. We started off with a hike in the Galil then went to Tzfat to eat lunch and to explore Kaballah. On the way back to our kibbutz we stopped at a micro-winery and got to sample some award winning Israeli liqueurs. All of this has been amazing so far, but the best part of the trip is definitely the people I&amp;rsquo;m here with.&lt;/p&gt;
+
+&lt;p&gt;Anyone who knows me knows that I am not religious (at all), so I didn&amp;rsquo;t know what to expect coming on this trip. At first I felt like a bit of an imposter, not being observant in any way. I&amp;rsquo;ve only ever been in a synagogue for a couple of weddings and bar mitzvahs, I know about two Hebrew words, and I wouldn&amp;rsquo;t even know how to keep kosher if I wanted to. Very quickly I realized that being Jewish is about a lot more than those things and the madrichim, our guides, made the group feel like a huge family from the start. The first thing we did after getting off the plane was meet the director of Birthright Canada in Israel, who assured us that the point of this trip isn&amp;rsquo;t to judge anyone for the &amp;ldquo;type&amp;rdquo; of Jew they are, or to push any sorts of ideas on anybody. This seems to be a common attitude among Jews and, incidentally, I think this is exactly why the Jewish community is so resilient and diverse, but more on this another day.&lt;/p&gt;
+
+&lt;p&gt;Despite not really feeling like a &amp;ldquo;real&amp;rdquo; Jew, I applied for the trip thanks to my family, who told me about it. I owe them a lot for convincing me to take advantage of this opportunity, even though I thought I might not fit in. It turns out the trip is full of people like me. A lot of them have only one Jewish parent and many are not observant. I thought I would be out of place never having gone to a Jewish school, but most people here didn&amp;rsquo;t either, and I even met one girl who went to an Anglican school. All of this came as a huge relief to me. I don&amp;rsquo;t know what I was expecting, but it wasn&amp;rsquo;t to fit in. I thought I would be the outlier and have to hide my total lack of religiousness, but it&amp;rsquo;s not like that at all. Being a Jew means many things to many people, and we&amp;rsquo;ve only begun to start the discussion.&lt;/p&gt;
+
+&lt;p&gt;I still have no idea what being Jewish means, but it is definitely an internal experience and identity. The external aspects of Judaism &amp;ndash; the ceremonies, the language, the rules &amp;ndash; are definitely a part of it, but not everything. There&amp;rsquo;s something very powerful about being connected to a community with such a rich but excruciating history. Even more powerful is walking the land in Israel with dozens of other people who all share that history, too. There are so many deep questions to get into and our group is off to a really interesting start exploring some of them. I can&amp;rsquo;t wait to see where this trip takes me.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Getting Started with Git</title>
+      <link>http://kiramclean.com/blog/learning/2015.12.05-getting-started-with-git/</link>
+      <pubDate>Sat, 05 Dec 2015 20:54:08 -0400</pubDate>
+      
+      <guid>http://kiramclean.com/blog/learning/2015.12.05-getting-started-with-git/</guid>
+      <description>
+
+&lt;p&gt;Git makes keeping track of your progress and fixing mistakes &amp;ldquo;simple&amp;rdquo;, as they say. I was beyond confused at first but things slowly started to click. If you can wrap your head around what it does and how it works, git can idiot-proof your workflow and set you free to experiment on new features without worrying about ruining your project. Adding and committing files to a git repository is the first thing most people teach, and it was the first thing I learned. This was great until I actually needed to undo some changes and had no idea how. It&amp;rsquo;s really worth taking the time to explore what git can do beyond just keeping a Dropbox-style history of your progress. It&amp;rsquo;s especially useful when you need to go back in time. These are some notes from my attempt to learn how to fix mistakes with git.&lt;/p&gt;
+
+&lt;h2 id=&#34;first-understand-the-difference-between-git-and-github:a528cf4c8580d30a38fbff171d5ada2a&#34;&gt;First, understand the difference between git and github&lt;/h2&gt;
+
+&lt;p&gt;Git is the version control software itself. It&amp;rsquo;s like a video camera rolling behind the scenes as you work that captures every insertion and deletion in every file in your repository and you choose when to save a snapshot for later reference &amp;ndash; these are your commits. Github, on the other hand, is one of many online git repository hosting services. It extends the functionality of git, the software, especially when it comes to collaboration, adding features like pull requests, issue tracking, and discussion forums. This seems like a totally obvious distinction now, but I mention it because I was confused for about a week about why I couldn&amp;rsquo;t make a pull request from the command line. It&amp;rsquo;s because pull requests are not a feature of git, they are something extra that you can do if you use github to host your repositories.&lt;/p&gt;
+
+&lt;h2 id=&#34;basic-git-workflow:a528cf4c8580d30a38fbff171d5ada2a&#34;&gt;Basic git workflow&lt;/h2&gt;
+
+&lt;p&gt;The main thing to understand about git is that there are three &amp;ldquo;states&amp;rdquo; files can have in your git workflow. I think of it as there being three different containers they can be in &amp;ndash; the working directory, staging area, or the repository.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;center&#34;&gt;Container&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;Files Here Are:&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;Working directory&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;New and/or modified&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;Staging area&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Marked for committing&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;Repository&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Recorded in history&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Files in the working directory are new or modified and &lt;strong&gt;not&lt;/strong&gt; &amp;ldquo;staged for commit&amp;rdquo; &amp;ndash; this means they will not be included in your next snapshot and any changes you made in them will not be recorded in history until you move them up a level to the staging area.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Files in the staging are ready to commit. When you commit, only changes to files that are in the staging area at that time will be added to your &amp;ldquo;official&amp;rdquo; history. Often you will just be committing everything you&amp;rsquo;ve worked on, but if your workflow is scattered a bit, or if you are in the middle of working on something and your team needs an update but you don&amp;rsquo;t want to push all of your changes, you can stage individual files by name.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The last container is the actual repository. This is where your final changes and snapshots are stored. Files in here are safe and sound in the state in which you last committed them.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Once you understand these concepts and get how git works, learning the commands below is simple because you will understand what each one is actually doing. I was confused when I first started learning git because I was just typing things and watching the magic happen. It&amp;rsquo;s important to drill the commands so you can remember them, but it&amp;rsquo;s also important to understand what&amp;rsquo;s going on when you press enter.&lt;/p&gt;
+
+&lt;h2 id=&#34;fixing-mistakes-with-git:a528cf4c8580d30a38fbff171d5ada2a&#34;&gt;Fixing mistakes with git&lt;/h2&gt;
+
+&lt;p&gt;To move files between the different states use the commands below. Using &lt;code&gt;git reset&lt;/code&gt; is a pretty straightforward way to fix your mistakes and it comes with options you can choose depending how messed up your files are. Note that each command requires extra arguments but I left these out of the diagram. Some common ones are listed underneath it.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://kiramclean.com/images/gits_containers.png&#34; alt=&#34;Git&#39;s containers and how to move files between them&#34; /&gt;
+&lt;em&gt;Git&amp;rsquo;s containers and how to move files between them.&lt;/em&gt;&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Command&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Argument&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;git add&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;.&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;file_name.ext&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;git commit&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;-m &amp;lt;commit message&amp;gt;&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;git reset&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;--soft HEAD~3&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;git reset&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;HEAD~2&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Think of your commits as snapshots in time. If you pass &lt;code&gt;HEAD~2&lt;/code&gt; as an argument you are selecting the last 2 commits. What happens to those commits depends on what option you specified.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://kiramclean.com/images/git_reset.png&#34; alt=&#34;Your git commits&#34; /&gt;
+&lt;em&gt;Your git commits. Read on to see what happens in each case.&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;git reset --soft&lt;/code&gt; undoes the commits you pass it and puts all of the changes recorded in those commits back in the staging area ready to commit again. This is useful for renaming some changes if you made unnecessary commits and want to combine multiple snapshots into one. I find this simpler than interactively rebasing and trying to &amp;ldquo;squash&amp;rdquo; commits. The difference is it&amp;rsquo;s all or nothing &amp;ndash; if you pass &lt;code&gt;git reset --soft&lt;/code&gt; the past 3 commits (&lt;code&gt;HEAD~3&lt;/code&gt;), &lt;strong&gt;all&lt;/strong&gt; of the changes contained in those commits get sent back to the staging area, unlike rebasing where you can interactively choose which commits get saved, thrown away, or edited.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;git reset --mixed&lt;/code&gt;, or just &lt;code&gt;git reset&lt;/code&gt; since &lt;code&gt;--mixed&lt;/code&gt; is the default option, can be used in a similar way but is used when you need to make changes to the files you committed, not just rename the commits. It undoes the commits and places the changed files back in the working directory to be edited some more if you want to.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;There is also a third option: &lt;code&gt;git reset --hard&lt;/code&gt;. This is a destructive command, meaning it completely deletes those highlighted commits &amp;ndash; that means all of the changes to the files included in the commits will be &lt;strong&gt;erased&lt;/strong&gt;. Be careful with this because it&amp;rsquo;s irreversible and you WILL lose work. The reason it exists is because sometimes that&amp;rsquo;s what you want. If you royally effed up and want to permanently reset your files to an earlier state, this is what &lt;code&gt;reset --hard&lt;/code&gt; is for. Before you use it make sure you actually want to erase all of your changes because there&amp;rsquo;s no going back. It&amp;rsquo;s like rewinding the clock on your work.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;be-careful-about-re-writing-history:a528cf4c8580d30a38fbff171d5ada2a&#34;&gt;Be careful about re-writing history&lt;/h2&gt;
+
+&lt;p&gt;There are a couple of important things to note about resetting. Keep in mind that if you are moving things &lt;strong&gt;out&lt;/strong&gt; of the repository (i.e., things that have already been committed), you are undoing past commits and re-writing history. This will create conflicts with remote repos if you&amp;rsquo;ve already pushed the changes you are editing, and it can be confusing for collaborators. As a best practice, only reset or rebase commits you haven&amp;rsquo;t pushed remotely yet. If you have to edit history that is already on github, only do it on your own repos and ones where nobody else is counting on your work.&lt;/p&gt;
+
+&lt;p&gt;If you are on a team and need to fix some changes in the past but don&amp;rsquo;t want to confuse your collaborators you can use &lt;code&gt;git revert HEAD~2&lt;/code&gt; (or however many commits you want to revert). Unlike resetting, which erases your commits and lets you completely redo them, reverting creates a new commit that exactly undoes the changes in the commits you pass it. It still undoes your changes, but it leaves a record behind so others can make sense of the commit history.&lt;/p&gt;
+
+&lt;h3 id=&#34;merge-conflicts-and-overwriting-a-remote-history:a528cf4c8580d30a38fbff171d5ada2a&#34;&gt;Merge conflicts and overwriting a remote history&lt;/h3&gt;
+
+&lt;p&gt;There&amp;rsquo;s one last important note about re-writing history like this. If you rearrange commits that have already been pushed to github in your local repo, as I mentioned above, you will create conflicts between your local repo and your remote one. Your remote repo will have a different history than your local one, and if you try &lt;code&gt;git push&lt;/code&gt; you will get an error something like:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;Updates were rejected because the tip of your current branch is behind its remote counterpart. Integrate the remote changes (e.g. &#39;git pull ...&#39;) before pushing again.&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;If you do what it says, you will be merging your remote history (which is the OLD history you just overwrote) into your NEW history &amp;ndash; the one you re-wrote with resetting, rebasing, or whatever else, and make a real git mess. If you want to overwrite your remote history with your local history (the one you just re-built), you can use &lt;code&gt;git push -f &amp;lt;remote&amp;gt; &amp;lt;branch&amp;gt;&lt;/code&gt;. The &lt;code&gt;-f&lt;/code&gt; is for &lt;code&gt;--force&lt;/code&gt;. Again, BE CAREFUL doing this, because you will be erasing the history of the remote repo and replacing it with the history you rewrote for your local repo. If this is what you want then go ahead, but make sure nobody else is working on the same repo, or that if they are they know what you&amp;rsquo;re up to, because this will make a mess for anyone else who depends on the history of that repo.&lt;/p&gt;
+
+&lt;p&gt;In general, it&amp;rsquo;s better to get into the habit of writing meaningful commit messages that capture a series of related changes to your project, but there are lots of cases where you might make too many or too few commits and want to re-write your history. Git comes with tons of tools beyond just committing and pushing to a remote repository and it&amp;rsquo;s well worth taking some time to explore them.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Benefits of Group Learning</title>
+      <link>http://kiramclean.com/blog/learning/2015.11.28-benefits-of-group-learning/</link>
+      <pubDate>Sat, 28 Nov 2015 20:51:15 -0400</pubDate>
+      
+      <guid>http://kiramclean.com/blog/learning/2015.11.28-benefits-of-group-learning/</guid>
+      <description>
+
+&lt;p&gt;Another week flew by and I still don&amp;rsquo;t have my own app up and running. Montreal has an awesome ruby community, though, and this week they hosted a meetup to build their new website with ruby on rails. Thanks to some wonderful, patient people I learned a lot and am much closer to being able to do it on my own. I&amp;rsquo;m not sure how much closer Montreal.rb is to having a new website that works, though. Working with other people is essential if you&amp;rsquo;re trying to learn how to code. If you&amp;rsquo;ve thought openly about learning how to code, you have  already been told to not do it alone. I&amp;rsquo;m not going to preach about why you need to do it, but I have some advice for when you do find a group of fellow programmers or learners.&lt;/p&gt;
+
+&lt;h2 id=&#34;don-t-be-a-perfectionist:1b7961861acd1169ab8499464e256010&#34;&gt;Don&amp;rsquo;t be a perfectionist&lt;/h2&gt;
+
+&lt;p&gt;It doesn&amp;rsquo;t matter if your header is 50px or 60px high, or what color the background is, or what font you use, or whatever. At least not at first. This goes for everybody, but especially if you are focusing on back-end development. I know a lot of people don&amp;rsquo;t have issues with this kind of stuff like I do, but I&amp;rsquo;m the type of person who very easily gets caught up with literally irrelevant details that end up consuming way too much of my time. You need to take full advantage of the time you dedicate to learning, and don&amp;rsquo;t fool yourself into thinking you did a bunch of work when all you did was choose the perfect colour scheme. Just work on getting something that works first, then worry about customization or making it look different. This is especially true when you&amp;rsquo;re working with other people, which brings me to my next point.&lt;/p&gt;
+
+&lt;h2 id=&#34;be-grateful:1b7961861acd1169ab8499464e256010&#34;&gt;Be grateful&lt;/h2&gt;
+
+&lt;p&gt;People who are good at coding usually work full time. They have busy lives but a lot of them still take time to mentor and meet newbies. Once you find (or build) a community of developers and learners, don&amp;rsquo;t take it for granted. When you&amp;rsquo;re headed to a meetup where you&amp;rsquo;ll be programming with other programmers who you know are better than you, get started on a project before hand so when you&amp;rsquo;re with the group you can focus on just building. Try to answer your own questions first, but after you search the docs and google if you&amp;rsquo;re still stuck, turn to someone else to get unstuck as fast as possible. Remember that people are taking time out of their lives to help you learn an invaluable skill, though, they are not there to hold your hand all the way to becoming a pro.&lt;/p&gt;
+
+&lt;h2 id=&#34;don-t-get-religious:1b7961861acd1169ab8499464e256010&#34;&gt;Don&amp;rsquo;t get religious&lt;/h2&gt;
+
+&lt;p&gt;I&amp;rsquo;m quickly discovering that programmers can be super opinionated about things that non-programmers would never have even heard of. Most of the programmers I&amp;rsquo;ve met so far are wonderful and super polite, but every once in a while I&amp;rsquo;ll come across someone who just &amp;ldquo;has to&amp;rdquo; show me the latest or greatest thing that they &amp;ldquo;can&amp;rsquo;t believe&amp;rdquo; I have never heard of. I totally understand how experienced developers can feel this way, but this type of attitude seems especially strange on beginners. If you just started learning how to code, just focus on that, and not on preaching to other learners about why your way or what you&amp;rsquo;re learning is better. There are tons of technologies out there that are all useful for different things, and meetups always go smoother when everybody comes with a cooperative and helpful attitude. Try not to get too religious about your opinions right out of the gate.&lt;/p&gt;
+
+&lt;p&gt;As an aside; almost as soon as I started learning how to code I realized I would never be able to keep up with all the trends, so I decided to focus on learning how to use a few tools well, and go from there. I use C for low-level programming, ruby for everything else, rails for web development, and Sublime for editing. It&amp;rsquo;s starting to feel like I&amp;rsquo;m going to be 100 before I even wrap my head around these things, and there are a lot of learners in the same boat. Although most people love hearing about other awesome technologies that other people are learning, if you&amp;rsquo;re preaching to someone chances are they&amp;rsquo;ve dedicated a lot of time learning whatever it is they focus on and it sucks being told negative things about what feels like progress.&lt;/p&gt;
+
+&lt;h2 id=&#34;so-go-to-meetups-and-be-wonderful:1b7961861acd1169ab8499464e256010&#34;&gt;So: go to meetups and be wonderful&lt;/h2&gt;
+
+&lt;p&gt;Learning with other people is an amazing experience. You pick up good habits and learn little things that you probably wouldn&amp;rsquo;t have bothered to search for on your own. When you do get out and meet in a learning group, stay focused and don&amp;rsquo;t worry about fidgeting with CSS or adding special effects or something. Just focus on learning and building something end to end, then move sideways and work on improvements and upgrades. Be wonderful so that meetups go smoothly, and have fun!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Learning How to Code</title>
+      <link>http://kiramclean.com/blog/learning/2015.11.21-learning-how-to-code/</link>
+      <pubDate>Sat, 21 Nov 2015 20:49:12 -0400</pubDate>
+      
+      <guid>http://kiramclean.com/blog/learning/2015.11.21-learning-how-to-code/</guid>
+      <description>
+
+&lt;p&gt;At beginning of last summer I started learning how to code. I had a wordpress website and wanted to customize it, then I got sucked into a rabbit hole and haven&amp;rsquo;t really surfaced since. I realized I would only be able to make it so far coding in a box on a website with tutorials, as great as they are, and about 2 months ago I decided to go all in. Now I&amp;rsquo;m learning as much as I can and working on becoming a real web developer. As I go I&amp;rsquo;m learning as much about learning how to program as I am about programming itself. Here are a few of the most useful things I&amp;rsquo;ve learned so far and some tips if you want to get started learning how to code.&lt;/p&gt;
+
+&lt;h2 id=&#34;just-start:10c63b0d194d929790740aa6d2e9fd63&#34;&gt;Just start&lt;/h2&gt;
+
+&lt;p&gt;If you want to learn how to code, just get started. Don&amp;rsquo;t spend a lot of time searching everywhere for the &amp;ldquo;best&amp;rdquo; resources. There are some that are better than others, but whatever is most popular whenever you&amp;rsquo;re reading this is going to be good enough to introduce you to programming and get you to a place where you can choose a path for yourself. Just pick whatever is popular and get started, then go from there. I wasted WAY too much time searching through every possible boot camp and tutorial guide on the internet instead of just going ahead and actually learning.&lt;/p&gt;
+
+&lt;h2 id=&#34;if-you-really-don-t-know-where-to-start-learn-command-line-and-git:10c63b0d194d929790740aa6d2e9fd63&#34;&gt;If you really don&amp;rsquo;t know where to start, learn command line and git&lt;/h2&gt;
+
+&lt;p&gt;If you&amp;rsquo;ve looked through the options and still feel totally overwhelmed by the sheer number of possible languages and paths to becoming a programmer, start with learning your way around the command line and git. These are things that you will need no matter what language you end up using and they will help you develop good habits and a smooth workflow from day one. Again, don&amp;rsquo;t get overwhelmed and think you have to learn everything. Just get used to navigating directories from you command line instead of &amp;ldquo;finder&amp;rdquo; or &amp;ldquo;file explorer&amp;rdquo;, and start keeping track of your projects using git. If you don&amp;rsquo;t have a whole project on the go then make a repository for little coding exercises.&lt;/p&gt;
+
+&lt;h2 id=&#34;don-t-get-distracted:10c63b0d194d929790740aa6d2e9fd63&#34;&gt;Don&amp;rsquo;t get distracted&lt;/h2&gt;
+
+&lt;p&gt;I get distracted really easily. If you&amp;rsquo;re one of those people who can set a task and just sit down and do it from start to finish, then lucky you. I am not. I&amp;rsquo;m one of those people with about a million &amp;ldquo;productivity&amp;rdquo; tools on the go, and whenever someone tells me about the greatest new one, I end up spending an hour exploring it instead of just using it to get to work. Having a personality like mine is dangerous if you want to learn web development or computer programming in general, because there are a virtually unlimited number of rabbit holes. And that&amp;rsquo;s what they are. If you get sucked into some new language or framework or workflow, you may never get out, or emerge at the end of a whole day wondering what just happened (if you&amp;rsquo;re at all like me).&lt;/p&gt;
+
+&lt;p&gt;It is so easy for me to spend hours learning something only tangentially related to what I&amp;rsquo;m supposed to be working on. This is great because it means you learn a little but of everything, but obviously the downside is that projects take about 10 times longer to finish. If you have similar issues then I recommend setting very strict goals for yourself. Be realistic about what you can achieve in a given amount of time, and then set out to do exactly that &amp;ndash; no more and no less. Then, set aside a block of time just for exploring. Every time you come across a cool new thing you want to try but don&amp;rsquo;t immediately need to learn to finish what you&amp;rsquo;re working on, set it aside and promise you&amp;rsquo;ll come back to it during your &amp;ldquo;free&amp;rdquo; time.&lt;/p&gt;
+
+&lt;h2 id=&#34;keep-going:10c63b0d194d929790740aa6d2e9fd63&#34;&gt;Keep going!&lt;/h2&gt;
+
+&lt;p&gt;Anyway, this sort of sums up my learning experience so far. Basically my advice boils down to &amp;ldquo;get to work&amp;rdquo;. Don&amp;rsquo;t make excuses about why you can&amp;rsquo;t start or keep going. Just focus and work. And focus on moving forward, not sideways. If you really want to learn how to code, it is worth it. My short term projects for the time being are to make my own Rails app and to master my workflow in Sublime. So far so good, but I will post more updates here as I go.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>About Me</title>
+      <link>http://kiramclean.com/pages/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://kiramclean.com/pages/about/</guid>
+      <description>
+&lt;figure class=&#34;profile&#34;&gt;
+    
+        &lt;img src=&#34;http://kiramclean.com/images/profile.jpg&#34; alt=&#34;Kira McLean&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;Hi! I&amp;rsquo;m Kira. I&amp;rsquo;m a Canadian web developer from Fredericton, NB. I&amp;rsquo;m based in Montreal now and love it here. I&amp;rsquo;m also passionate about justice and do what I can to spread reason.&lt;/p&gt;
+
+&lt;p&gt;Right now I&amp;rsquo;m learning Ruby and Rails and also trying to understand some fundamentals of CS, writing some small programs in C and Go. This website is 
+&lt;a target=&#34;_blank&#34; href=&#34;https://gohugo.io&#34;&gt;built with hugo&lt;/a&gt;
+. I love the tech and web development scenes in Montreal which is mostly I&amp;rdquo;m getting more involved.&lt;/p&gt;
+
+&lt;p&gt;When I&amp;rsquo;m not on my computer I knit, do yoga, play violin, or just get lost exploring the city. I love travelling and politics. My dream is to work for an awesome tech company from a beach in Spain. Have fun looking around, or find me on 
+&lt;a target=&#34;_blank&#34; href=&#34;https://twitter.com/kiraemclean&#34;&gt;twitter&lt;/a&gt;
+ or 
+&lt;a target=&#34;_blank&#34; href=&#34;https://github.com/kiramclean&#34;&gt;github&lt;/a&gt;
+.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Twitter Clone</title>
+      <link>http://kiramclean.com/projects/twitter-clone/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://kiramclean.com/projects/twitter-clone/</guid>
+      <description>&lt;p&gt;This is the first Rails app I built to learn, well, Rails. The authentication system is built from scratch so I could see how Rails works a little bit behind the scenes. Most of the apps I&amp;rsquo;ve built since this use devise or some other authentication gem to handle user flow, but building this was a great way to get familiar with how Rails handles authentication and sending email.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Wifi and Coffee</title>
+      <link>http://kiramclean.com/pages/wifi-and-coffee/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://kiramclean.com/pages/wifi-and-coffee/</guid>
+      <description>&lt;p&gt;Computer programming can pretty quickly lead to isolation. I often work in cafes just to get out of the house and force myself to go for a walk to step away from the computer for a bit. I can usually count on JavaU, Second Cup, Starbucks, or Presse Cafe, but there are tons of great boutique cafes in Montreal, too. These are some of the best places I&amp;rsquo;ve found with fast, reliable wifi (passwords below!) and good coffee.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Anticafe&lt;/strong&gt; • 294 rue Ste-Catherine O, Downtown • wifi: check-in with Facebook&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cafe Bloom&lt;/strong&gt; • 1940 Centre Street, Pointe Ste Charles • wifi: cafebloom&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cafe Carrefour&lt;/strong&gt; • 3131 rue Bélanger, Saint-Michel • wifi: cafe3131&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cafe Aunja&lt;/strong&gt; • 1448 rue Sherbrooke O, Downtown • wifi: gingertea&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Espace Cafe&lt;/strong&gt; • 210 Notre Dame O, Old Montreal • wifi: espace101010&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Do you know any others? Let me know below.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

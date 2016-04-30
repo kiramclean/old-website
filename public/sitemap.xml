@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>http://kiramclean.com/</loc>
+    <lastmod>2016-04-28T23:55:06-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://kiramclean.com/blog/learning/setting-up-sass-source-maps-with-gulp/</loc>
+    <lastmod>2016-04-28T23:55:06-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://kiramclean.com/blog/learning/2016.04.27-setting-up-gulp-for-css-pre-and-post-processing/</loc>
+    <lastmod>2016-04-27T20:56:34-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://kiramclean.com/blog/learning/2016.03.15-switching-from-sublime-to-vim/</loc>
+    <lastmod>2016-03-15T21:39:18-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://kiramclean.com/blog/learning/2016.02.07-stop-typing-bundle-exec/</loc>
+    <lastmod>2016-02-07T21:23:29-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://kiramclean.com/blog/learning/2016.01.24-what-your-rails-app-does-behind-the-scenes/</loc>
+    <lastmod>2016-01-24T21:07:23-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://kiramclean.com/blog/travel/maybe-the-worlds-most-meaningful-city/</loc>
+    <lastmod>2016-01-19T21:05:59-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://kiramclean.com/blog/travel/beginning-to-process-birthright/</loc>
+    <lastmod>2016-01-15T21:04:30-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://kiramclean.com/blog/travel/first-day-in-israel/</loc>
+    <lastmod>2016-01-05T21:02:50-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://kiramclean.com/blog/learning/2015.12.05-getting-started-with-git/</loc>
+    <lastmod>2015-12-05T20:54:08-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://kiramclean.com/blog/learning/2015.11.28-benefits-of-group-learning/</loc>
+    <lastmod>2015-11-28T20:51:15-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://kiramclean.com/blog/learning/2015.11.21-learning-how-to-code/</loc>
+    <lastmod>2015-11-21T20:49:12-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://kiramclean.com/pages/about/</loc>
+  </url>
+  
+  <url>
+    <loc>http://kiramclean.com/projects/twitter-clone/</loc>
+  </url>
+  
+  <url>
+    <loc>http://kiramclean.com/pages/wifi-and-coffee/</loc>
+  </url>
+  
+</urlset>

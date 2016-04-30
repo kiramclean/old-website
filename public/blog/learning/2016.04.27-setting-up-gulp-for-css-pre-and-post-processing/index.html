@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="generator" content="Hugo 0.15" />
+    <html lang="en-CA">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="" rel="alternate" type="application/rss+xml" title="Kira McLean" />
+    <link href="" rel="feed" type="application/rss+xml" title="Kira McLean" />
+
+    <link href='https://fonts.googleapis.com/css?family=Amatic+SC' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Oxygen:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Miniver' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="http://kiramclean.com//css/main.css">
+
+    
+      <title>Setting Up Gulp for CSS Pre- and Post- Processing | Kira McLean</title>
+      <meta property="og:title" content="Setting Up Gulp for CSS Pre- and Post- Processing | Kira McLean">
+      <meta property="og:type" content="article">
+    
+
+    <meta property="og:url" content="http://kiramclean.com/blog/learning/2016.04.27-setting-up-gulp-for-css-pre-and-post-processing/">
+    
+    
+  </head>
+
+
+<body>
+
+  <header>
+    <a id="logo" href="http://kiramclean.com/">Kira McLean</a>
+
+    <nav>
+      <ul>
+        <li><a href="http://kiramclean.com/blog/">Blog</a></li>
+        <li><a href="http://kiramclean.com/projects/">Web Development</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+
+  <section>
+    <article>
+      <h1>Setting Up Gulp for CSS Pre- and Post- Processing</h1>
+      <time>April 27, 2016</time><span>•</span><p>4 min read</p>
+      <p>I recently rebuilt this blog with Hugo, an awesome super fast static site builder made with Go. It&rsquo;s a super lean static page generator that does a great job of organizing your content into easy to manage sections.</p>
+
+<p>The downside is that it&rsquo;s BYO-front end. Coming from the world of Rails and other frameworks built with Ruby, this was new for me. With Rails you just put your code in the folders that come with the app and it magically turns into one long CSS or JS file ready to deploy. If you want to use Sass or Scss instead, there&rsquo;s a gem for that and using it is as simple as adding one line to your Gemfile. Then your app is ready to use Sass.</p>
+
+<p>Hugo builds static sites, so you can only include vanilla CSS or JS. There are no preprocessors in the Hugo build process, so if you want to use Sass or Coffeescript, or even if you just want to spread out your front-end code over a bunch of files, you need to deal with turning into a single static file yourself.</p>
+
+<p>I want to set up Gulp to deal with my assets. I want to write Sass spread out across many files and then run it through an auto-prefixing post-processor so I won&rsquo;t have to worry about vendor prefixes. I also want to write Coffeescript in a bunch of little files and end up with a long JS file. I would also be great if I could get these files automatiaclly dumped into the <code>static</code> folder in my hugo project.</p>
+
+<p>I overthought this for a few hours and came across a dozen or so different workflows for dealing with this kind of thing. An awesome front end developer I know convinced me to settle with Gulp, and it seems to be a common favourite, so that&rsquo;s what I&rsquo;m going with. To learn how I set up Gulp to deal with my Sass and Coffeescript, read on. First of all, <a href="https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md">get gulp</a>. They have great instructions in the readme, but basically just run</p>
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>npm install --global gulp-cli
+</pre></div>
+
+<p>Then, install gulp in your project directory. If you&rsquo;re starting a new project from scratch, first run npm init in your project folder. This will just add a <code>package.json</code> file for you and step you through adding some info about the project.</p>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>// in your project root directory
+npm install --save-dev gulp
+</pre></div>
+
+
+<p>We&rsquo;ll also need gulp-sass to handle our sass. The <code>--save-dev</code> flag tells npm to add gulp and gulp-sass to the <code>devDependency</code> list in your <code>package.json</code> file.</p>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>// still in your project root directory
+npm install --save-dev gulp-sass
+</pre></div>
+
+
+<blockquote>
+<p>If you don&rsquo;t have node (if you get somthing like <code>command not found: npm</code>), get that too with <code>brew install node</code>, if you&rsquo;re on OSX.</p>
+</blockquote>
+
+<p>Next you have to configure gulp. This is the part that sounds like a nightmare for people who aren&rsquo;t used to front-end work, but it&rsquo;s actually really simple.</p>
+
+<p>First, create a <code>gulpfile.js</code> in your project root directory. Add these two lines to initialize gulp and gulp-sass:
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #60a0b0; font-style: italic">// in ./gulpfile.js</span>
+<span style="color: #007020; font-weight: bold">var</span> gulp <span style="color: #666666">=</span> require(<span style="color: #4070a0">&#39;gulp&#39;</span>);
+<span style="color: #007020; font-weight: bold">var</span> sass <span style="color: #666666">=</span> require(<span style="color: #4070a0">&#39;gulp-sass&#39;</span>);
+</pre></div>
+</p>
+
+<p>Next, we need to tell gulp where to find the sass files and where to put the compiled css. Gulp works by building &lsquo;tasks&rsquo; that are basically lists of instructions of what to do. I guess that&rsquo;s what all code is. Whatever. Here is a simple gulp task that grabs the sass source files from one place and dumps them in another.</p>
+
+<p><div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>gulp.task(<span style="color: #4070a0">&#39;sass&#39;</span>, <span style="color: #007020; font-weight: bold">function</span>() {               <span style="color: #60a0b0; font-style: italic">// define a new gulp task named sass</span>
+  <span style="color: #007020; font-weight: bold">return</span> gulp.src(<span style="color: #4070a0">&#39;sass/*&#39;</span>)           <span style="color: #60a0b0; font-style: italic">// tell gulp where to find your sass files, relative to the gulpfile.js</span>
+    <span style="color: #60a0b0; font-style: italic">// I have a mix of sass and scss files in my sass directory, but nothing else, so I just tell gulp to grap everything in there</span>
+    .pipe(sass().on(<span style="color: #4070a0">&#39;error&#39;</span>, sass.logError)) <span style="color: #60a0b0; font-style: italic">// show error messages if sass fails to compile -- failing silently will just kill gulp</span>
+    .pipe(gulp.dest(<span style="color: #4070a0">&#39;./static/css&#39;</span>));        <span style="color: #60a0b0; font-style: italic">// tell gulp where to dump your compiled css</span>
+});
+
+gulp.task(<span style="color: #4070a0">&#39;default&#39;</span>, <span style="color: #007020; font-weight: bold">function</span>() {         <span style="color: #60a0b0; font-style: italic">// we also want to watch the files, so we don&#39;t have to manually recompile every time we make some changes</span>
+  gulp.watch(<span style="color: #4070a0">&#39;sass/*.sass&#39;</span>, [<span style="color: #4070a0">&#39;sass&#39;</span>]);    <span style="color: #60a0b0; font-style: italic">// tell gulp which files to watch and an array with commands to run when those files are changed</span>
+});
+</pre></div>
+</p>
+
+<p>Sass will build a css file for every sass file you have unless you prefix it with an underscore. If you have a bunch of css files don&rsquo;t forget to include them all in your <code>&lt;head&gt;</code> tag, or just prefix all your sass files with an underscore so sass only builds one long css file.</p>
+
+<p>And that&rsquo;s that. Setting up gulp is actually super simple.</p>
+
+    </article>
+  </section>
+
+  </main>
+
+  <footer>
+    <div id='contact'>
+  <ul>
+    
+      <li><a href="//github.com/kiramclean" target="_blank">
+        <i class="fa fa-github-square"></i>
+        <p>GitHub</p>
+      </a></li>
+    
+
+    
+      <li><a href="//twitter.com/kiraemclean" target="_blank">
+        <i class="fa fa-twitter-square"></i>
+        <p>Twitter</p>
+      </a></li>
+    
+
+    
+      <li><a href="//linkedin.com/in/kiramclean" target="_blank">
+        <i class="fa fa-linkedin-square"></i>
+        <p>LinkedIn</p>
+      </a></li>
+    
+
+    
+      <li><a href="mailto:email@kiramclean.com">
+        <i class="fa fa-envelope-square"></i>
+        <p>Email</p>
+      </a></li>
+    
+  </ul>
+</div>
+
+    <nav>
+  <ul>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <li><a href="http://kiramclean.com/pages/about/">About Me</a></li>
+    
+  
+    
+  
+    
+      <li><a href="http://kiramclean.com/pages/wifi-and-coffee/">Wifi and Coffee</a></li>
+    
+  
+  </ul>
+</nav>
+
+
+
+
+    <div id="copy">
+      <p>&copy; 2016 Kira McLean</p>
+    </div>
+
+  </footer>
+</body>
+</html>
+

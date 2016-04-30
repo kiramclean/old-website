@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="generator" content="Hugo 0.15" />
+    <html lang="en-CA">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="" rel="alternate" type="application/rss+xml" title="Kira McLean" />
+    <link href="" rel="feed" type="application/rss+xml" title="Kira McLean" />
+
+    <link href='https://fonts.googleapis.com/css?family=Amatic+SC' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Oxygen:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Miniver' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="http://kiramclean.com//css/main.css">
+
+    
+      <title>Setting Up Sass Source Maps With Gulp | Kira McLean</title>
+      <meta property="og:title" content="Setting Up Sass Source Maps With Gulp | Kira McLean">
+      <meta property="og:type" content="article">
+    
+
+    <meta property="og:url" content="http://kiramclean.com/blog/learning/setting-up-sass-source-maps-with-gulp/">
+    
+    
+  </head>
+
+
+<body>
+
+  <header>
+    <a id="logo" href="http://kiramclean.com/">Kira McLean</a>
+
+    <nav>
+      <ul>
+        <li><a href="http://kiramclean.com/blog/">Blog</a></li>
+        <li><a href="http://kiramclean.com/projects/">Web Development</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+
+  <section>
+    <article>
+      <h1>Setting Up Sass Source Maps With Gulp</h1>
+      <time>April 28, 2016</time><span>•</span><p>2 min read</p>
+      
+
+<p>Sass is awesome, hugo is awesome, and gulp is awesome.</p>
+
+<h2 id="add-source-maps:16a7451ffd494ce778fd596d244fec84">Add source maps</h2>
+
+<p>Get sourcemaps for gulp</p>
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>npm install --save-dev gulp-sourcemaps
+</pre></div>
+
+<p>Then set up the gulp task</p>
+
+<ul>
+<li>include sourcemaps at the top of your source maps</li>
+
+<li><p>add this to your <code>gulp.task('sass')</code></p>
+
+<p>.pipe(sourcemaps.init())
+// error logging
+.pipe(sourcemaps.write())</p></li>
+
+<li><p>enable source maps in your browser (for chrome, this is in settings)</p></li>
+
+<li><p>add a file to your workspace (restart developer tools if it seems like you&rsquo;re having issues with files or folders showing up)</p></li>
+
+<li><p>chrome is really smart and once you map one file it will most likely find the rest of them automatically</p></li>
+</ul>
+
+<p>While we&rsquo;re at it, add autoprefixing to your css. There is no reason not to do this, especially once you already have a custom processing pipeling set up with gulp. This is just one more filter for your code to pass through. Add it with</p>
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>npm install --save-dev gulp-autoprefixer
+</pre></div>
+
+<p>Add it to your gulpfile:</p>
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>// at the top of your gulpfile.js with all the other requires
+var <span style="color: #bb60d5">autoprefixer</span> <span style="color: #666666">=</span> require<span style="color: #666666">(</span><span style="color: #4070a0">&#39;gulp-autoprefixer&#39;</span><span style="color: #666666">)</span>;
+
+// after sourcemaps, but before output
+.pipe<span style="color: #666666">(</span>autoprefixer<span style="color: #666666">())</span>
+</pre></div>
+
+<p>By default autoprefixer supports:
+- browsers with over 1% marketshare
+- last 2 versions of all browsers
+- Firefox ESR
+- Opera 12.1</p>
+
+<p>You can set it up to use a custom configuration by passing it an array of options</p>
+
+<p>** NOTE: this might cause problems depending on where in your gulpfile you add the autoprefixing &ndash; I added it AFTER the sourec maps which caused <code>CssSyntaxError .... Missed Semicolon</code>. If this happens to you try rearranging the order of your pipes and recompiling.</p>
+
+    </article>
+  </section>
+
+  </main>
+
+  <footer>
+    <div id='contact'>
+  <ul>
+    
+      <li><a href="//github.com/kiramclean" target="_blank">
+        <i class="fa fa-github-square"></i>
+        <p>GitHub</p>
+      </a></li>
+    
+
+    
+      <li><a href="//twitter.com/kiraemclean" target="_blank">
+        <i class="fa fa-twitter-square"></i>
+        <p>Twitter</p>
+      </a></li>
+    
+
+    
+      <li><a href="//linkedin.com/in/kiramclean" target="_blank">
+        <i class="fa fa-linkedin-square"></i>
+        <p>LinkedIn</p>
+      </a></li>
+    
+
+    
+      <li><a href="mailto:email@kiramclean.com">
+        <i class="fa fa-envelope-square"></i>
+        <p>Email</p>
+      </a></li>
+    
+  </ul>
+</div>
+
+    <nav>
+  <ul>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <li><a href="http://kiramclean.com/pages/about/">About Me</a></li>
+    
+  
+    
+  
+    
+      <li><a href="http://kiramclean.com/pages/wifi-and-coffee/">Wifi and Coffee</a></li>
+    
+  
+  </ul>
+</nav>
+
+
+
+
+    <div id="copy">
+      <p>&copy; 2016 Kira McLean</p>
+    </div>
+
+  </footer>
+</body>
+</html>
+
