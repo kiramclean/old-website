@@ -6,6 +6,10 @@
       <time>{{ .Date.Format "January 2, 2006" }}</time><span>•</span><p>{{ .ReadingTime }} min read</p>
       {{ .Content }}
     </article>
+
+    <aside>
+      {{ template "_internal/disqus.html" . }}
+    </aside>
   </section>
 
 {{ partial "footer.html" . }}

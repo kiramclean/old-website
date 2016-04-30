@@ -21,6 +21,8 @@
 
     <link rel="stylesheet" href="{{ .Site.BaseURL }}/css/main.css">
 
+    {{ template "_internal/google_analytics.html" . }}
+
     {{ if eq .URL "/" }}
       <title>{{ .Title }}</title>
       <meta property="og:title" content="{{ .Title }}">
