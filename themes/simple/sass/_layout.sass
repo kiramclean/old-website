@@ -5,7 +5,7 @@ main
 
 section
   max-width: $layout-width
-  margin: $padding 0
+  margin: $padding*3 0
   width: 80%
 
 article
@@ -24,9 +24,7 @@ article
     justify-content: space-between
 
 .blog-post
-  margin-top: $padding
-  @include above($small-screen)
-    margin-top: $padding*2
+  margin-bottom: $padding
   h2
     padding: 0
   p a, p + a
@@ -38,10 +36,11 @@ article
     @include fade-from-to(rgba($text-color, 0.6), $text-color)
 
 .project
-  h3
-    font-family: $base-font
+  margin-bottom: $padding
+  h1
+    font-size: $base-font-size * 1.5
+  h2
     letter-spacing: 0
-    font-weight: bold
     font-size: $base-font-size
     padding: $padding/2 0
 

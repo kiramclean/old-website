@@ -1,11 +1,10 @@
 {{ partial "header.html" . }}
 
   <section>
-    <h1>Projects</h1>
     {{ range .Data.Pages }}
       <div class='project'>
-        <h2><a href="{{ .Params.link }}" target="_blank">{{ .Title }}</a></h2>
-        <h3>{{ .Description }}</h3>
+        <h1><a href="{{ .Params.link }}" target="_blank">{{ title .Title }}</a></h1>
+        <h2>{{ .Description }}</h2>
         {{ .Content }}
       </div>
     {{ end }}
