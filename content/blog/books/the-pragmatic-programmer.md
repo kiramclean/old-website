@@ -127,4 +127,9 @@ I'm reading the pragmatic programmer in an attempt to, well, be a pragmatic prog
 - reproduce the bug - visualize the data
 - write tests to catch the bug in the future
 - check elsewhere in the system for the same conditions that produced that bug in the first place
--
+- generate code dynamically when possible to avoid repetition and having to edit code later
+  - when multiple languages are used in the same project
+  - when DB/app layer need to Communicate
+
+## Be a little paranoid
+-  We don't trust anyone, just take it one stpes further -- don't trust yourself 
