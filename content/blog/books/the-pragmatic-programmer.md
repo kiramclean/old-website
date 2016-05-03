@@ -132,4 +132,18 @@ I'm reading the pragmatic programmer in an attempt to, well, be a pragmatic prog
   - when DB/app layer need to Communicate
 
 ## Be a little paranoid
--  We don't trust anyone, just take it one stpes further -- don't trust yourself 
+-  We don't trust anyone, just take it one step further -- don't trust yourself
+- rule for inheritance: any subclass should be able to be substituted for its parent class without the user knowing the difference (i.e., you should be able to use the interface of the base class to interact witht he subclass and not know the difference)
+- burden of correctness is in the call itself, not in the method being called (write methods assuming you will be passed valid input)
+- think about what exactly a method needs and what exactly it is supposed to return before you write it
+- catch exceptions and crash as early as possible to avoid running bad code any longer than you have to
+- if something can't happen, use assertions to make sure it won't (say, if it does happend, raise an exception)
+- exceptions should be for, well, exceptions -- don't use them for anything that could happen regularly
+- if your language does not do garbage collection, make sure to deallocate resources
+  - should be done by the same method or object that allocated in the first place
+- deallocate in the same order as you allocate to avoid orphaned references
+- always allocate in the same order if you have to do it multiple times in your code
+
+## Bend or Break
+
+-

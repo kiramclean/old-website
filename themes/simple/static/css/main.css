@@ -135,23 +135,22 @@ section h1 {
   padding: 0; }
 
 p {
-  padding: 0.5em 0; }
+  padding: 0.75em 0;
+  text-align: justify; }
 
 a, a:visited {
   border-bottom: 2px solid rgba(72, 219, 219, 0.3);
   color: #444444;
-  text-decoration: none; }
+  text-decoration: none;
+  -webkit-transition: all 350ms ease-in-out;
+  transition: all 350ms ease-in-out; }
   a:hover, a:visited:hover {
     border-bottom: 2px solid #48dbdb;
-    color: black;
-    -webkit-transition: all 350ms ease;
-    transition: all 350ms ease; }
+    color: black; }
 
 a:focus, a:active {
   color: rgba(68, 68, 68, 0.6);
-  text-shadow: 1px 0 0 #d0d0d0;
-  -webkit-transition: all 350ms ease;
-  transition: all 350ms ease; }
+  text-shadow: 1px 0 0 #d0d0d0; }
 
 strong {
   font-weight: bold; }

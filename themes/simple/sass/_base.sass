@@ -44,22 +44,21 @@ section
     padding: 0
 
 p
-  padding: $padding/3 0
+  padding: $padding/2 0
+  text-align: justify
 
 a, a:visited
   border-bottom: 2px solid rgba($main-color, 0.30)
   color: rgba($text-color, 1)
   text-decoration: none
-  transition: all $base-timing ease
+  transition: all $base-timing ease-in-out
   &:hover
     border-bottom: 2px solid rgba($main-color, 1)
     color: darken($text-color, 50%)
-    transition: all $base-timing ease
 
 a:focus, a:active
   color: rgba($text-color, 0.6)
   text-shadow: 1px 0 0 $light-gray
-  transition: all $base-timing ease
 
 strong
   font-weight: bold
