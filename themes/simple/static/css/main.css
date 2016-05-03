@@ -100,18 +100,8 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Montserrat", Lucida Grande, Helvetica, sans-serif;
   letter-spacing: 1px;
   padding-top: 0.75em; }
-  @media screen and (min-width: 64em) {
-    h1, h2, h3, h4, h5, h6 {
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-align: center;
-      -webkit-align-items: center;
-          -ms-flex-align: center;
-              align-items: center; }
-      h1 code, h2 code, h3 code, h4 code, h5 code, h6 code {
-        margin: 0 0.375em; } }
+  h1 code, h2 code, h3 code, h4 code, h5 code, h6 code {
+    top: -2px; }
 
 h1 {
   font-size: 1.6em; }

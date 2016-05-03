@@ -146,4 +146,24 @@ I'm reading the pragmatic programmer in an attempt to, well, be a pragmatic prog
 
 ## Bend or Break
 
--
+- stay flexible
+  - write less code
+- oganize code into cells/modules and keep interaction between them limited
+- don't reach into an object to get access to some tertiary object's methods (Law of demeter)
+- an object should only call methods defined in:
+  - itself
+  - classes or params that were passed directly to the object
+  - objects it created
+  - component objects directly held in it
+- book on large scale deployments: Large Scale C++ design (Lakos)
+- keep details out of your code!
+- make your code configurable, don't hard code anything (do not integrate anything)
+- program for the general case, add specifics as configuration details
+- keep the code base as abstract as possible
+- code declaratively (say what you want to do, not how)
+- move code out into metadata (configuration) files and make the app itself just an 'engine' that runs according to that data
+- design with services - independent concurrent objects behind consistent interfaces
+- don't use global variables
+- design assuming multiple tasks will be running concurrently
+- maintain reversibility by minimizing coupling between views and controllers
+
