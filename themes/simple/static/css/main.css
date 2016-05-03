@@ -250,7 +250,7 @@ pre {
       font-size: 6vw; } }
   @media screen and (min-width: 64em) {
     #quote-text {
-      font-size: 5vw; } }
+      font-size: 4vw; } }
 
 #quote-author {
   color: rgba(255, 255, 255, 0.7);
@@ -265,6 +265,11 @@ pre {
 #homepage {
   background: url(/images/homepage.jpg);
   background-size: cover; }
+  #homepage section {
+    margin: 0; }
+    @media screen and (min-width: 42em) {
+      #homepage section {
+        margin: 4.5em 0; } }
   #homepage footer, #homepage header {
     width: 80%;
     max-width: 42em;

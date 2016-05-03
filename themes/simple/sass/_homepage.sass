@@ -23,6 +23,10 @@
 #homepage
   background: url(/images/homepage.jpg)
   background-size: cover
+  section
+    margin: 0
+    @include above($small-screen)
+      margin: $padding*3 0
   footer, header
     width: 80%
     max-width: $small-screen
