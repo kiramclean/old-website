@@ -1,0 +1,60 @@
++++
+date = "2016-05-07T15:58:43-04:00"
+draft = true
+title = "rendering markdown in your rails app with redcarpet"
++++
+
+There are a lot of reasons you might want to render markdown in your Rails app. Like everything else, there's a gem for that. It's called Red Carpet and it makes rendering a text field in markdown super simple and configuring it is easy.
+
+First, add it to your Gemfile and install it.
+
+```ruby
+# in ./Gemfile
+gem 'redcarpet'
+
+# then run
+bundle install
+```
+
+.html_safe is required to render the rendered html as actual html -- otherwise you just get html tags
+
+```ruby
+def render_markdown(text)
+  extensions = { autolink: true }
+
+  renderer = Redcarpet::Render::HTML.new
+  @markdown ||= Redcarpet::Markdown.new(renderer, extensions)
+
+  @markdown.render(text).html_safe
+end
+```
+
+
+## Uploading pictures associated with a model
+
+- use carrierwave to handle picture uploading associated with a given model
+- use cloundinary to serve the images via CDN
+
+install the gems
+```ruby
+gem 'carrierwave'
+gem 'cloundinary'
+```
+
+Carrier wave comes with an uploader generator, so make one with
+`rails g uploader Image`
+
+Then add the image attribute to the model you want to have images
+`rails g migration add_image_to_organizations image`
+and
+`rake db:migrate`
+
+- add the uploader
+- add the :image attribute to strong params in controller
+- add optional photo size validation
+- configure cloudinary
+   - get a free account
+   - copy the config they give you to your congig directory
+   - replace the actual key and secret with <%= ENV["CLOUDINARY_API_KEY"] %>
+
+

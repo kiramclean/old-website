@@ -26,8 +26,11 @@ main {
 
 section {
   max-width: 42em;
-  margin: 4.5em 0;
+  margin: 3em 0;
   width: 80%; }
+  @media screen and (min-width: 42em) {
+    section {
+      margin: 4.5em 0; } }
 
 article time, article time + span, article time + span + p {
   display: inline-block;

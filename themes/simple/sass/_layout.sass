@@ -5,8 +5,11 @@ main
 
 section
   max-width: $layout-width
-  margin: $padding*3 0
+  margin: $padding*2 0
   width: 80%
+  @include above($small-screen)
+    margin: $padding*3 0
+
 
 article
   time
