@@ -19,3 +19,6 @@ title = "Kira McLean"
   GitHub = "//github.com/kiramclean"
   LinkedIn = "//linkedin.com/in/kiramclean"
   Twitter = "//twitter.com/kiraemclean"
+
+[blackfriday]
+	hrefTargetBlank = true
