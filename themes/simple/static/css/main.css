@@ -158,6 +158,14 @@ img {
   margin: 0 auto;
   display: block; }
 
+@media screen and (min-width: 42em) {
+  .smaller > img {
+    width: 70%;
+    padding: 1.5em 0; } }
+
+.padded img {
+  padding: 1.5em 0; }
+
 .profile img {
   border-radius: 3px;
   height: 35vw;
@@ -169,7 +177,7 @@ img {
      object-position: 0 17%;
   width: 100%; }
 
-figcaption, img + em {
+figcaption, figcaption p, img + em {
   color: #aaaaaa;
   display: block;
   font-size: small;
