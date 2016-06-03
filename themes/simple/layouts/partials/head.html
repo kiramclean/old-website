@@ -24,12 +24,12 @@
     {{ template "_internal/google_analytics.html" . }}
 
     {{ if eq .URL "/" }}
-      <title>{{ .Title }}</title>
+      <title>{{ title .Title }}</title>
       <meta property="og:title" content="{{ .Title }}">
       <meta property="og:type" content="website">
     {{ else }}
-      <title>{{ .Title }} | {{ .Site.Title }}</title>
-      <meta property="og:title" content="{{ .Title }} | {{ .Site.Title }}">
+      <title>{{ title .Title }} | {{ .Site.Title }}</title>
+      <meta property="og:title" content="{{ title .Title }} | {{ .Site.Title }}">
       <meta property="og:type" content="article">
     {{ end }}
 
