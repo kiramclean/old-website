@@ -7,7 +7,7 @@ section
   max-width: $layout-width
   margin: $padding*2 0
   width: 80%
-  @include above($small-screen)
+  +above($small-screen)
     margin: $padding*3 0
 
 
@@ -36,7 +36,7 @@ article
     margin-left: $padding/2
     font-family: $header-font
     font-size: 83%
-    @include fade-from-to(rgba($text-color, 0.6), $text-color)
+    +fade-from-to(rgba($text-color, 0.6), $text-color)
 
 .project
   margin-bottom: $padding
@@ -46,5 +46,3 @@ article
     letter-spacing: 0
     font-size: $base-font-size
     padding: $padding/2 0
-
-

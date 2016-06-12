@@ -1,14 +1,13 @@
-@mixin above($size)
+=above($size)
   @media screen and (min-width: $size)
     @content
 
-@mixin between($size1, $size2)
+=between($size1, $size2)
   @media screen and (min-width: $size1) and (max-width: $size2)
     @content
 
-@mixin fade-from-to($from, $to)
+=fade-from-to($from, $to)
   color: $from
   &:hover
     color: $to
     transition: all $base-timing ease
-

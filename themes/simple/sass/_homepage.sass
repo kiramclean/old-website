@@ -6,9 +6,9 @@
   font-size: 8vw
   padding: $padding/2
   text-align: center
-  @include above($small-screen)
+  +above($small-screen)
     font-size: 6vw
-  @include above($medium-screen)
+  +above($medium-screen)
     font-size: 4vw
 
 #quote-author
@@ -17,7 +17,7 @@
   font-family: $quote-author-font
   font-size: 3vw
   padding: 0 $padding/4
-  @include above($small-screen)
+  +above($small-screen)
     font-size: 2vw
 
 #homepage
@@ -25,7 +25,7 @@
   background-size: cover
   section
     margin: 0
-    @include above($small-screen)
+    +above($small-screen)
       margin: $padding*3 0
   footer, header
     width: 80%
@@ -35,5 +35,3 @@
     a:focus, a:active
       color: lighten($text-color, 15%)
       transition: all $base-timing ease
-
-
