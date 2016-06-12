@@ -155,6 +155,9 @@ strong {
 ul {
   margin-left: 1.5em; }
 
+figure {
+  padding: 2em 0; }
+
 figure img,
 img {
   width: 90%;
@@ -164,11 +167,7 @@ img {
 
 @media screen and (min-width: 42em) {
   .smaller > img {
-    width: 70%;
-    padding: 1.5em 0; } }
-
-.padded img {
-  padding: 1.5em 0; }
+    width: 70%; } }
 
 .profile img {
   border-radius: 3px;
