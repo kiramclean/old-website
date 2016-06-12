@@ -41,8 +41,10 @@ section
     padding: 0
 
 p
-  padding: $padding/2 0
-  text-align: justify
+  padding: $tiny-space 0
+  +above($small-screen)
+    padding: $med-space 0
+    text-align: justify
 
 a, a:visited
   border-bottom: 2px solid rgba($main-color, 0.30)

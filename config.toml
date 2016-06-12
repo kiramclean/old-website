@@ -22,3 +22,7 @@ title = "Kira McLean"
 
 [blackfriday]
 	hrefTargetBlank = true
+
+[sitemap]
+  changefreq = "weekly"
+  filename = "sitemap.xml"

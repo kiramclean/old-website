@@ -2,7 +2,7 @@
 date = "2016-04-30T20:59:36-04:00"
 description = "Web blackjack, built with sinatra. My first ever web app."
 link = "https://web-blackjack-sinatra.herokuapp.com/"
-title = "blackjack"
+title = "Blackjack"
 weight = 2
 +++
 

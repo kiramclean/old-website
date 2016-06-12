@@ -2,10 +2,8 @@
   <ul>
   {{ range .Site.Pages }}
     {{ if eq .Type "pages" }}
-      <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+      <li><a href="{{ .Permalink }}">{{ title .Title }}</a></li>
     {{ end }}
   {{ end }}
   </ul>
 </nav>
-
-

@@ -1,10 +1,10 @@
 {{ partial "header.html" . }}
 
   <section>
-    <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+    <article itemscope="itemscope" itemType="http://schema.org/BlogPosting">
       <meta itemprop="mainEntityOfPage"  itemType="https://schema.org/WebPage" content="{{ .Site.BaseURL }}">
       <meta itemprop="dateModified" content="{{ .Date.Format "2006-01-02T15:04:05-07:00" }}">
-      <meta itemprop="headline" content="{{ .Title }}">
+      <meta itemprop="headline" content="{{ title .Title }}">
       <meta itemprop="description" content="{{ .Summary }}">
       <meta itemprop="url" content="{{ .Permalink }}">
       <meta itemprop="author" itemscope itemtype="https://schema.org/Person" content="{{ .Site.Params.Author }}">
