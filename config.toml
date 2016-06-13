@@ -1,4 +1,4 @@
-baseurl = "http://kiramclean.com/"
+baseurl = "https://kiramclean.com/"
 canonifyurls = true
 disqusShortname = 'kiramclean'
 googleAnalytics = "UA-57190325-3"
