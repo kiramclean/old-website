@@ -10,6 +10,9 @@
 $(document).ready(function() {
     $('.hover').bind('touchstart touchend', function(e) {
         e.preventDefault();
-        $(this).toggleClass('hover_effect');
+        var element = $(this);
+        element.toggleClass('hover_effect');
+        var link = element.attr('href');
+        window.location = link;
     });
 });
