@@ -29,7 +29,7 @@
   background: rgba($main-color, 0.9)
   transition: all $base-timing*2 cubic-bezier(0.4, 0, 0.6, 1)
 
-.slide:hover, .slide.hover_effect
+.slide:hover
   color: lighten($main-color, 40%) !important
   transition: all $base-timing*2 ease
   border: $medium-border
@@ -44,12 +44,12 @@
   text-align: right
 .rtl:before
   right: 0px
-.rtl:hover:before, .rtl.hover_effect:before
+.rtl:hover:before
   left: 0%
   right: auto
 
 .ltr:before
   left: 0px
-.ltr:hover:before, .ltr.hover_effect:before
+.ltr:hover:before
   right: 0%
   left: auto

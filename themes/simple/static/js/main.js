@@ -2,7 +2,6 @@ $(document).ready(function() {
    $('.slide').on('click touchend', function(e) {
       var el = $(this);
       var link = el.attr('href');
-      el.toggleClass('hover_effect');
       window.location = link;
    });
 });
