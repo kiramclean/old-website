@@ -14,3 +14,15 @@
 
 =shadow($color: $light-gray)
   box-shadow: 1px 1px 1px $color
+
+=font-reset
+  color: $text-color
+  font-family: $base-font
+  font-size: inherit
+  text-transform: none
+
+=dot-before
+  &:before
+    content: '•'
+    padding-right: $med-space
+

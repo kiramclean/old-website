@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   border: 0;
   box-sizing: border-box;
@@ -449,5 +450,17 @@ footer {
 .ltr:hover:before {
   right: 0%;
   left: auto; }
+
+.resume .job {
+  margin: 0.8em 0; }
+  .resume .job p {
+    color: #444444;
+    font-family: "Lora", Garamond, serif;
+    font-size: inherit;
+    text-transform: none;
+    padding: 0; }
+  .resume .job .location:before {
+    content: '•';
+    padding-right: 0.8em; }
 
 /*# sourceMappingURL=main.css.map */
