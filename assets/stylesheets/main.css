@@ -1,2 +1,84 @@
 @import 'https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css';
 @import 'fonts.css';
+
+body {
+  font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+  line-height: 1.8em;
+  color: rgba(0, 0, 0 ,.5);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+a {
+  color: rgba(0, 0, 0, .65);
+  text-decoration: none;
+  -webkit-transition: color 0.25s linear;
+}
+
+a:hover {
+  color: rgba(0, 0, 0, .9);
+}
+
+.browserupgrade {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+.logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: .5;
+}
+
+.photo {
+  background: transparent url(../images/kira.jpg) no-repeat;
+  background-size: cover;
+}
+
+.content h1 {
+  margin-top: 0;
+  color: #00b6c6;
+}
+
+.hidden {
+  display: none;
+}
+
+
+/* Brand icon colors */
+
+.icon {
+  -webkit-transition: color 0.25s linear;
+}
+
+.linkedin:hover {
+  color: #117eb9;
+}
+
+.github:hover {
+  color: #333;
+}
+
+.stackoverflow:hover {
+  color: #f48024;
+}
+
+.medium:hover {
+  color: #00ab6b;
+}
+
+.twitter:hover {
+  color: #1da1f2;
+}
+
+.email:hover {
+  color: #cf4a39;
+}
