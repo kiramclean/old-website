@@ -46,6 +46,7 @@ p {
 }
 
 .content {
+  border-bottom: 15px solid #00b6c6;
   padding: 2em 1em;
   text-align: center;
 }
@@ -147,7 +148,6 @@ p {
 
   .content {
     background-color: #fff;
-    border-bottom: 15px solid #00b6c6;
     padding: 2em;
     text-align: left;
     width: 50vw;
