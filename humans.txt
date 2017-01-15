@@ -1,0 +1,11 @@
+/* TEAM */
+
+Kira McLean -- Full Stack Developer
+@kiraemclean
+kiramclean.com
+Montreal, Canada
+
+/* SITE */
+
+Last update: 2017/01/15
+Used: HTML5, CSS3, Normalize.css, Modernizr
