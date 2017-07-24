@@ -29,6 +29,12 @@ p {
   padding: 1em 0;
 }
 
+nav {
+  font-size: 90%;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
 .browserupgrade {
   background: #ccc;
   color: #000;
