@@ -57,11 +57,41 @@ nav {
   text-align: center;
 }
 
-.content h1 {
+h1 {
   color: #00b6c6;
   font-size: 2.5em;
   line-height: 1em;
+}
+
+.content h1 {
   margin-top: 0;
+}
+
+.manifesto h1 {
+  margin-bottom: 0;
+  font-size: 3rem;
+}
+
+body.manifesto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  border-bottom: 15px solid #00b6c6;
+}
+
+main.manifesto {
+  margin: 3rem;
+  max-width: 48rem;
+}
+
+.manifesto h2 {
+  margin-top: 3.5rem;
+  margin-bottom: 0;
+}
+
+.manifesto p {
+  padding-top: 0;
 }
 
 .hidden {
